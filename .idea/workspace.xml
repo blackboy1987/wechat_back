@@ -1,7 +1,316 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b741262b-10ca-4b37-8a02-29a5fa554ab1" name="Default Changelist" comment="" />
+    <list default="true" id="b741262b-10ca-4b37-8a02-29a5fa554ab1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/IgomallEduBackApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/Audit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditLogInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditLogMethodArgumentResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditingEntityListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditingMetadata.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditorProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/CreatedBy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/CreatedDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/LastModifiedBy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/audit/LastModifiedDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/captcha/CaptchaBackground.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/captcha/CaptchaFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/captcha/CaptchaInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/AnsjAnalyzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/BaseAttributeConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/BigDecimalNumericFieldBridge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/CommonAttributes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/DateEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/EnumConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/ExcelView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/FileType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/HtmlCleanEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Pageable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Results.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Setting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/StringEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/TemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/EhCacheConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/KaptchaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/LocaleResolverConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/MessageSourceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/ShiroConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/WebMvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/BaseControllerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/AuditLogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/BaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/CacheController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/DepartmentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/MenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/PermissionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/SettingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/StoragePluginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/TemplateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AdController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AdPositionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AreaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleTagController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/FriendLinkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/AreaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/CaptchaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/ErrorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/InitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/bilibil/BiliBiliResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleTagController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/MessageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/ProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/AdminDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/AuditLogDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/DepartmentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/MaterialDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/MenuDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/PermissionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/PluginConfigDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/RoleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/SnDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/AnswerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseCommentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseConsultationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseTagDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/LessonDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/AnswerDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseCategoryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseCommentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseConsultationDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseTagDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/LessonDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/AdminDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/AuditLogDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/BaseDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/DepartmentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/MaterialDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/MenuDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/PermissionDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/PluginConfigDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/RoleDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/SnDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/CourseFavoriteDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberAttributeDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberDepositLogDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberRankDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberStatisticsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MessageDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/PointLogDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/CourseFavoriteDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberAttributeDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberDepositLogDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberRankDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberStatisticsDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MessageDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/PointLogDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/order/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/order/impl/OrderDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/AdDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/AdPositionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/AreaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleTagDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/FriendLinkDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/AdDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/AdPositionDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/AreaDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleCategoryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleTagDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/FriendLinkDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/AuditLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Material.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/OrderedEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/PluginConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/SafeKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Sn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Answer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseConsultation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseTag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Lesson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/CourseFavorite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/LessonFavorite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberDepositLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberRank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberStatistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/PointLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/order/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/order/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Ad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/AdPosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Area.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/FriendLink.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserLoggedInEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserLoggedOutEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserRegisteredEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/exception/IncorrectLicenseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/exception/UnauthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/AdminLoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/CorsInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ListInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ValidateInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ValidateLoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/StoragePlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ftpStorage/FtpStorageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ftpStorage/FtpStoragePlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/localStorage/LocalStorageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/localStorage/LocalStoragePlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ossStorage/OssStorageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ossStorage/OssStoragePlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/AuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/AuthenticationProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/AuthorizingRealm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/CurrentUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/CurrentUserHandlerInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/CurrentUserMethodArgumentResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/LogoutFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/security/UserAuthenticationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/AdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/AuditLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/BaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/CacheService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/CaptchaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/DepartmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/MaterialService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/MenuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/PermissionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/PluginConfigService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/PluginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/RSAService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/SnService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/TemplateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/LessonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseCategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/LessonServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/AuditLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/BaseServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/CacheServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/CaptchaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/DepartmentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/MaterialServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/PermissionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/PluginConfigServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/PluginServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/RSAServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/SnServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/TemplateServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/CourseFavoriteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberAttributeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberDepositLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberRankService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberStatisticsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/PointLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/CourseFavoriteServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberAttributeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberDepositLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberRankServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberStatisticsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MessageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/PointLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/order/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/order/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/AdPositionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/AdService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/AreaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleTagService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/FriendLinkService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/AdPositionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/AdServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/AreaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleCategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleTagServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/FriendLinkServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/BeanUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/CompressUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/ExcelUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/FreeMarkerUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/HanLPUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/Image1Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/ImageUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/JWTUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/JsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/RSAUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/SpringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/SystemUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/WebUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/XmlUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-release.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ehcache.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/setting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/igomall/IgomallEduBackApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +344,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1WEf3esUdq2tcmPWkgRcl8DuSlD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -113,12 +423,24 @@
       <workItem from="1579185844484" duration="3000" />
       <workItem from="1579185863688" duration="8000" />
       <workItem from="1579313331594" duration="21634000" />
-      <workItem from="1579482051872" duration="21079000" />
+      <workItem from="1579482051872" duration="21374000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1579539007133</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579539007133</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="WindowStateProjectService">
     <state x="158" y="80" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579185745025">
@@ -140,129 +462,133 @@
       <screen x="0" y="23" width="1440" height="812" />
     </state>
     <state x="458" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.812@0.23.1440.812" timestamp="1578720583420" />
-    <state width="1398" height="239" key="GridCell.Tab.0.bottom" timestamp="1579538845289">
+    <state x="260" y="23" key="CommitChangelistDialog2" timestamp="1579539006209">
+      <screen x="0" y="23" width="1440" height="811" />
+    </state>
+    <state x="260" y="23" key="CommitChangelistDialog2/0.23.1440.811@0.23.1440.811" timestamp="1579539006209" />
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom" timestamp="1579539077451">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="279" key="GridCell.Tab.0.bottom/0.23.1440.806@0.23.1440.806" timestamp="1578797985433" />
     <state width="1398" height="153" key="GridCell.Tab.0.bottom/0.23.1440.808@0.23.1440.808" timestamp="1579316127106" />
-    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1579538845289" />
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1579539077451" />
     <state width="1398" height="184" key="GridCell.Tab.0.bottom/0.23.1440.812@0.23.1440.812" timestamp="1579329471883" />
     <state width="1398" height="150" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1579361644187" />
     <state width="1398" height="130" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1579333032386" />
     <state width="1398" height="78" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1579490219847" />
     <state width="1398" height="219" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1579523109459" />
-    <state width="1398" height="239" key="GridCell.Tab.0.center" timestamp="1579538845288">
+    <state width="1398" height="239" key="GridCell.Tab.0.center" timestamp="1579539077451">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="279" key="GridCell.Tab.0.center/0.23.1440.806@0.23.1440.806" timestamp="1578797985432" />
     <state width="1398" height="153" key="GridCell.Tab.0.center/0.23.1440.808@0.23.1440.808" timestamp="1579316127106" />
-    <state width="1398" height="239" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1579538845288" />
+    <state width="1398" height="239" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1579539077451" />
     <state width="1398" height="184" key="GridCell.Tab.0.center/0.23.1440.812@0.23.1440.812" timestamp="1579329471883" />
     <state width="1398" height="150" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1579361644187" />
     <state width="1398" height="130" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1579333032385" />
     <state width="1398" height="78" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1579490219847" />
     <state width="1398" height="219" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1579523109458" />
-    <state width="1398" height="239" key="GridCell.Tab.0.left" timestamp="1579538845288">
+    <state width="1398" height="239" key="GridCell.Tab.0.left" timestamp="1579539077450">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="279" key="GridCell.Tab.0.left/0.23.1440.806@0.23.1440.806" timestamp="1578797985432" />
     <state width="1398" height="153" key="GridCell.Tab.0.left/0.23.1440.808@0.23.1440.808" timestamp="1579316127106" />
-    <state width="1398" height="239" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1579538845288" />
+    <state width="1398" height="239" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1579539077450" />
     <state width="1398" height="184" key="GridCell.Tab.0.left/0.23.1440.812@0.23.1440.812" timestamp="1579329471882" />
     <state width="1398" height="150" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1579361644186" />
     <state width="1398" height="130" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1579333032385" />
     <state width="1398" height="78" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1579490219846" />
     <state width="1398" height="219" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1579523109458" />
-    <state width="1398" height="239" key="GridCell.Tab.0.right" timestamp="1579538845289">
+    <state width="1398" height="239" key="GridCell.Tab.0.right" timestamp="1579539077451">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="279" key="GridCell.Tab.0.right/0.23.1440.806@0.23.1440.806" timestamp="1578797985433" />
     <state width="1398" height="153" key="GridCell.Tab.0.right/0.23.1440.808@0.23.1440.808" timestamp="1579316127106" />
-    <state width="1398" height="239" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1579538845289" />
+    <state width="1398" height="239" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1579539077451" />
     <state width="1398" height="184" key="GridCell.Tab.0.right/0.23.1440.812@0.23.1440.812" timestamp="1579329471883" />
     <state width="1398" height="150" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1579361644187" />
     <state width="1398" height="130" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1579333032386" />
     <state width="1398" height="78" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1579490219847" />
     <state width="1398" height="219" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1579523109459" />
-    <state width="1398" height="239" key="GridCell.Tab.1.bottom" timestamp="1579538845290">
+    <state width="1398" height="239" key="GridCell.Tab.1.bottom" timestamp="1579539077452">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="154" key="GridCell.Tab.1.bottom/0.23.1440.806@0.23.1440.806" timestamp="1578797913355" />
     <state width="1398" height="153" key="GridCell.Tab.1.bottom/0.23.1440.808@0.23.1440.808" timestamp="1579316126984" />
-    <state width="1398" height="239" key="GridCell.Tab.1.bottom/0.23.1440.811@0.23.1440.811" timestamp="1579538845290" />
+    <state width="1398" height="239" key="GridCell.Tab.1.bottom/0.23.1440.811@0.23.1440.811" timestamp="1579539077452" />
     <state width="1398" height="184" key="GridCell.Tab.1.bottom/0.23.1440.812@0.23.1440.812" timestamp="1579329471884" />
     <state width="1398" height="150" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1579361644188" />
     <state width="1398" height="130" key="GridCell.Tab.1.bottom/0.23.1440.816@0.23.1440.816" timestamp="1579333032237" />
     <state width="1398" height="78" key="GridCell.Tab.1.bottom/0.23.1440.821@0.23.1440.821" timestamp="1579490219848" />
     <state width="1398" height="219" key="GridCell.Tab.1.bottom/0.23.1440.822@0.23.1440.822" timestamp="1579523087282" />
-    <state width="1398" height="239" key="GridCell.Tab.1.center" timestamp="1579538845289">
+    <state width="1398" height="239" key="GridCell.Tab.1.center" timestamp="1579539077452">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="154" key="GridCell.Tab.1.center/0.23.1440.806@0.23.1440.806" timestamp="1578797913355" />
     <state width="1398" height="153" key="GridCell.Tab.1.center/0.23.1440.808@0.23.1440.808" timestamp="1579316126983" />
-    <state width="1398" height="239" key="GridCell.Tab.1.center/0.23.1440.811@0.23.1440.811" timestamp="1579538845289" />
+    <state width="1398" height="239" key="GridCell.Tab.1.center/0.23.1440.811@0.23.1440.811" timestamp="1579539077452" />
     <state width="1398" height="184" key="GridCell.Tab.1.center/0.23.1440.812@0.23.1440.812" timestamp="1579329471884" />
     <state width="1398" height="150" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1579361644187" />
     <state width="1398" height="130" key="GridCell.Tab.1.center/0.23.1440.816@0.23.1440.816" timestamp="1579333032237" />
     <state width="1398" height="78" key="GridCell.Tab.1.center/0.23.1440.821@0.23.1440.821" timestamp="1579490219848" />
     <state width="1398" height="219" key="GridCell.Tab.1.center/0.23.1440.822@0.23.1440.822" timestamp="1579523087282" />
-    <state width="1398" height="239" key="GridCell.Tab.1.left" timestamp="1579538845289">
+    <state width="1398" height="239" key="GridCell.Tab.1.left" timestamp="1579539077452">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="154" key="GridCell.Tab.1.left/0.23.1440.806@0.23.1440.806" timestamp="1578797913354" />
     <state width="1398" height="153" key="GridCell.Tab.1.left/0.23.1440.808@0.23.1440.808" timestamp="1579316126983" />
-    <state width="1398" height="239" key="GridCell.Tab.1.left/0.23.1440.811@0.23.1440.811" timestamp="1579538845289" />
+    <state width="1398" height="239" key="GridCell.Tab.1.left/0.23.1440.811@0.23.1440.811" timestamp="1579539077452" />
     <state width="1398" height="184" key="GridCell.Tab.1.left/0.23.1440.812@0.23.1440.812" timestamp="1579329471884" />
     <state width="1398" height="150" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1579361644187" />
     <state width="1398" height="130" key="GridCell.Tab.1.left/0.23.1440.816@0.23.1440.816" timestamp="1579333032237" />
     <state width="1398" height="78" key="GridCell.Tab.1.left/0.23.1440.821@0.23.1440.821" timestamp="1579490219848" />
     <state width="1398" height="219" key="GridCell.Tab.1.left/0.23.1440.822@0.23.1440.822" timestamp="1579523087281" />
-    <state width="1398" height="239" key="GridCell.Tab.1.right" timestamp="1579538845290">
+    <state width="1398" height="239" key="GridCell.Tab.1.right" timestamp="1579539077452">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="154" key="GridCell.Tab.1.right/0.23.1440.806@0.23.1440.806" timestamp="1578797913355" />
     <state width="1398" height="153" key="GridCell.Tab.1.right/0.23.1440.808@0.23.1440.808" timestamp="1579316126984" />
-    <state width="1398" height="239" key="GridCell.Tab.1.right/0.23.1440.811@0.23.1440.811" timestamp="1579538845290" />
+    <state width="1398" height="239" key="GridCell.Tab.1.right/0.23.1440.811@0.23.1440.811" timestamp="1579539077452" />
     <state width="1398" height="184" key="GridCell.Tab.1.right/0.23.1440.812@0.23.1440.812" timestamp="1579329471884" />
     <state width="1398" height="150" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1579361644188" />
     <state width="1398" height="130" key="GridCell.Tab.1.right/0.23.1440.816@0.23.1440.816" timestamp="1579333032237" />
     <state width="1398" height="78" key="GridCell.Tab.1.right/0.23.1440.821@0.23.1440.821" timestamp="1579490219848" />
     <state width="1398" height="219" key="GridCell.Tab.1.right/0.23.1440.822@0.23.1440.822" timestamp="1579523087282" />
-    <state width="1398" height="239" key="GridCell.Tab.2.bottom" timestamp="1579538845291">
+    <state width="1398" height="239" key="GridCell.Tab.2.bottom" timestamp="1579539077454">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="153" key="GridCell.Tab.2.bottom/0.23.1440.808@0.23.1440.808" timestamp="1579316126985" />
-    <state width="1398" height="239" key="GridCell.Tab.2.bottom/0.23.1440.811@0.23.1440.811" timestamp="1579538845291" />
+    <state width="1398" height="239" key="GridCell.Tab.2.bottom/0.23.1440.811@0.23.1440.811" timestamp="1579539077454" />
     <state width="1398" height="184" key="GridCell.Tab.2.bottom/0.23.1440.812@0.23.1440.812" timestamp="1579329471885" />
     <state width="1398" height="150" key="GridCell.Tab.2.bottom/0.23.1440.814@0.23.1440.814" timestamp="1579361644189" />
     <state width="1398" height="130" key="GridCell.Tab.2.bottom/0.23.1440.816@0.23.1440.816" timestamp="1579333032238" />
     <state width="1398" height="78" key="GridCell.Tab.2.bottom/0.23.1440.821@0.23.1440.821" timestamp="1579490219849" />
     <state width="1398" height="163" key="GridCell.Tab.2.bottom/0.23.1440.822@0.23.1440.822" timestamp="1579523003053" />
-    <state width="1398" height="239" key="GridCell.Tab.2.center" timestamp="1579538845290">
+    <state width="1398" height="239" key="GridCell.Tab.2.center" timestamp="1579539077453">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="153" key="GridCell.Tab.2.center/0.23.1440.808@0.23.1440.808" timestamp="1579316126984" />
-    <state width="1398" height="239" key="GridCell.Tab.2.center/0.23.1440.811@0.23.1440.811" timestamp="1579538845290" />
+    <state width="1398" height="239" key="GridCell.Tab.2.center/0.23.1440.811@0.23.1440.811" timestamp="1579539077453" />
     <state width="1398" height="184" key="GridCell.Tab.2.center/0.23.1440.812@0.23.1440.812" timestamp="1579329471885" />
     <state width="1398" height="150" key="GridCell.Tab.2.center/0.23.1440.814@0.23.1440.814" timestamp="1579361644188" />
     <state width="1398" height="130" key="GridCell.Tab.2.center/0.23.1440.816@0.23.1440.816" timestamp="1579333032238" />
     <state width="1398" height="78" key="GridCell.Tab.2.center/0.23.1440.821@0.23.1440.821" timestamp="1579490219849" />
     <state width="1398" height="163" key="GridCell.Tab.2.center/0.23.1440.822@0.23.1440.822" timestamp="1579523003053" />
-    <state width="1398" height="239" key="GridCell.Tab.2.left" timestamp="1579538845290">
+    <state width="1398" height="239" key="GridCell.Tab.2.left" timestamp="1579539077453">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="153" key="GridCell.Tab.2.left/0.23.1440.808@0.23.1440.808" timestamp="1579316126984" />
-    <state width="1398" height="239" key="GridCell.Tab.2.left/0.23.1440.811@0.23.1440.811" timestamp="1579538845290" />
+    <state width="1398" height="239" key="GridCell.Tab.2.left/0.23.1440.811@0.23.1440.811" timestamp="1579539077453" />
     <state width="1398" height="184" key="GridCell.Tab.2.left/0.23.1440.812@0.23.1440.812" timestamp="1579329471885" />
     <state width="1398" height="150" key="GridCell.Tab.2.left/0.23.1440.814@0.23.1440.814" timestamp="1579361644188" />
     <state width="1398" height="130" key="GridCell.Tab.2.left/0.23.1440.816@0.23.1440.816" timestamp="1579333032238" />
     <state width="1398" height="78" key="GridCell.Tab.2.left/0.23.1440.821@0.23.1440.821" timestamp="1579490219849" />
     <state width="1398" height="163" key="GridCell.Tab.2.left/0.23.1440.822@0.23.1440.822" timestamp="1579523003052" />
-    <state width="1398" height="239" key="GridCell.Tab.2.right" timestamp="1579538845290">
+    <state width="1398" height="239" key="GridCell.Tab.2.right" timestamp="1579539077454">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state width="1398" height="153" key="GridCell.Tab.2.right/0.23.1440.808@0.23.1440.808" timestamp="1579316126984" />
-    <state width="1398" height="239" key="GridCell.Tab.2.right/0.23.1440.811@0.23.1440.811" timestamp="1579538845290" />
+    <state width="1398" height="239" key="GridCell.Tab.2.right/0.23.1440.811@0.23.1440.811" timestamp="1579539077454" />
     <state width="1398" height="184" key="GridCell.Tab.2.right/0.23.1440.812@0.23.1440.812" timestamp="1579329471885" />
     <state width="1398" height="150" key="GridCell.Tab.2.right/0.23.1440.814@0.23.1440.814" timestamp="1579361644189" />
     <state width="1398" height="130" key="GridCell.Tab.2.right/0.23.1440.816@0.23.1440.816" timestamp="1579333032238" />
@@ -272,6 +598,10 @@
       <screen x="0" y="23" width="1440" height="806" />
     </state>
     <state x="208" y="23" key="SettingsEditor/0.23.1440.806@0.23.1440.806" timestamp="1579185836269" />
+    <state x="314" y="151" key="Vcs.Push.Dialog.v2" timestamp="1579539045506">
+      <screen x="0" y="23" width="1440" height="811" />
+    </state>
+    <state x="314" y="151" key="Vcs.Push.Dialog.v2/0.23.1440.811@0.23.1440.811" timestamp="1579539045506" />
     <state width="720" height="391" key="XDebugger.FullValuePopup" timestamp="1579505336996">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
