@@ -124,9 +124,8 @@ public class Member extends User {
 	/**
 	 * E-mail
 	 */
-	@NotEmpty
 	@Length(max = 200)
-	@Column(nullable = false, unique = true)
+	@Column(unique = true)
 	private String email;
 
 	/**
@@ -1329,27 +1328,38 @@ public class Member extends User {
 	}
 
 	public void init(){
-		setPoint(0L);
-		setPoint1(0L);
-		setPoint2(0L);
-		setPoint3(0L);
+		setArea(null);
+		setAvatar(null);
+		setAddress(null);
+		setAmount(BigDecimal.ZERO);
+		setBirth(null);
 		setBalance(BigDecimal.ZERO);
 		setBalance1(BigDecimal.ZERO);
 		setBalance2(BigDecimal.ZERO);
 		setBalance3(BigDecimal.ZERO);
-		setAmount(BigDecimal.ZERO);
+		setCourseComments(new HashSet<>());
+		setCourseConsultations(new HashSet<>());
+		setCourseFavorites(new HashSet<>());
+		setGender(null);
+		setInMessages(new HashSet<>());
 		setIsEnabled(true);
 		setIsLocked(false);
-		setLockDate(null);
-		setLastLoginDate(new Date());
-		setSafeKey(null);
-		setMemberDepositLogs(null);
-		setCourseComments(null);
-		setCourseConsultations(null);
-		setCourseFavorites(null);
-		setLessonFavorites(null);
-		setInMessages(null);
-		setOutMessages(null);
-		setPointLogs(null);
+		setJob(null);
+		setLessonFavorites(new HashSet<>());
+		setLastLoginDate(null);
+		setLastLoginIp(null);
+		setMajor(null);
+		setMemberDepositLogs(new HashSet<>());
+		setMobile(null);
+		setName(null);
+		setOutMessages(new HashSet<>());
+		setPoint(0L);
+		setPoint1(0L);
+		setPoint2(0L);
+		setPoint3(0L);
+		setSchool(null);
+		setSignature(null);
+		setTags(new ArrayList<>());
+		setZipCode(null);
 	}
 }

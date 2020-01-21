@@ -72,7 +72,11 @@ public class BaseController {
 		Assert.notNull(target,"");
 
 		Set<ConstraintViolation<Object>> constraintViolations = validator.validate(target, groups);
-		System.out.println(constraintViolations);
+		Iterator<ConstraintViolation<Object>> iterator = constraintViolations.iterator();
+		while (iterator.hasNext()){
+			ConstraintViolation<Object> constraintViolation = iterator.next();
+			System.out.println(constraintViolation.getPropertyPath().toString()+":"+constraintViolation.getMessage());
+		}
 		if (constraintViolations.isEmpty()) {
 			return true;
 		}
