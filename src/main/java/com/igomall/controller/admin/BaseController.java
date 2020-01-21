@@ -72,6 +72,7 @@ public class BaseController {
 		Assert.notNull(target,"");
 
 		Set<ConstraintViolation<Object>> constraintViolations = validator.validate(target, groups);
+		System.out.println(constraintViolations);
 		if (constraintViolations.isEmpty()) {
 			return true;
 		}

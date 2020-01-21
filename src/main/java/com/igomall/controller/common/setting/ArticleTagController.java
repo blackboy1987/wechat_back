@@ -1,8 +1,10 @@
 
 package com.igomall.controller.common.setting;
 
+import com.igomall.common.Message;
 import com.igomall.common.Pageable;
 import com.igomall.controller.admin.BaseController;
+import com.igomall.entity.BaseEntity;
 import com.igomall.entity.setting.ArticleTag;
 import com.igomall.service.setting.ArticleTagService;
 import org.jsoup.Jsoup;
@@ -11,6 +13,7 @@ import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,5 +55,37 @@ public class ArticleTagController extends BaseController {
 			}
 		}
 		return "ok";
+	}
+
+
+
+	@PostMapping("/save")
+	public Message save(ArticleTag articleTag) {
+		if (!isValid(articleTag, BaseEntity.Save.class)) {
+			return Message.error("参数错误");
+		}
+		articleTag.setArticles(null);
+		articleTagService.save(articleTag);
+		return Message.success("操作成功");
+	}
+
+	@PostMapping("/edit")
+	public ArticleTag edit(Long id) {
+		return articleTagService.find(id);
+	}
+
+	@PostMapping("/update")
+	public Message update(ArticleTag articleTag) {
+		if (!isValid(articleTag)) {
+			return Message.error("参数错误");
+		}
+		articleTagService.update(articleTag,  "articles");
+		return Message.success("操作成功");
+	}
+
+	@PostMapping("/delete")
+	public Message delete(Long[] ids) {
+		articleTagService.delete(ids);
+		return SUCCESS_MESSAGE;
 	}
 }
