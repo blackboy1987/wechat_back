@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.igomall.common.Message;
 import com.igomall.controller.member.BaseController;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -13,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.igomall.common.Results;
 import com.igomall.common.Setting;
@@ -36,8 +34,8 @@ import com.igomall.util.SystemUtils;
  * @author IGOMALL  Team
  * @version 1.0
  */
-@Controller("memberRegisterController")
-@RequestMapping("/member/register")
+@RestController("commonRegisterController")
+@RequestMapping("/api/register")
 public class RegisterController extends BaseController {
 
 	@Autowired
@@ -77,23 +75,23 @@ public class RegisterController extends BaseController {
 	 * 注册提交
 	 */
 	@PostMapping("/submit")
-	public ResponseEntity<?> submit(String username, String password, String email, String mobile,HttpServletRequest request) {
+	public Message submit(String username, String password, String email, String mobile, HttpServletRequest request) {
 		Setting setting = SystemUtils.getSetting();
 		if (!ArrayUtils.contains(setting.getAllowedRegisterTypes(), Setting.RegisterType.member)) {
-			return Results.unprocessableEntity("member.register.disabled");
+			return Message.error("网站暂未开放注册");
 		}
 
 		if (!isValid(Member.class, "username", username, BaseEntity.Save.class) || !isValid(Member.class, "password", password, BaseEntity.Save.class) || !isValid(Member.class, "email", email, BaseEntity.Save.class) || !isValid(Member.class, "mobile", mobile, BaseEntity.Save.class)) {
-			return Results.UNPROCESSABLE_ENTITY;
+			return Message.error("参数错误");
 		}
 		if (memberService.usernameExists(username)) {
-			return Results.unprocessableEntity("member.register.usernameExist");
+			return Message.error("用户名已存在");
 		}
 		if (memberService.emailExists(email)) {
-			return Results.unprocessableEntity("member.register.emailExist");
+			return Message.error("邮箱已存在");
 		}
 		if (StringUtils.isNotEmpty(mobile) && memberService.mobileExists(mobile)) {
-			return Results.unprocessableEntity("member.register.mobileExist");
+			return Message.error("手机号已存在");
 		}
 
 		Member member = new Member();
@@ -102,7 +100,7 @@ public class RegisterController extends BaseController {
 		for (MemberAttribute memberAttribute : memberAttributeService.findList(true, true)) {
 			String[] values = request.getParameterValues("memberAttribute_" + memberAttribute.getId());
 			if (!memberAttributeService.isValid(memberAttribute, values)) {
-				return Results.UNPROCESSABLE_ENTITY;
+				return Message.error("参数错误");
 			}
 			Object memberAttributeValue = memberAttributeService.toMemberAttributeValue(memberAttribute, values);
 			member.setAttributeValue(memberAttribute, memberAttributeValue);
@@ -114,7 +112,7 @@ public class RegisterController extends BaseController {
 		member.setMemberRank(memberRankService.findDefault());
 		userService.register(member);
 		userService.login(new UserAuthenticationToken(Member.class, username, password, false, request.getRemoteAddr()));
-		return Results.ok("member.register.success");
+		return Message.success("注册成功");
 	}
 
 }
