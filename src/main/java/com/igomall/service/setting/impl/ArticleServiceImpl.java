@@ -167,4 +167,9 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Long> implement
 	public List<Map<String, Object>> findRelationArticleBySql(Integer count) {
 		return articleDao.findRelationArticleBySql(count);
 	}
+
+	@Override
+	public Article findByTitle(String title) {
+		return articleDao.find("title",title,true);
+	}
 }

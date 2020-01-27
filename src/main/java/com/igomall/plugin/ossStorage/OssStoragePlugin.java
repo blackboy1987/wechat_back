@@ -6,7 +6,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -71,11 +74,12 @@ public class OssStoragePlugin extends StoragePlugin {
 			InputStream inputStream = null;
 			try {
 				inputStream = new BufferedInputStream(new FileInputStream(file));
-				OSSClient ossClient = new OSSClient(endpoint, accessId, accessKey);
+				OSS ossClient = new OSSClientBuilder().build(endpoint, accessId, accessKey);
 				ObjectMetadata objectMetadata = new ObjectMetadata();
 				objectMetadata.setContentType(contentType);
 				objectMetadata.setContentLength(file.length());
 				ossClient.putObject(bucketName, StringUtils.removeStart(path, "/"), inputStream, objectMetadata);
+				ossClient.shutdown();
 			} catch (FileNotFoundException e) {
 				throw new RuntimeException(e.getMessage(), e);
 			} finally {
@@ -94,4 +98,26 @@ public class OssStoragePlugin extends StoragePlugin {
 		return null;
 	}
 
+	public void uploadUrl(String path, String url, String contentType){
+		PluginConfig pluginConfig = getPluginConfig();
+		if (pluginConfig != null) {
+			String endpoint = pluginConfig.getAttribute("endpoint");
+			String accessId = pluginConfig.getAttribute("accessId");
+			String accessKey = pluginConfig.getAttribute("accessKey");
+			String bucketName = pluginConfig.getAttribute("bucketName");
+			InputStream inputStream = null;
+			try {
+				OSS ossClient = new OSSClientBuilder().build(endpoint, accessId, accessKey);
+				ObjectMetadata objectMetadata = new ObjectMetadata();
+				objectMetadata.setContentType(contentType);
+				inputStream = new URL(url).openStream();
+				ossClient.putObject(bucketName, StringUtils.removeStart(path, "/"), inputStream,objectMetadata);
+				ossClient.shutdown();
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage(), e);
+			} finally {
+				IOUtils.closeQuietly(inputStream);
+			}
+		}
+	}
 }

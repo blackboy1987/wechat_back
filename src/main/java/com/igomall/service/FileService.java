@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.igomall.common.FileType;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Service - 文件
@@ -86,4 +88,5 @@ public interface FileService {
 	 */
 	String upload(FileType fileType, File file,Integer index);
 
+	List<Map<String,Object>> catchImage(FileType fileType, String[] fileUrls, boolean async);
 }

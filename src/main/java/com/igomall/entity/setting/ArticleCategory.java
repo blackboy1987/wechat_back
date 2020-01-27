@@ -1,25 +1,18 @@
 
 package com.igomall.entity.setting;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Length;
 
-import com.igomall.util.FreeMarkerUtils;
-
-import freemarker.core.Environment;
-import freemarker.template.TemplateException;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Entity - 文章分类
@@ -51,27 +44,6 @@ public class ArticleCategory extends OrderedEntity<Long> {
 	@Column(nullable = false)
 	@JsonView({TreeView.class,ListView.class,EditView.class, Article.LoadView.class})
 	private String name;
-
-	/**
-	 * 页面标题
-	 */
-	@Length(max = 200)
-	@JsonView({ListView.class,EditView.class})
-	private String seoTitle;
-
-	/**
-	 * 页面关键词
-	 */
-	@Length(max = 200)
-	@JsonView({ListView.class,EditView.class})
-	private String seoKeywords;
-
-	/**
-	 * 页面描述
-	 */
-	@Length(max = 200)
-	@JsonView({ListView.class,EditView.class})
-	private String seoDescription;
 
 	/**
 	 * 树路径
@@ -124,63 +96,6 @@ public class ArticleCategory extends OrderedEntity<Long> {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * 获取页面标题
-	 * 
-	 * @return 页面标题
-	 */
-	public String getSeoTitle() {
-		return seoTitle;
-	}
-
-	/**
-	 * 设置页面标题
-	 * 
-	 * @param seoTitle
-	 *            页面标题
-	 */
-	public void setSeoTitle(String seoTitle) {
-		this.seoTitle = seoTitle;
-	}
-
-	/**
-	 * 获取页面关键词
-	 * 
-	 * @return 页面关键词
-	 */
-	public String getSeoKeywords() {
-		return seoKeywords;
-	}
-
-	/**
-	 * 设置页面关键词
-	 * 
-	 * @param seoKeywords
-	 *            页面关键词
-	 */
-	public void setSeoKeywords(String seoKeywords) {
-		this.seoKeywords = seoKeywords;
-	}
-
-	/**
-	 * 获取页面描述
-	 * 
-	 * @return 页面描述
-	 */
-	public String getSeoDescription() {
-		return seoDescription;
-	}
-
-	/**
-	 * 设置页面描述
-	 * 
-	 * @param seoDescription
-	 *            页面描述
-	 */
-	public void setSeoDescription(String seoDescription) {
-		this.seoDescription = seoDescription;
 	}
 
 	/**
@@ -316,57 +231,6 @@ public class ArticleCategory extends OrderedEntity<Long> {
 	}
 
 	/**
-	 * 解析页面标题
-	 * 
-	 * @return 页面标题
-	 */
-	@Transient
-	public String resolveSeoTitle() {
-		try {
-			Environment environment = FreeMarkerUtils.getCurrentEnvironment();
-			return FreeMarkerUtils.process(getSeoTitle(), environment != null ? environment.getDataModel() : null);
-		} catch (IOException e) {
-			return null;
-		} catch (TemplateException e) {
-			return null;
-		}
-	}
-
-	/**
-	 * 解析页面关键词
-	 * 
-	 * @return 页面关键词
-	 */
-	@Transient
-	public String resolveSeoKeywords() {
-		try {
-			Environment environment = FreeMarkerUtils.getCurrentEnvironment();
-			return FreeMarkerUtils.process(getSeoKeywords(), environment != null ? environment.getDataModel() : null);
-		} catch (IOException e) {
-			return null;
-		} catch (TemplateException e) {
-			return null;
-		}
-	}
-
-	/**
-	 * 解析页面描述
-	 * 
-	 * @return 页面描述
-	 */
-	@Transient
-	public String resolveSeoDescription() {
-		try {
-			Environment environment = FreeMarkerUtils.getCurrentEnvironment();
-			return FreeMarkerUtils.process(getSeoDescription(), environment != null ? environment.getDataModel() : null);
-		} catch (IOException e) {
-			return null;
-		} catch (TemplateException e) {
-			return null;
-		}
-	}
-
-	/**
 	 * 递归上级分类
 	 * 
 	 * @param parents
@@ -401,7 +265,7 @@ public class ArticleCategory extends OrderedEntity<Long> {
 		return null;
 	}
 
-	public interface ListView extends IdView{}
+	public interface ListView extends BaseView{}
 	public interface EditView extends IdView{}
 	public interface TreeView extends IdView{}
 

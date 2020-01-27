@@ -1,40 +1,29 @@
 
 package com.igomall.entity.setting;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.BaseEntity;
 import com.igomall.entity.member.Member;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Boost;
-import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Store;
 import org.hibernate.validator.constraints.Length;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.igomall.util.FreeMarkerUtils;
-
-import freemarker.core.Environment;
-import freemarker.template.TemplateException;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Entity - 文章
@@ -77,7 +66,7 @@ public class Article extends BaseEntity<Long> {
 	/**
 	 * 标题
 	 */
-	@JsonView({ViewView.class,BaseView.class})
+	@JsonView({ViewView.class,BaseView.class,ListView.class,EditView.class})
 	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.YES)
 	@Boost(1.5F)
 	@NotEmpty
@@ -88,41 +77,23 @@ public class Article extends BaseEntity<Long> {
 	/**
 	 * 作者
 	 */
-	@JsonView({ViewView.class,BaseView.class})
+	@JsonView({ViewView.class,BaseView.class,ListView.class,EditView.class})
 	@Field(store = Store.YES, index = Index.NO, analyze = Analyze.NO)
 	@Length(max = 200)
 	private String author;
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(nullable = false,updatable = false)
 	@JsonIgnore
 	private Member member;
 
 	/**
 	 * 内容
 	 */
-	@JsonView({ViewView.class})
+	@JsonView({ViewView.class,EditView.class})
 	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.YES)
 	@Lob
 	private String content;
-
-	/**
-	 * 页面标题
-	 */
-	@Length(max = 200)
-	private String seoTitle;
-
-	/**
-	 * 页面关键词
-	 */
-	@Length(max = 200)
-	private String seoKeywords;
-
-	/**
-	 * 页面描述
-	 */
-	@Length(max = 200)
-	@JsonView({BaseView.class})
-	private String seoDescription;
 
 	/**
 	 * 是否发布
@@ -144,7 +115,7 @@ public class Article extends BaseEntity<Long> {
 	 * 点击数
 	 */
 	@Column(nullable = false)
-	@JsonView({ViewView.class,BaseView.class})
+	@JsonView({ViewView.class,BaseView.class,ListView.class})
 	private Long hits;
 
 	/**
@@ -161,6 +132,23 @@ public class Article extends BaseEntity<Long> {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@OrderBy("order asc")
 	private Set<ArticleTag> articleTags = new HashSet<>();
+
+	/**
+	 * 文章专题
+	 */
+	@ManyToMany(fetch = FetchType.LAZY)
+	@OrderBy("order asc")
+	private Set<ArticleTopic> articleTopics = new HashSet<>();
+
+	@NotEmpty
+	@Length(max = 200)
+	@JsonView({ListView.class,EditView.class})
+	@javax.validation.constraints.Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
+	private String image;
+
+	@Length(max = 500)
+	@JsonView({BaseView.class,EditView.class})
+	private String memo;
 
 	/**
 	 * 获取标题
@@ -217,66 +205,6 @@ public class Article extends BaseEntity<Long> {
 	 */
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	/**
-	 * 获取页面标题
-	 * 
-	 * @return 页面标题
-	 */
-	public String getSeoTitle() {
-		return seoTitle;
-	}
-
-	/**
-	 * 设置页面标题
-	 * 
-	 * @param seoTitle
-	 *            页面标题
-	 */
-	public void setSeoTitle(String seoTitle) {
-		this.seoTitle = seoTitle;
-	}
-
-	/**
-	 * 获取页面关键词
-	 * 
-	 * @return 页面关键词
-	 */
-	public String getSeoKeywords() {
-		return seoKeywords;
-	}
-
-	/**
-	 * 设置页面关键词
-	 * 
-	 * @param seoKeywords
-	 *            页面关键词
-	 */
-	public void setSeoKeywords(String seoKeywords) {
-		if (seoKeywords != null) {
-			seoKeywords = seoKeywords.replaceAll("[,\\s]*,[,\\s]*", ",").replaceAll("^,|,$", "");
-		}
-		this.seoKeywords = seoKeywords;
-	}
-
-	/**
-	 * 获取页面描述
-	 * 
-	 * @return 页面描述
-	 */
-	public String getSeoDescription() {
-		return seoDescription;
-	}
-
-	/**
-	 * 设置页面描述
-	 * 
-	 * @param seoDescription
-	 *            页面描述
-	 */
-	public void setSeoDescription(String seoDescription) {
-		this.seoDescription = seoDescription;
 	}
 
 	/**
@@ -380,6 +308,30 @@ public class Article extends BaseEntity<Long> {
 	 */
 	public void setArticleTags(Set<ArticleTag> articleTags) {
 		this.articleTags = articleTags;
+	}
+
+	public Set<ArticleTopic> getArticleTopics() {
+		return articleTopics;
+	}
+
+	public void setArticleTopics(Set<ArticleTopic> articleTopics) {
+		this.articleTopics = articleTopics;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 	/**
@@ -500,57 +452,6 @@ public class Article extends BaseEntity<Long> {
 		return getPageContents().length;
 	}
 
-	/**
-	 * 解析页面标题
-	 * 
-	 * @return 页面标题
-	 */
-	@Transient
-	public String resolveSeoTitle() {
-		try {
-			Environment environment = FreeMarkerUtils.getCurrentEnvironment();
-			return FreeMarkerUtils.process(getSeoTitle(), environment != null ? environment.getDataModel() : null);
-		} catch (IOException e) {
-			return null;
-		} catch (TemplateException e) {
-			return null;
-		}
-	}
-
-	/**
-	 * 解析页面关键词
-	 * 
-	 * @return 页面关键词
-	 */
-	@Transient
-	public String resolveSeoKeywords() {
-		try {
-			Environment environment = FreeMarkerUtils.getCurrentEnvironment();
-			return FreeMarkerUtils.process(getSeoKeywords(), environment != null ? environment.getDataModel() : null);
-		} catch (IOException e) {
-			return null;
-		} catch (TemplateException e) {
-			return null;
-		}
-	}
-
-	/**
-	 * 解析页面描述
-	 * 
-	 * @return 页面描述
-	 */
-	@Transient
-	public String resolveSeoDescription() {
-		try {
-			Environment environment = FreeMarkerUtils.getCurrentEnvironment();
-			return FreeMarkerUtils.process(getSeoDescription(), environment != null ? environment.getDataModel() : null);
-		} catch (IOException e) {
-			return null;
-		} catch (TemplateException e) {
-			return null;
-		}
-	}
-
 	public String getArticleCategoryName(){
 		if(articleCategory!=null){
 			return articleCategory.getName();
@@ -558,10 +459,34 @@ public class Article extends BaseEntity<Long> {
 		return null;
 	}
 
-
+	@Transient
+	@JsonView({EditView.class})
 	public Long getArticleCategoryId(){
 		if(articleCategory!=null){
 			return articleCategory.getId();
+		}
+		return null;
+	}
+
+	@Transient
+	public List<String> getArticleTopicNames(){
+		List<String> articleTopicNames = new ArrayList<>();
+		if(articleTopics!=null){
+			for (ArticleTopic articleTopic:articleTopics) {
+				articleTopicNames.add(articleTopic.getName());
+			}
+		}
+		return articleTopicNames;
+	}
+
+	@Transient
+	@JsonView({EditView.class})
+	public List<Long> getArticleTopicIds(){
+		List<Long> articleTopicIds = new ArrayList<>();
+		if(articleTopics!=null){
+			for (ArticleTopic articleTopic:articleTopics) {
+				articleTopicIds.add(articleTopic.getId());
+			}
 		}
 		return null;
 	}
@@ -578,6 +503,7 @@ public class Article extends BaseEntity<Long> {
 	}
 
 	@Transient
+	@JsonView({EditView.class})
 	public List<Long> getArticleTagIds(){
 		List<Long> articleTagIds = new ArrayList<>();
 		if(articleTags!=null){
@@ -585,7 +511,7 @@ public class Article extends BaseEntity<Long> {
 				articleTagIds.add(articleTag.getId());
 			}
 		}
-		return null;
+		return articleTagIds;
 	}
 
 
@@ -599,6 +525,7 @@ public class Article extends BaseEntity<Long> {
 	}
 
 	public interface ViewView extends IdView{}
+	public interface EditView extends IdView{}
 	public interface ListView extends BaseView{}
 
 	public interface LoadView extends IdView{}

@@ -4,6 +4,7 @@ package com.igomall.controller.admin.setting;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.controller.admin.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ import com.igomall.service.setting.ArticleCategoryService;
  * @version 1.0
  */
 @RestController("adminArticleCategoryController")
-@RequestMapping("/admin/article_category")
+@RequestMapping("/admin/api/article_category")
 public class ArticleCategoryController extends BaseController {
 
 	@Autowired
@@ -33,17 +34,17 @@ public class ArticleCategoryController extends BaseController {
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public String save(ArticleCategory articleCategory, Long parentId) {
+	public Message save(ArticleCategory articleCategory, Long parentId) {
 		articleCategory.setParent(articleCategoryService.find(parentId));
 		if (!isValid(articleCategory)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		articleCategory.setTreePath(null);
 		articleCategory.setGrade(null);
 		articleCategory.setChildren(null);
 		articleCategory.setArticles(null);
 		articleCategoryService.save(articleCategory);
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
@@ -58,32 +59,32 @@ public class ArticleCategoryController extends BaseController {
 	 * 更新
 	 */
 	@PostMapping("/update")
-	public String update(ArticleCategory articleCategory, Long parentId) {
+	public Message update(ArticleCategory articleCategory, Long parentId) {
 		articleCategory.setParent(articleCategoryService.find(parentId));
 		if (!isValid(articleCategory)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		if (articleCategory.getParent() != null) {
 			ArticleCategory parent = articleCategory.getParent();
 			if (parent.equals(articleCategory)) {
-				return ERROR_VIEW;
+				return Message.error("参数错误");
 			}
 			List<ArticleCategory> children = articleCategoryService.findChildren(parent, true, null);
 			if (children != null && children.contains(parent)) {
-				return ERROR_VIEW;
+				return Message.error("参数错误");
 			}
 		}
 		articleCategoryService.update(articleCategory, "treePath", "grade", "children", "articles");
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
 	 * 列表
 	 */
-	@GetMapping("/list")
-	public String list(ModelMap model) {
-		model.addAttribute("articleCategoryTree", articleCategoryService.findTree());
-		return "admin/article_category/list";
+	@PostMapping("/list")
+	@JsonView(ArticleCategory.ListView.class)
+	public List<ArticleCategory> list() {
+		return articleCategoryService.findTree();
 	}
 
 	/**

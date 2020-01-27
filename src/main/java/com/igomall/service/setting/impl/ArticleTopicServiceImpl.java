@@ -4,10 +4,12 @@ package com.igomall.service.setting.impl;
 import com.igomall.common.Filter;
 import com.igomall.common.Order;
 import com.igomall.dao.setting.ArticleTagDao;
+import com.igomall.dao.setting.ArticleTopicDao;
 import com.igomall.entity.setting.ArticleTag;
+import com.igomall.entity.setting.ArticleTopic;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.setting.ArticleTagService;
-import org.apache.commons.lang3.StringUtils;
+import com.igomall.service.setting.ArticleTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -24,36 +26,36 @@ import java.util.Map;
  * @version 1.0
  */
 @Service
-public class ArticleTagServiceImpl extends BaseServiceImpl<ArticleTag, Long> implements ArticleTagService {
+public class ArticleTopicServiceImpl extends BaseServiceImpl<ArticleTopic, Long> implements ArticleTopicService {
 
 	@Autowired
-	private ArticleTagDao articleTagDao;
+	private ArticleTopicDao articleTopicDao;
 
 	@Transactional(readOnly = true)
-	@Cacheable(value = "articleTag", condition = "#useCache")
-	public List<ArticleTag> findList(Integer count, List<Filter> filters, List<Order> orders, boolean useCache) {
-		return articleTagDao.findList(null, count, filters, orders);
+	@Cacheable(value = "articleTopic", condition = "#useCache")
+	public List<ArticleTopic> findList(Integer count, List<Filter> filters, List<Order> orders, boolean useCache) {
+		return articleTopicDao.findList(null, count, filters, orders);
 	}
 
 	@Override
 	@Transactional
-	@CacheEvict(value = "articleTag", allEntries = true)
-	public ArticleTag save(ArticleTag articleTag) {
-		return super.save(articleTag);
+	@CacheEvict(value = "articleTopic", allEntries = true)
+	public ArticleTopic save(ArticleTopic articleTopic) {
+		return super.save(articleTopic);
 	}
 
 	@Override
 	@Transactional
-	@CacheEvict(value = "articleTag", allEntries = true)
-	public ArticleTag update(ArticleTag articleTag) {
-		return super.update(articleTag);
+	@CacheEvict(value = "articleTopic", allEntries = true)
+	public ArticleTopic update(ArticleTopic articleTopic) {
+		return super.update(articleTopic);
 	}
 
 	@Override
 	@Transactional
-	@CacheEvict(value = "articleTag", allEntries = true)
-	public ArticleTag update(ArticleTag articleTag, String... ignoreProperties) {
-		return super.update(articleTag, ignoreProperties);
+	@CacheEvict(value = "articleTopic", allEntries = true)
+	public ArticleTopic update(ArticleTopic articleTopic, String... ignoreProperties) {
+		return super.update(articleTopic, ignoreProperties);
 	}
 
 	@Override
@@ -73,28 +75,17 @@ public class ArticleTagServiceImpl extends BaseServiceImpl<ArticleTag, Long> imp
 	@Override
 	@Transactional
 	@CacheEvict(value = "articleTag", allEntries = true)
-	public void delete(ArticleTag articleTag) {
-		super.delete(articleTag);
+	public void delete(ArticleTopic articleTopic) {
+		super.delete(articleTopic);
 	}
 
 	@Override
 	public List<Map<String, Object>> findListBySql(Integer count) {
-		return articleTagDao.findListBySql(count);
+		return articleTopicDao.findListBySql(count);
 	}
 
 	@Override
 	public boolean nameExists(String name) {
-		return articleTagDao.exists("name",StringUtils.lowerCase(name));
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public boolean nameUnique(Long id, String name) {
-		return articleTagDao.unique(id, "name", StringUtils.lowerCase(name));
-	}
-
-	@Override
-	public ArticleTag findByName(String name) {
-		return articleTagDao.find("name",StringUtils.lowerCase(name));
+		return articleTopicDao.exists("name",name);
 	}
 }

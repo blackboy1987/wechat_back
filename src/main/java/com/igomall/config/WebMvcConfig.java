@@ -50,13 +50,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/member/api/**")
                 .excludePathPatterns("/member/api/login","/member/api/logout");
 
-        registry.addInterceptor(adminLoginInterceptor())
+        /*registry.addInterceptor(adminLoginInterceptor())
                 .addPathPatterns("/admin/api/**")
                 .excludePathPatterns("/admin/api/login","/admin/api/logout");
 
 
         registry.addInterceptor(currentUserHandlerInterceptor())
-                .addPathPatterns("/admin/api/**");
+                .addPathPatterns("/admin/api/**");*/
         registry.addInterceptor(currentUserHandlerInterceptor1())
                 .addPathPatterns("/member/api/**");
 

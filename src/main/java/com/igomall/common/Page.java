@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.BaseEntity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -25,6 +27,7 @@ public class Page<T> implements Serializable {
 	 * 内容
 	 */
 	@JsonView({BaseEntity.BaseView.class, BaseEntity.IdView.class, BaseEntity.CommonView.class})
+	@JsonProperty("data")
 	private final List<T> content = new ArrayList<>();
 
 	/**
@@ -36,6 +39,7 @@ public class Page<T> implements Serializable {
 	/**
 	 * 分页信息
 	 */
+	@JsonIgnore
 	private final Pageable pageable;
 
 	/**
@@ -68,6 +72,7 @@ public class Page<T> implements Serializable {
 	 * @return 页码
 	 */
 	@JsonView({BaseEntity.BaseView.class, BaseEntity.IdView.class, BaseEntity.CommonView.class})
+	@JsonProperty("current")
 	public int getPageNumber() {
 		return pageable.getPageNumber();
 	}
@@ -87,6 +92,7 @@ public class Page<T> implements Serializable {
 	 * 
 	 * @return 搜索属性
 	 */
+	@JsonIgnore
 	public String getSearchProperty() {
 		return pageable.getSearchProperty();
 	}
@@ -105,6 +111,7 @@ public class Page<T> implements Serializable {
 	 * 
 	 * @return 排序属性
 	 */
+	@JsonIgnore
 	public String getOrderProperty() {
 		return pageable.getOrderProperty();
 	}
@@ -114,6 +121,7 @@ public class Page<T> implements Serializable {
 	 * 
 	 * @return 排序方向
 	 */
+	@JsonIgnore
 	public Order.Direction getOrderDirection() {
 		return pageable.getOrderDirection();
 	}
@@ -132,6 +140,7 @@ public class Page<T> implements Serializable {
 	 * 
 	 * @return 筛选
 	 */
+	@JsonIgnore
 	public List<Filter> getFilters() {
 		return pageable.getFilters();
 	}
@@ -141,6 +150,7 @@ public class Page<T> implements Serializable {
 	 * 
 	 * @return 总页数
 	 */
+	@JsonIgnore
 	public int getTotalPages() {
 		return (int) Math.ceil((double) getTotal() / (double) getPageSize());
 	}

@@ -89,4 +89,6 @@ public interface ArticleService extends BaseService<Article, Long> {
 
 	List<Map<String,Object>> findRelationArticleBySql(Integer count);
 
+	Article findByTitle(String title);
+
 }

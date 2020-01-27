@@ -125,7 +125,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements Articl
 		sb.append("select ");
 		sb.append("id, ");
 		sb.append("title, ");
-		sb.append("seo_description seoDescription, ");
+		sb.append("memo memo, ");
 		sb.append("hits, ");
 		sb.append("created_date createdDate ");
 		sb.append("from edu_article where 1=1 ");

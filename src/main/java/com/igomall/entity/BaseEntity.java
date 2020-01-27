@@ -116,6 +116,7 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	 * 最后修改日期
 	 */
 	@LastModifiedDate
+	@JsonView(BaseView.class)
 	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
 	@DateBridge(resolution = Resolution.SECOND)
 	@Column(nullable = false)

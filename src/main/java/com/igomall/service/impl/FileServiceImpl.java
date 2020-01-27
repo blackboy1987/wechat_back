@@ -3,10 +3,9 @@ package com.igomall.service.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
+import com.igomall.plugin.ossStorage.OssStoragePlugin;
 import com.igomall.util.Image1Utils;
 import com.igomall.util.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -288,5 +287,44 @@ public class FileServiceImpl implements FileService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<Map<String,Object>> catchImage(FileType fileType, String[] fileUrls, boolean async) {
+		Assert.notNull(fileType,"");
+		Assert.notNull(fileUrls,"");
+
+		Setting setting = SystemUtils.getSetting();
+		String uploadPath;
+		Map<String, Object> model = new HashMap<>();
+		model.put("uuid", UUID.randomUUID().toString());
+		switch (fileType) {
+			case media:
+				uploadPath = setting.resolveMediaUploadPath(model);
+				break;
+			case file:
+				uploadPath = setting.resolveFileUploadPath(model);
+				break;
+			default:
+				uploadPath = setting.resolveImageUploadPath(model);
+				break;
+		}
+		try {
+			List<Map<String,Object>> urls = new ArrayList<>();
+			String destPath = uploadPath + UUID.randomUUID() + ".png" ;
+			OssStoragePlugin ossStoragePlugin = (OssStoragePlugin)pluginService.getStoragePlugin("ossStoragePlugin");
+			for (String url:fileUrls) {
+				Map<String,Object> data = new HashMap<>();
+				ossStoragePlugin.uploadUrl(destPath, url, null);
+				data.put("url",ossStoragePlugin.getUrl(destPath));
+				data.put("source",url);
+				data.put("state","SUCCESS");
+				urls.add(data);
+			}
+			return urls;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
 	}
 }

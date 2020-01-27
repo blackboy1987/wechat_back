@@ -1,6 +1,7 @@
 
 package com.igomall.controller.admin.setting;
 
+import com.igomall.common.Page;
 import com.igomall.controller.admin.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import com.igomall.service.setting.ArticleTagService;
  * @version 1.0
  */
 @RestController("adminArticleTagController")
-@RequestMapping("/admin/article_tag")
+@RequestMapping("/admin/api/article_tag")
 public class ArticleTagController extends BaseController {
 
 	@Autowired
@@ -30,13 +31,16 @@ public class ArticleTagController extends BaseController {
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public String save(ArticleTag articleTag) {
+	public Message save(ArticleTag articleTag) {
+		if(articleTagService.nameExists(articleTag.getName())){
+			return Message.error("名称已存在");
+		}
 		if (!isValid(articleTag, BaseEntity.Save.class)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		articleTag.setArticles(null);
 		articleTagService.save(articleTag);
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
@@ -52,21 +56,23 @@ public class ArticleTagController extends BaseController {
 	 * 更新
 	 */
 	@PostMapping("/update")
-	public String update(ArticleTag articleTag) {
+	public Message update(ArticleTag articleTag) {
+		if(articleTagService.nameUnique(articleTag.getId(),articleTag.getName())){
+			return Message.error("名称已存在");
+		}
 		if (!isValid(articleTag)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		articleTagService.update(articleTag, "articles");
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
 	 * 列表
 	 */
-	@GetMapping("/list")
-	public String list(Pageable pageable, ModelMap model) {
-		model.addAttribute("page", articleTagService.findPage(pageable));
-		return "admin/article_tag/list";
+	@PostMapping("/list")
+	public Page<ArticleTag> list(Pageable pageable) {
+		return articleTagService.findPage(pageable);
 	}
 
 	/**
