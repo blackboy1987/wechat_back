@@ -2,7 +2,10 @@
 package com.igomall.service.member.impl;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
 import com.igomall.service.impl.BaseServiceImpl;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,4 +72,8 @@ public class MemberRankServiceImpl extends BaseServiceImpl<MemberRank, Long> imp
 		return pMemberRank;
 	}
 
+	@Override
+	public Page<MemberRank> findPage(Pageable pageable, String name, Date beginDate, Date endDate) {
+		return memberRankDao.findPage(pageable, name, beginDate, endDate);
+	}
 }

@@ -1,11 +1,8 @@
-/*
- * Copyright 2005-2017 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
- */
+
 package com.igomall.service.member;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
@@ -148,4 +145,5 @@ public interface MemberService extends BaseService<Member, Long>, Authentication
 	 */
 	void addAmount(Member member, BigDecimal amount);
 
+	Page<Member> findPage(Pageable pageable, String username, String name, String mobile, Integer status, Date beginDate, Date endDate);
 }

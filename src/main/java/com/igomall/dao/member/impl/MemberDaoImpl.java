@@ -9,6 +9,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.igomall.dao.impl.BaseDaoImpl;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import com.igomall.common.Page;
@@ -83,4 +84,41 @@ public class MemberDaoImpl extends BaseDaoImpl<Member, Long> implements MemberDa
 		entityManager.createQuery(jpql).executeUpdate();
 	}
 
+
+	@Override
+	public Page<Member> findPage(Pageable pageable, String username, String name, String mobile, Integer status, Date beginDate, Date endDate) {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Member> criteriaQuery = criteriaBuilder.createQuery(Member.class);
+		Root<Member> root = criteriaQuery.from(Member.class);
+		criteriaQuery.select(root);
+		Predicate restrictions = criteriaBuilder.conjunction();
+
+		if(status!=null){
+			if(status==0){
+				restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isEnabled"), true));
+			}else if(status==1){
+				restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isEnabled"), false));
+			}else if(status==2){
+				restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isLocked"), true));
+			}
+		}
+
+		if (StringUtils.isNotEmpty(username)) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("username"), "%"+username+"%"));
+		}
+		if (StringUtils.isNotEmpty(name)) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("name"), "%"+name+"%"));
+		}
+		if (StringUtils.isNotEmpty(mobile)) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("mobile"), "%"+mobile+"%"));
+		}
+		if (beginDate != null) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.greaterThanOrEqualTo(root.<Date>get("createdDate"), beginDate));
+		}
+		if (endDate != null) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.lessThanOrEqualTo(root.<Date>get("createdDate"), endDate));
+		}
+		criteriaQuery.where(restrictions);
+		return super.findPage(criteriaQuery, pageable);
+	}
 }

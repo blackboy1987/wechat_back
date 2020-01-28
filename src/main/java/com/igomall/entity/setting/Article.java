@@ -525,8 +525,6 @@ public class Article extends BaseEntity<Long> {
 	}
 
 	public interface ViewView extends IdView{}
-	public interface EditView extends IdView{}
-	public interface ListView extends BaseView{}
 
 	public interface LoadView extends IdView{}
 

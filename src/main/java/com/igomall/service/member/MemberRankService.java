@@ -2,7 +2,10 @@
 package com.igomall.service.member;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
 import com.igomall.entity.member.MemberRank;
 import com.igomall.service.BaseService;
 
@@ -49,5 +52,7 @@ public interface MemberRankService extends BaseService<MemberRank, Long> {
 	 * @return 会员等级，不包含特殊会员等级，若不存在则返回null
 	 */
 	MemberRank findByAmount(BigDecimal amount);
+
+	Page<MemberRank> findPage(Pageable pageable, String name, Date beginDate, Date endDate);
 
 }

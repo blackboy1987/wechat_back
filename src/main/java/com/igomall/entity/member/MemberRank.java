@@ -1,6 +1,7 @@
 
 package com.igomall.entity.member;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.BaseEntity;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
@@ -28,6 +29,7 @@ public class MemberRank extends BaseEntity<Long> {
 	/**
 	 * 名称
 	 */
+	@JsonView({ListView.class})
 	@NotEmpty
 	@Length(max = 200)
 	@Column(nullable = false)
@@ -36,6 +38,7 @@ public class MemberRank extends BaseEntity<Long> {
 	/**
 	 * 优惠比例
 	 */
+	@JsonView({ListView.class})
 	@NotNull
 	@Min(0)
 	@Digits(integer = 3, fraction = 3)
@@ -45,6 +48,7 @@ public class MemberRank extends BaseEntity<Long> {
 	/**
 	 * 消费金额
 	 */
+	@JsonView({ListView.class})
 	@Min(0)
 	@Digits(integer = 12, fraction = 3)
 	@Column(precision = 21, scale = 6)
@@ -53,6 +57,7 @@ public class MemberRank extends BaseEntity<Long> {
 	/**
 	 * 是否默认
 	 */
+	@JsonView({ListView.class})
 	@NotNull
 	@Column(nullable = false)
 	private Boolean isDefault;
@@ -64,6 +69,7 @@ public class MemberRank extends BaseEntity<Long> {
 	/**
 	 * 是否特殊
 	 */
+	@JsonView({ListView.class})
 	@NotNull
 	@Column(nullable = false)
 	private Boolean isSpecial;
@@ -194,5 +200,4 @@ public class MemberRank extends BaseEntity<Long> {
 	public void setMembers(Set<Member> members) {
 		this.members = members;
 	}
-
 }

@@ -47,4 +47,5 @@ public interface MemberDao extends BaseDao<Member, Long> {
 	 */
 	void clearAttributeValue(MemberAttribute memberAttribute);
 
+	Page<Member> findPage(Pageable pageable, String username, String name, String mobile, Integer status, Date beginDate, Date endDate);
 }

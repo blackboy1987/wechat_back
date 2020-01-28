@@ -137,6 +137,7 @@ public class ArticleController extends BaseController {
 		for (String name:articleTagNames) {
 			ArticleTag articleTag = articleTagService.findByName(name);
 			if(articleTag==null){
+				articleTag = new ArticleTag();
 				articleTag.setName(name);
 				articleTag.setArticles(null);
 				articleTag = articleTagService.save(articleTag);

@@ -1,6 +1,7 @@
 
 package com.igomall.controller.admin.member;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.Message;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Controller - 会员
@@ -111,6 +113,7 @@ public class MemberController extends BaseController {
 	 * 编辑
 	 */
 	@PostMapping("/edit")
+	@JsonView(Member.EditView.class)
 	public Member edit(Long id) {
 		return memberService.find(id);
 	}
@@ -158,9 +161,10 @@ public class MemberController extends BaseController {
 	/**
 	 * 列表
 	 */
-	@GetMapping("/list")
-	public Page<Member> list(Pageable pageable) {
-		return memberService.findPage(pageable);
+	@PostMapping("/list")
+	@JsonView(Member.ListView.class)
+	public Page<Member> list(Pageable pageable, String username, String name, String mobile, Integer status, Date beginDate, Date endDate) {
+		return memberService.findPage(pageable,username,name,mobile,status,beginDate,endDate);
 	}
 
 	/**

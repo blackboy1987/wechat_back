@@ -1,8 +1,4 @@
-/*
- * Copyright 2005-2017 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
- */
+
 package com.igomall.service.member.impl;
 
 import com.igomall.common.Page;
@@ -27,6 +23,7 @@ import org.springframework.util.Assert;
 
 import javax.persistence.LockModeType;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -225,4 +222,8 @@ public class MemberServiceImpl extends BaseServiceImpl<Member, Long> implements 
 		return pMember;
 	}
 
+	@Override
+	public Page<Member> findPage(Pageable pageable, String username, String name, String mobile, Integer status, Date beginDate, Date endDate) {
+		return memberDao.findPage(pageable,username,name,mobile,status,beginDate,endDate);
+	}
 }

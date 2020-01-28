@@ -1,6 +1,7 @@
 
 package com.igomall.controller.admin.member;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.Message;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Controller - 会员等级
@@ -57,7 +59,8 @@ public class MemberRankController extends BaseController {
 	/**
 	 * 编辑
 	 */
-	@GetMapping("/edit")
+	@JsonView(MemberRank.EditView.class)
+	@PostMapping("/edit")
 	public MemberRank edit(Long id) {
 		return memberRankService.find(id);
 	}
@@ -89,9 +92,10 @@ public class MemberRankController extends BaseController {
 	/**
 	 * 列表
 	 */
-	@GetMapping("/list")
-	public Page<MemberRank> list(Pageable pageable) {
-		return memberRankService.findPage(pageable);
+	@PostMapping("/list")
+	@JsonView(MemberRank.ListView.class)
+	public Page<MemberRank> list(Pageable pageable, String name, Date beginDate, Date endDate) {
+		return memberRankService.findPage(pageable,name,beginDate,endDate);
 	}
 
 	/**

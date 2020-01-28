@@ -102,7 +102,7 @@ public class Member extends User {
 	/**
 	 * 用户名
 	 */
-	@JsonView(BaseView.class)
+	@JsonView({ListView.class,EditView.class})
 	@NotEmpty(groups = Save.class)
 	@Column(nullable = false, updatable = false, unique = true)
 	private String username;
@@ -124,6 +124,7 @@ public class Member extends User {
 	/**
 	 * E-mail
 	 */
+	@JsonView({ListView.class,EditView.class})
 	@Length(max = 200)
 	@Column(unique = true)
 	private String email;
@@ -131,6 +132,7 @@ public class Member extends User {
 	/**
 	 * 手机
 	 */
+	@JsonView({ListView.class,EditView.class})
 	@Length(max = 200)
 	@Pattern(regexp = "^1[3|4|5|7|8]\\d{9}$")
 	@Column(unique = true)
@@ -163,6 +165,7 @@ public class Member extends User {
 	/**
 	 * 余额
 	 */
+	@JsonView(ListView.class)
 	@Column(nullable = false, precision = 27, scale = 12)
 	private BigDecimal balance;
 
@@ -193,22 +196,26 @@ public class Member extends User {
 	/**
 	 * 姓名
 	 */
+	@JsonView(ListView.class)
 	@Length(max = 200)
 	private String name;
 
 	/**
 	 * 性别
 	 */
+	@JsonView({ListView.class,EditView.class})
 	private Gender gender;
 
 	/**
 	 * 出生日期
 	 */
+	@JsonView({ListView.class,EditView.class})
 	private Date birth;
 
 	/**
 	 * 地址
 	 */
+	@JsonView({ListView.class,EditView.class})
 	@Length(max = 200)
 	private String address;
 
@@ -221,6 +228,7 @@ public class Member extends User {
 	/**
 	 * 电话
 	 */
+	@JsonView({ListView.class,EditView.class})
 	@Length(max = 200)
 	private String phone;
 
@@ -307,17 +315,20 @@ public class Member extends User {
 	/**
 	 * 头像
 	 */
+	@JsonView({EditView.class})
 	private String avatar;
 
-
+	@JsonView({EditView.class})
 	private String signature;
 
+	@JsonView({EditView.class})
 	private String job;
 
+	@JsonView({EditView.class})
 	private String school;
 
+	@JsonView({EditView.class})
 	private String major;
-
 
 	@Column(nullable = false, length = 4000)
 	@Convert(converter = TagConverter.class)
@@ -352,6 +363,7 @@ public class Member extends User {
 	 */
 	@OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private Set<CourseFavorite> courseFavorites = new HashSet<>();
+
 	/**
 	 * 收藏的视频
 	 */
@@ -1362,4 +1374,7 @@ public class Member extends User {
 		setTags(new ArrayList<>());
 		setZipCode(null);
 	}
+
+	public interface ListView extends BaseView{}
+	public interface EditView extends IdView{}
 }

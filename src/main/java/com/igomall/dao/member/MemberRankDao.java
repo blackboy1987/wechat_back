@@ -2,7 +2,10 @@
 package com.igomall.dao.member;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
 import com.igomall.dao.BaseDao;
 import com.igomall.entity.member.MemberRank;
 
@@ -43,4 +46,5 @@ public interface MemberRankDao extends BaseDao<MemberRank, Long> {
 	 */
 	void clearDefault(MemberRank exclude);
 
+	Page<MemberRank> findPage(Pageable pageable, String name, Date beginDate, Date endDate);
 }
