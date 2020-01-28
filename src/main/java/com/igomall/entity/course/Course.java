@@ -38,6 +38,88 @@ public class Course extends OrderedEntity<Long> {
      */
     public static final String ATTRIBUTE_VALUE_PROPERTY_NAME_PREFIX = "attributeValue";
 
+    /**
+     * 排序类型
+     */
+    public enum OrderType {
+
+        /**
+         * 置顶降序
+         */
+        topDesc,
+
+        /**
+         * 价格升序
+         */
+        priceAsc,
+
+        /**
+         * 价格降序
+         */
+        priceDesc,
+
+        /**
+         * 销量降序
+         */
+        salesDesc,
+
+        /**
+         * 评分降序
+         */
+        scoreDesc,
+
+        /**
+         * 日期降序
+         */
+        dateDesc
+    }
+
+    /**
+     * 排名类型
+     */
+    public enum RankingType {
+
+        /**
+         * 评分
+         */
+        score,
+
+        /**
+         * 评分数
+         */
+        scoreCount,
+
+        /**
+         * 周点击数
+         */
+        weekHits,
+
+        /**
+         * 月点击数
+         */
+        monthHits,
+
+        /**
+         * 点击数
+         */
+        hits,
+
+        /**
+         * 周销量
+         */
+        weekSales,
+
+        /**
+         * 月销量
+         */
+        monthSales,
+
+        /**
+         * 销量
+         */
+        sales
+    }
+
     @Field(store = Store.YES, index = Index.NO, analyze = Analyze.NO)
     @Length(max = 100)
     @Pattern(regexp = "^[0-9a-zA-Z_-]+$")

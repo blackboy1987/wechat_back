@@ -22,6 +22,26 @@ import java.util.Set;
 @Table(name = "edu_lesson")
 public class Lesson extends OrderedEntity<Long> {
 
+    /**
+     * 状态
+     */
+    public enum Status {
+        /**
+         * 审核种
+         */
+        pending,
+
+        /**
+         * 审核拒绝
+         */
+        reject,
+
+        /**
+         * 发布是成功
+         */
+        success,
+    }
+
     @JsonView(BaseView.class)
     @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
     @Length(max = 100)
@@ -46,6 +66,8 @@ public class Lesson extends OrderedEntity<Long> {
     private Long duration;
 
     private Long bilibiliCid;
+
+    private Status status;
 
     /**
      * 评论

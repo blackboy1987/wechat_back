@@ -119,6 +119,27 @@ public class Article extends BaseEntity<Long> {
 	private Long hits;
 
 	/**
+	 * 总评分
+	 */
+	@Column(nullable = false)
+	private Long totalScore;
+
+	/**
+	 * 评分数
+	 */
+	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
+	@NumericField
+	@Column(nullable = false)
+	private Long scoreCount;
+
+	/**
+	 * 评分
+	 */
+	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
+	@NumericField
+	@Column(nullable = false, precision = 12, scale = 6)
+	private Float score;
+	/**
 	 * 文章分类
 	 */
 	@NotNull
@@ -335,6 +356,63 @@ public class Article extends BaseEntity<Long> {
 	}
 
 	/**
+	 * 获取评分数
+	 *
+	 * @return 评分数
+	 */
+	public Long getScoreCount() {
+		return scoreCount;
+	}
+
+	/**
+	 * 设置评分数
+	 *
+	 * @param scoreCount
+	 *            评分数
+	 */
+	public void setScoreCount(Long scoreCount) {
+		this.scoreCount = scoreCount;
+	}
+
+	/**
+	 * 获取评分
+	 *
+	 * @return 评分
+	 */
+	public Float getScore() {
+		return score;
+	}
+
+	/**
+	 * 设置评分
+	 *
+	 * @param score
+	 *            评分
+	 */
+	public void setScore(Float score) {
+		this.score = score;
+	}
+
+	/**
+	 * 获取总评分
+	 *
+	 * @return 总评分
+	 */
+	public Long getTotalScore() {
+		return totalScore;
+	}
+
+	/**
+	 * 设置总评分
+	 *
+	 * @param totalScore
+	 *            总评分
+	 */
+	public void setTotalScore(Long totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	/**
 	 * 获取路径
 	 * 
 	 * @return 路径
@@ -522,6 +600,18 @@ public class Article extends BaseEntity<Long> {
 			return member.getAvatar();
 		}
 		return null;
+	}
+
+	/**
+	 * 更新前处理
+	 */
+	@PreUpdate
+	public void preUpdate() {
+		if (getTotalScore() != null && getScoreCount() != null && getScoreCount() > 0) {
+			setScore((float) getTotalScore() / getScoreCount());
+		} else {
+			setScore(0F);
+		}
 	}
 
 	public interface ViewView extends IdView{}

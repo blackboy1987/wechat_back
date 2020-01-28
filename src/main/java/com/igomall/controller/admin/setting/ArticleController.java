@@ -70,6 +70,9 @@ public class ArticleController extends BaseController {
 			return Message.success("参数错误");
 		}
 		article.setHits(0L);
+		article.setScore(0f);
+		article.setScoreCount(0L);
+		article.setTotalScore(0L);
 		articleService.save(article);
 		return Message.success("操作成功");
 	}
@@ -163,6 +166,9 @@ public class ArticleController extends BaseController {
 				article.setIsPublication(true);
 				article.setIsTop(true);
 				article.setHits(0L);
+				article.setScore(0f);
+				article.setScoreCount(0L);
+				article.setTotalScore(0L);
 				article.setMember(memberService.find(1L));
 				article.setAuthor(article.getMember().getUsername());
 				article.setArticleCategory(articleCategoryService.find(1L));
