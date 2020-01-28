@@ -1,6 +1,7 @@
 
 package com.igomall.service;
 
+import com.igomall.entity.Material;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.igomall.common.FileType;
@@ -39,7 +40,7 @@ public interface FileService {
 	 *            是否异步
 	 * @return 访问URL
 	 */
-	String upload(FileType fileType, MultipartFile multipartFile, boolean async);
+	Material upload(FileType fileType, MultipartFile multipartFile, boolean async);
 
 	/**
 	 * 文件上传
@@ -63,7 +64,7 @@ public interface FileService {
 	 *            上传文件
 	 * @return 访问URL
 	 */
-	String upload(FileType fileType, MultipartFile multipartFile);
+	Material upload(FileType fileType, MultipartFile multipartFile);
 
 	/**
 	 * 文件上传至本地(同步)

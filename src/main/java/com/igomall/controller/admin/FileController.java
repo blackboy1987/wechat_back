@@ -3,6 +3,7 @@ package com.igomall.controller.admin;
 
 import com.igomall.common.FileType;
 import com.igomall.common.Message;
+import com.igomall.entity.Material;
 import com.igomall.service.FileService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,15 +44,17 @@ public class FileController extends BaseController {
 				data.put("state", message("admin.upload.invalid"));
 				return data;
 			}
-			String url = fileService.upload(fileType, file, false);
-			if (StringUtils.isEmpty(url)) {
+			Material material = fileService.upload(fileType, file, false);
+
+			if (material!=null&&StringUtils.isEmpty(material.getUrl())) {
 				data.put("message", Message.warn("admin.upload.error"));
 				data.put("state", message("admin.upload.error"));
 				return data;
 			}
 			data.put("message", SUCCESS_MESSAGE);
 			data.put("state", "SUCCESS");
-			data.put("url", url);
+			data.put("url", material.getUrl());
+			data.put("material",material);
 		}else{
 			if (fileType == null || fileUrls == null || fileUrls.length==0) {
 				data.put("message", ERROR_MESSAGE);

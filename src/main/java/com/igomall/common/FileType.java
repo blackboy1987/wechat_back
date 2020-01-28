@@ -14,6 +14,10 @@ public enum FileType {
 	 */
 	image,
 
+	audio,
+
+	video,
+
 	/**
 	 * 媒体
 	 */

@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import com.igomall.entity.Material;
 import com.igomall.plugin.ossStorage.OssStoragePlugin;
+import com.igomall.service.MaterialService;
 import com.igomall.util.Image1Utils;
 import com.igomall.util.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,9 @@ public class FileServiceImpl implements FileService {
 	private TaskExecutor taskExecutor;
 	@Autowired
 	private PluginService pluginService;
+
+	@Autowired
+	private MaterialService materialService;
 
 	/**
 	 * 添加文件上传任务
@@ -118,7 +123,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public String upload(FileType fileType, MultipartFile multipartFile, boolean async) {
+	public Material upload(FileType fileType, MultipartFile multipartFile, boolean async) {
 		Assert.notNull(fileType,"");
 		Assert.notNull(multipartFile,"");
 		Assert.state(!multipartFile.isEmpty(),"");
@@ -131,6 +136,12 @@ public class FileServiceImpl implements FileService {
 		case media:
 			uploadPath = setting.resolveMediaUploadPath(model);
 			break;
+			case video:
+				uploadPath = setting.resolveMediaUploadPath(model);
+				break;
+			case audio:
+				uploadPath = setting.resolveMediaUploadPath(model);
+				break;
 		case file:
 			uploadPath = setting.resolveFileUploadPath(model);
 			break;
@@ -149,7 +160,13 @@ public class FileServiceImpl implements FileService {
 				} else {
 					upload(storagePlugin, destPath, tempFile, contentType);
 				}
-				return storagePlugin.getUrl(destPath);
+				Material material = new Material();
+				material.setSize(multipartFile.getSize());
+				material.setContentType(contentType);
+				material.setType(Material.Type.valueOf(fileType.name()));
+				material.setUrl(storagePlugin.getUrl(destPath));
+				material = materialService.save(material);
+				return material;
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -213,7 +230,7 @@ public class FileServiceImpl implements FileService {
 
 
 	@Override
-	public String upload(FileType fileType, MultipartFile multipartFile) {
+	public Material upload(FileType fileType, MultipartFile multipartFile) {
 		Assert.notNull(fileType,"");
 		Assert.notNull(multipartFile,"");
 		Assert.state(!multipartFile.isEmpty(),"");
