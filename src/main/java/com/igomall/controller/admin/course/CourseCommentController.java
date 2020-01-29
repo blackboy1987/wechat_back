@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author blackboy
  * @version 1.0
  */
-@RestController("adminReviewController")
-@RequestMapping("/admin/api/article_comment")
+@RestController("adminCourseCommentController")
+@RequestMapping("/admin/api/course_comment")
 public class CourseCommentController extends BaseController {
 
 	@Autowired
