@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b741262b-10ca-4b37-8a02-29a5fa554ab1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ehcache.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -69,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="143">
@@ -81,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/ehcache.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+            <state relative-caret-position="156">
+              <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -533,10 +533,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseCommentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseCommentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/ehcache.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCommentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTagController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/ehcache.xml" />
       </list>
     </option>
   </component>
@@ -688,7 +688,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/project-workspace/me/igomall_edu_back/src/main/java/com/igomall/controller/admin/member/MemberDepositController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580282296052" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580282326849" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
@@ -804,7 +804,7 @@
       <workItem from="1579848594717" duration="633000" />
       <workItem from="1579940411085" duration="37460000" />
       <workItem from="1580183645935" duration="14075000" />
-      <workItem from="1580272743132" duration="7028000" />
+      <workItem from="1580272743132" duration="7058000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1579539007133</created>
@@ -890,11 +890,18 @@
       <option name="project" value="LOCAL" />
       <updated>1580282267326</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="init">
+      <created>1580282307233</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580282307233</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69362000" />
+    <option name="totallyTimeSpent" value="69392000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1535,13 +1542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ehcache.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCommentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1569,6 +1569,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ehcache.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
         </state>
       </provider>
     </entry>
