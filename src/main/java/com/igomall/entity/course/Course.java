@@ -2,11 +2,10 @@ package com.igomall.entity.course;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
+import com.igomall.entity.setting.Article;
 import org.apache.commons.lang3.ArrayUtils;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Store;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -172,6 +171,13 @@ public class Course extends OrderedEntity<Long> {
     private Set<CourseTag> courseTags = new HashSet<>();
 
     /**
+     * 商品标签
+     */
+    @ManyToMany(fetch = FetchType.LAZY)
+    @OrderBy("order asc")
+    private Set<CourseTopic> courseTopics = new HashSet<>();
+
+    /**
      * 评论
      */
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -190,6 +196,37 @@ public class Course extends OrderedEntity<Long> {
 
     @JsonView({CommonListView.class})
     private Integer videos;
+
+    /**
+     * 点击数
+     */
+    @Column(nullable = false)
+    @JsonView({Article.ViewView.class,BaseView.class,ListView.class})
+    private Long hits;
+
+
+    /**
+     * 总评分
+     */
+    @Column(nullable = false)
+    private Long totalScore;
+
+    /**
+     * 评分数
+     */
+    @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
+    @NumericField
+    @Column(nullable = false)
+    private Long scoreCount;
+
+    /**
+     * 评分
+     */
+    @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
+    @NumericField
+    @Column(nullable = false, precision = 12, scale = 6)
+    private Float score;
+
 
     public Set<Lesson> getLessons() {
         return lessons;
@@ -274,6 +311,14 @@ public class Course extends OrderedEntity<Long> {
         this.courseTags = courseTags;
     }
 
+    public Set<CourseTopic> getCourseTopics() {
+        return courseTopics;
+    }
+
+    public void setCourseTopics(Set<CourseTopic> courseTopics) {
+        this.courseTopics = courseTopics;
+    }
+
     public Set<CourseComment> getCourseComments() {
         return courseComments;
     }
@@ -304,6 +349,82 @@ public class Course extends OrderedEntity<Long> {
 
     public void setVideos(Integer videos) {
         this.videos = videos;
+    }
+
+    /**
+     * 获取评分数
+     *
+     * @return 评分数
+     */
+    public Long getScoreCount() {
+        return scoreCount;
+    }
+
+    /**
+     * 设置评分数
+     *
+     * @param scoreCount
+     *            评分数
+     */
+    public void setScoreCount(Long scoreCount) {
+        this.scoreCount = scoreCount;
+    }
+
+    /**
+     * 获取评分
+     *
+     * @return 评分
+     */
+    public Float getScore() {
+        return score;
+    }
+
+    /**
+     * 设置评分
+     *
+     * @param score
+     *            评分
+     */
+    public void setScore(Float score) {
+        this.score = score;
+    }
+
+    /**
+     * 获取总评分
+     *
+     * @return 总评分
+     */
+    public Long getTotalScore() {
+        return totalScore;
+    }
+
+    /**
+     * 设置总评分
+     *
+     * @param totalScore
+     *            总评分
+     */
+    public void setTotalScore(Long totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    /**
+     * 获取点击数
+     *
+     * @return 点击数
+     */
+    public Long getHits() {
+        return hits;
+    }
+
+    /**
+     * 设置点击数
+     *
+     * @param hits
+     *            点击数
+     */
+    public void setHits(Long hits) {
+        this.hits = hits;
     }
 
     @Transient

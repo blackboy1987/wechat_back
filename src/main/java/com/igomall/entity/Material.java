@@ -1,5 +1,6 @@
 package com.igomall.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.Column;
@@ -38,29 +39,35 @@ public class Material extends BaseEntity<Long> {
         file,
     }
 
-
+    @JsonView({ListView.class})
     @NotEmpty
     @Column(nullable = false,unique = true)
     private String url;
 
+    @JsonView({ListView.class})
     private String title;
 
+    @JsonView({ListView.class})
     private String memo;
 
+    @JsonView({ListView.class})
     private Long size;
 
+    @JsonView({ListView.class})
     private Integer width;
 
+    @JsonView({ListView.class})
     private Integer height;
 
+    @JsonView({ListView.class})
     @NotNull
     @Column(nullable = false,updatable = false)
     private String contentType;
 
+    @JsonView({ListView.class})
     @NotNull
     @Column(nullable = false,updatable = false)
     private Type type;
-
 
     public String getUrl() {
         return url;

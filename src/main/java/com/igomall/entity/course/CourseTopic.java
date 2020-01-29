@@ -1,8 +1,9 @@
 
-package com.igomall.entity.setting;
+package com.igomall.entity.course;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
+import com.igomall.entity.setting.Article;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -18,8 +19,8 @@ import java.util.Set;
  * @version 1.0
  */
 @Entity
-@Table(name = "edu_article_topic")
-public class ArticleTopic extends OrderedEntity<Long> {
+@Table(name = "edu_course_topic")
+public class CourseTopic extends OrderedEntity<Long> {
 
 	private static final long serialVersionUID = -2735037966597250149L;
 
@@ -48,8 +49,8 @@ public class ArticleTopic extends OrderedEntity<Long> {
 	/**
 	 * 文章
 	 */
-	@ManyToMany(mappedBy = "articleTags", fetch = FetchType.LAZY)
-	private Set<Article> articles = new HashSet<>();
+	@ManyToMany(mappedBy = "courseTopic", fetch = FetchType.LAZY)
+	private Set<Course> courses = new HashSet<>();
 
 	/**
 	 * 获取名称
@@ -113,18 +114,18 @@ public class ArticleTopic extends OrderedEntity<Long> {
 	 * 
 	 * @return 文章
 	 */
-	public Set<Article> getArticles() {
-		return articles;
+	public Set<Course> getCourses() {
+		return courses;
 	}
 
 	/**
 	 * 设置文章
 	 * 
-	 * @param articles
+	 * @param courses
 	 *            文章
 	 */
-	public void setArticles(Set<Article> articles) {
-		this.articles = articles;
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
 	}
 
 	/**
@@ -132,10 +133,10 @@ public class ArticleTopic extends OrderedEntity<Long> {
 	 */
 	@PreRemove
 	public void preRemove() {
-		Set<Article> articles = getArticles();
-		if (articles != null) {
-			for (Article article : articles) {
-				article.getArticleTopics().remove(this);
+		Set<Course> courses = getCourses();
+		if (courses != null) {
+			for (Course course : courses) {
+				course.getCourseTopics().remove(this);
 			}
 		}
 	}

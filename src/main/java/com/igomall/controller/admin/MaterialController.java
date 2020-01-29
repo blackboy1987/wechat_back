@@ -8,10 +8,14 @@ import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.entity.Material;
 import com.igomall.service.MaterialService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.zip.DataFormatException;
 
 /**
  * Controller - 菜单
@@ -29,9 +33,14 @@ public class MaterialController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@PostMapping("/save")
-	public Message save(Material material) {
-		materialService.update(material);
+	@PostMapping("/update")
+	public Message update(Material material) {
+		Material pMaterial = materialService.find(material.getId());
+		if(pMaterial==null){
+			return Message.error("参数错误");
+		}
+		BeanUtils.copyProperties(material,pMaterial,"createdDate","lastModifiedDate","version","new","id");
+		materialService.update(pMaterial);
 		return Message.success("操作成功");
 	}
 
@@ -48,8 +57,8 @@ public class MaterialController extends BaseController {
 	 */
 	@PostMapping("/list")
 	@JsonView(Material.ListView.class)
-	public Page<Material> list(Pageable pageable,Material.Type type) {
-		return materialService.findPage(pageable);
+	public Page<Material> list(Pageable pageable, String title, String memo, Material.Type type, Date beginDate, Date endDate) {
+		return materialService.findPage(pageable,title,memo,type,beginDate,endDate);
 
 	}
 
