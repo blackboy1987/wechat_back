@@ -49,7 +49,7 @@ public class CourseTopic extends OrderedEntity<Long> {
 	/**
 	 * 文章
 	 */
-	@ManyToMany(mappedBy = "courseTopic", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "courseTopics", fetch = FetchType.LAZY)
 	private Set<Course> courses = new HashSet<>();
 
 	/**
