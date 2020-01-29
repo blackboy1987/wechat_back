@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.*;
  * @author IGOMALL  Team
  * @version 1.0
  */
-@RestController("adminArticleTagController")
-@RequestMapping("/admin/api/article_tag")
+@RestController("adminCourseTagController")
+@RequestMapping("/admin/api/course_tag")
 public class CourseTagController extends BaseController {
 
 	@Autowired
