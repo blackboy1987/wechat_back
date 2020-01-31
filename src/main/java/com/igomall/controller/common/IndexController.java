@@ -35,15 +35,15 @@ public class IndexController {
 	 * 列表
 	 */
 	@PostMapping
-	public Map<String,Object> top(Integer count) {
+	public Map<String,Object> index(Integer count) {
 		Map<String,Object> data = new HashMap<>();
 		if(count==null){
 			count = 10;
 		}
-		data.put("articles",articleService.findListBySql(null,null,count));
+		data.put("newArticles",articleService.findListBySql(null,null,count,null,null));
+		data.put("newComments",articleService.findListBySql(null,null,count,null,null));
 		data.put("articleTags",articleTagService.findListBySql(50));
 		data.put("setting", SystemUtils.getSetting());
-		data.put("friendLinks", friendLinkService.findListBySql(1000));
 		return data;
 	}
 

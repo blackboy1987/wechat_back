@@ -63,7 +63,9 @@ public class ArticleController extends BaseController {
 	public Message save(Article article, Long articleCategoryId, Long[] articleTagIds,String[] articleTagNames) {
 		article.setArticleCategory(articleCategoryService.find(articleCategoryId));
 		article.setArticleTags(new HashSet<>(articleTagService.findList(articleTagIds)));
-		article.getArticleTags().addAll(createTags(articleTagNames));
+		if(articleTagNames!=null){
+			article.getArticleTags().addAll(createTags(articleTagNames));
+		}
 		article.setIsTop(true);
 		article.setIsPublication(true);
 		if (!isValid(article)) {
@@ -136,6 +138,9 @@ public class ArticleController extends BaseController {
 	}
 
 	private List<ArticleTag> createTags(String[] articleTagNames){
+		if(articleTagNames==null){
+			return null;
+		}
 		List<ArticleTag> articleTags = new ArrayList<>();
 		for (String name:articleTagNames) {
 			ArticleTag articleTag = articleTagService.findByName(name);

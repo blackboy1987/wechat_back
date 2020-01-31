@@ -92,7 +92,7 @@ public class ArticleController extends BaseController {
 		// 文章标签
 		data.put("articleTags",article.getArticleTagNames());
 		data.put("relationArticles",articleService.findRelationArticleBySql(5));
-		data.put("newArticles",articleService.findListBySql(1,article.getMember().getId(),5));
+		data.put("newArticles",articleService.findListBySql(1,article.getMember().getId(),5,null,null));
 
 		return data;
 	}

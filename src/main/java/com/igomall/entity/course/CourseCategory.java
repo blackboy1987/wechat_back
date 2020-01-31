@@ -230,6 +230,4 @@ public class CourseCategory extends OrderedEntity<Long> {
 	}
 
 	public interface AllView extends IdView{}
-	public interface ListView extends BaseView{}
-	public interface EditView extends IdView{}
 }

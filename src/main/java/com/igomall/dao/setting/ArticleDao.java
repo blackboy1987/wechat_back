@@ -88,7 +88,7 @@ public interface ArticleDao extends BaseDao<Article, Long> {
 	 * 		查询数量
 	 * @return
 	 */
-	List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count);
+	List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count, String articleTagIds,Long articleCategoryId);
 
 	List<Map<String,Object>> findRelationArticleBySql(Integer count);;
 }

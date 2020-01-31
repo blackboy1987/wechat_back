@@ -36,6 +36,7 @@ import com.igomall.entity.setting.ArticleTag;
 @Repository
 public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements ArticleDao {
 
+	@Override
 	public List<Article> findList(ArticleCategory articleCategory, ArticleTag articleTag, Boolean isPublication, Integer count, List<Filter> filters, List<Order> orders) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Article> criteriaQuery = criteriaBuilder.createQuery(Article.class);
@@ -62,6 +63,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements Articl
 		return super.findList(criteriaQuery, null, count, filters, orders);
 	}
 
+	@Override
 	public List<Article> findList(ArticleCategory articleCategory, Boolean isPublication, Date beginDate, Date endDate, Integer first, Integer count) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Article> criteriaQuery = criteriaBuilder.createQuery(Article.class);
@@ -88,6 +90,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements Articl
 		return super.findList(criteriaQuery, first, count);
 	}
 
+	@Override
 	public Page<Article> findPage(ArticleCategory articleCategory, ArticleTag articleTag, Boolean isPublication, Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Article> criteriaQuery = criteriaBuilder.createQuery(Article.class);
@@ -116,7 +119,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements Articl
 
 
 	@Override
-	public List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count) {
+	public List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count, String articleTagIds,Long articleCategoryId) {
 		if(type==null){
 			type = 1;
 		}
@@ -124,13 +127,16 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements Articl
 		StringBuffer sb = new StringBuffer();
 		sb.append("select ");
 		sb.append("id, ");
-		sb.append("title, ");
-		sb.append("memo memo, ");
-		sb.append("hits, ");
-		sb.append("created_date createdDate ");
+		sb.append("title ");
 		sb.append("from edu_article where 1=1 ");
 		if(memberId!=null){
 			sb.append("and member_id="+memberId+" ");
+		}
+		if(articleCategoryId!=null){
+			sb.append("and article_category_id = "+articleCategoryId+" ");
+		}
+		if(StringUtils.isNotEmpty(articleTagIds)){
+			sb.append("and id in (select articles_id from edu_article_article_tags where article_tags_id in ("+articleTagIds+"))");
 		}
 		if(type==2){
 			sb.append("and is_top=true ");
@@ -141,6 +147,8 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article, Long> implements Articl
 		}else{
 			sb.append("order by created_date desc ");
 		}
+
+
 
 
 		if(count!=null){

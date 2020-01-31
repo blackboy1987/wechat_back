@@ -53,11 +53,13 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Long> implement
 	@Autowired
 	private MemberStatisticsService memberStatisticsService;
 
+	@Override
 	@Transactional(readOnly = true)
 	public List<Article> findList(ArticleCategory articleCategory, ArticleTag articleTag, Boolean isPublication, Integer count, List<Filter> filters, List<Order> orders) {
 		return articleDao.findList(articleCategory, articleTag, isPublication, count, filters, orders);
 	}
 
+	@Override
 	@Transactional(readOnly = true)
 	@Cacheable(value = "article", condition = "#useCache")
 	public List<Article> findList(Long articleCategoryId, Long articleTagId, Boolean isPublication, Integer count, List<Filter> filters, List<Order> orders, boolean useCache) {
@@ -72,11 +74,13 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Long> implement
 		return articleDao.findList(articleCategory, articleTag, isPublication, count, filters, orders);
 	}
 
+	@Override
 	@Transactional(readOnly = true)
 	public Page<Article> findPage(ArticleCategory articleCategory, ArticleTag articleTag, Boolean isPublication, Pageable pageable) {
 		return articleDao.findPage(articleCategory, articleTag, isPublication, pageable);
 	}
 
+	@Override
 	public long viewHits(Long id) {
 		Assert.notNull(id,"");
 
@@ -159,8 +163,8 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Long> implement
 	}
 
 	@Override
-	public List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count) {
-		return articleDao.findListBySql(type,memberId,count);
+	public List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count, String articleTagIds,Long articleCategoryId) {
+		return articleDao.findListBySql(type,memberId,count, articleTagIds,articleCategoryId);
 	}
 
 	@Override

@@ -85,7 +85,7 @@ public interface ArticleService extends BaseService<Article, Long> {
 	 */
 	long viewHits(Long id);
 
-	List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count);
+	List<Map<String,Object>> findListBySql(Integer type ,Long memberId,Integer count, String articleTagIds,Long articleCategoryId);
 
 	List<Map<String,Object>> findRelationArticleBySql(Integer count);
 

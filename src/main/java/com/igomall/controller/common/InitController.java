@@ -85,8 +85,6 @@ public class InitController {
             course.init();
             course.setVideos(data.getVideos());
             course.setTitle(data.getTitle());
-            course.setBiliSn(biliSn);
-            course.setBilibiliUrl(baseUrl+"/video/av"+course.getBiliSn());
             course.setImage(data.getPic());
             course.setDescription(data.getDesc());
             course.setDuration(data.getDuration());
@@ -99,7 +97,7 @@ public class InitController {
                 }
                 Lesson lesson =new Lesson();
                 lesson.setCourse(course);
-                String lessonUrl = course.getBilibiliUrl()+"?p="+(page.getPage());
+                String lessonUrl = "";
                 String lessonTitle = page.getPart();
                 if(StringUtils.isEmpty(lessonTitle)){
                     lessonTitle="无标题";

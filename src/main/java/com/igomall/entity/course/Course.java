@@ -1,7 +1,9 @@
 package com.igomall.entity.course;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
+import com.igomall.entity.member.Member;
 import com.igomall.entity.setting.Article;
 import org.apache.commons.lang3.ArrayUtils;
 import org.hibernate.search.annotations.*;
@@ -123,14 +125,8 @@ public class Course extends OrderedEntity<Long> {
     @Length(max = 100)
     @Pattern(regexp = "^[0-9a-zA-Z_-]+$")
     @Column(nullable = false, updatable = false, unique = true)
-    @JsonView({CommonListView.class})
+    @JsonView({ListView.class})
     private String sn;
-
-    @Field(store = Store.YES, index = Index.NO, analyze = Analyze.NO)
-    @Length(max = 100)
-    @Pattern(regexp = "^[0-9a-zA-Z_-]+$")
-    @Column(nullable = false, updatable = false, unique = true)
-    private String biliSn;
 
     @OneToMany(mappedBy = "course",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Lesson> lessons = new HashSet<>();
@@ -138,7 +134,7 @@ public class Course extends OrderedEntity<Long> {
     @NotEmpty
     @Length(max = 100)
     @Column(nullable = false,length = 100)
-    @JsonView({CommonListView.class})
+    @JsonView({ListView.class})
     private String title;
 
     private String memo;
@@ -146,13 +142,13 @@ public class Course extends OrderedEntity<Long> {
     @Lob
     private String description;
 
-    @JsonView({CommonListView.class})
-    private Long duration;;
+    @JsonView({ListView.class})
+    private Long duration;
 
     @NotEmpty
     @Length(max = 400)
     @Column(nullable = false,length = 400)
-    @JsonView({CommonListView.class})
+    @JsonView({ListView.class})
     private String image;
 
     /**
@@ -189,12 +185,7 @@ public class Course extends OrderedEntity<Long> {
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<CourseConsultation> courseConsultations = new HashSet<>();
 
-    @NotEmpty
-    @Length(max = 100)
-    @Column(nullable = false,length = 100)
-    private String bilibiliUrl;
-
-    @JsonView({CommonListView.class})
+    @JsonView({ListView.class})
     private Integer videos;
 
     /**
@@ -227,6 +218,34 @@ public class Course extends OrderedEntity<Long> {
     @Column(nullable = false, precision = 12, scale = 6)
     private Float score;
 
+    /**
+     * 是否发布
+     */
+    @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
+    @NotNull
+    @Column(nullable = false)
+    private Boolean isPublication;
+
+    /**
+     * 是否置顶
+     */
+    @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
+    @NotNull
+    @Column(nullable = false)
+    private Boolean isTop;
+
+    /**
+     * 作者
+     */
+    @JsonView({ListView.class})
+    @Field(store = Store.YES, index = Index.NO, analyze = Analyze.NO)
+    @Length(max = 200)
+    private String author;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false,updatable = false)
+    @JsonIgnore
+    private Member member;
 
     public Set<Lesson> getLessons() {
         return lessons;
@@ -335,14 +354,6 @@ public class Course extends OrderedEntity<Long> {
         this.courseConsultations = courseConsultations;
     }
 
-    public String getBiliSn() {
-        return biliSn;
-    }
-
-    public void setBiliSn(String biliSn) {
-        this.biliSn = biliSn;
-    }
-
     public Integer getVideos() {
         return videos;
     }
@@ -409,6 +420,44 @@ public class Course extends OrderedEntity<Long> {
     }
 
     /**
+     * 获取是否发布
+     *
+     * @return 是否发布
+     */
+    public Boolean getIsPublication() {
+        return isPublication;
+    }
+
+    /**
+     * 设置是否发布
+     *
+     * @param isPublication
+     *            是否发布
+     */
+    public void setIsPublication(Boolean isPublication) {
+        this.isPublication = isPublication;
+    }
+
+    /**
+     * 获取是否置顶
+     *
+     * @return 是否置顶
+     */
+    public Boolean getIsTop() {
+        return isTop;
+    }
+
+    /**
+     * 设置是否置顶
+     *
+     * @param isTop
+     *            是否置顶
+     */
+    public void setIsTop(Boolean isTop) {
+        this.isTop = isTop;
+    }
+
+    /**
      * 获取点击数
      *
      * @return 点击数
@@ -427,6 +476,33 @@ public class Course extends OrderedEntity<Long> {
         this.hits = hits;
     }
 
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+    /**
+     * 获取作者
+     *
+     * @return 作者
+     */
+    public String getAuthor() {
+        return author;
+    }
+
+    /**
+     * 设置作者
+     *
+     * @param author
+     *            作者
+     */
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    @JsonView({ListView.class})
     @Transient
     public String getCourseCategoryName(){
         if(courseCategory!=null){
@@ -454,16 +530,6 @@ public class Course extends OrderedEntity<Long> {
         setOrder(0);
         setSn(null);
         setTitle(null);
-        setBilibiliUrl(null);
-        setBiliSn(null);
-    }
-
-    public String getBilibiliUrl() {
-        return bilibiliUrl;
-    }
-
-    public void setBilibiliUrl(String bilibiliUrl) {
-        this.bilibiliUrl = bilibiliUrl;
     }
 
     public interface CommonListView extends CommonView{}
