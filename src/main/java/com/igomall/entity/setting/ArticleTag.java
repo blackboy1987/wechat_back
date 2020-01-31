@@ -47,6 +47,16 @@ public class ArticleTag extends OrderedEntity<Long> {
 	private String memo;
 
 	/**
+	 * 是否首页展示
+	 */
+	private Boolean isShowIndex;
+
+	/**
+	 * 首页展示显示的名称
+	 */
+	private String showName;
+
+	/**
 	 * 文章
 	 */
 	@ManyToMany(mappedBy = "articleTags", fetch = FetchType.LAZY)
@@ -126,6 +136,22 @@ public class ArticleTag extends OrderedEntity<Long> {
 	 */
 	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
+	}
+
+	public Boolean getIsShowIndex() {
+		return isShowIndex;
+	}
+
+	public void setIsShowIndex(Boolean isShowIndex) {
+		this.isShowIndex = isShowIndex;
+	}
+
+	public String getShowName() {
+		return showName;
+	}
+
+	public void setShowName(String showName) {
+		this.showName = showName;
 	}
 
 	/**

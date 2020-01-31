@@ -5,6 +5,7 @@ import com.igomall.common.Setting;
 import com.igomall.util.SpringUtils;
 import com.igomall.util.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.Assert;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -13,9 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Controller - 基类
@@ -52,6 +51,9 @@ public class BaseController {
 
 	@Autowired
 	private Validator validator;
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	/**
 	 * 数据验证
@@ -196,4 +198,13 @@ public class BaseController {
 		redirectAttributes.addFlashAttribute(FLASH_MESSAGE_ATTRIBUTE_NAME, SpringUtils.getMessage(message, args));
 	}
 
+
+	protected List<Map<String,Object>> findListBysql(String sql){
+		try{
+			return jdbcTemplate.queryForList(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			return Collections.emptyList();
+		}
+	}
 }

@@ -3,20 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b741262b-10ca-4b37-8a02-29a5fa554ab1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/InitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/InitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -46,96 +35,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+            <state relative-caret-position="137">
+              <caret line="45" column="69" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleTagServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1568">
-              <caret line="81" column="32" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="42" />
-              <folding>
-                <element signature="e#2258#2259#0" expanded="true" />
-                <element signature="e#2306#2307#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleTagDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1652">
-              <caret line="88" column="87" selection-start-line="88" selection-start-column="87" selection-end-line="88" selection-end-column="87" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3556">
-              <caret line="166" column="36" selection-start-line="166" selection-start-column="26" selection-end-line="166" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2156">
-              <caret line="87" column="129" selection-start-line="87" selection-start-column="129" selection-end-line="87" selection-end-column="129" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2940">
-              <caret line="129" column="25" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
+            <state relative-caret-position="767">
+              <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -520,8 +433,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleCommentDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleCommentDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleCommentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Article.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleCommentServiceImpl.java" />
@@ -566,11 +477,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" />
       </list>
     </option>
   </component>
@@ -652,7 +565,26 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="igomall" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="member" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="igomall_edu_back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="igomall_edu_back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="setting" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
@@ -682,7 +614,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/project-workspace/me/igomall_edu_back/src/main/java/com/igomall/controller/admin/member/MemberDepositController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580388258303" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580454228393" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
@@ -800,7 +732,7 @@
       <workItem from="1580183645935" duration="14075000" />
       <workItem from="1580272743132" duration="15797000" />
       <workItem from="1580380312942" duration="4141000" />
-      <workItem from="1580447497789" duration="2182000" />
+      <workItem from="1580447497789" duration="5024000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1579539007133</created>
@@ -907,11 +839,18 @@
       <option name="project" value="LOCAL" />
       <updated>1580282395327</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="init">
+      <created>1580451574281</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1580451574281</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84454000" />
+    <option name="totallyTimeSpent" value="87296000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -924,8 +863,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23324397" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23324397" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -937,7 +877,7 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.41560283" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.34184396" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.2397163" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
@@ -960,6 +900,42 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23324397" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32907802" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.41560283" />
+      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.1319149" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.32907802" />
+      <window_info anchor="bottom" id="Spring" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" side_tool="true" weight="0.3297587" />
+      <window_info anchor="right" id="Gradle" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1170,20 +1146,6 @@
     <SUITE FILE_PATH="coverage/igomall_edu_back$IgomallEduBackApplication.ic" NAME="IgomallEduBackApplication Coverage Results" MODIFIED="1579569837013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1370">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="46" column="47" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -1363,6 +1325,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
           <caret line="67" column="64" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1433,6 +1398,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="602" column="5" selection-start-line="595" selection-start-column="4" selection-end-line="602" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1482,13 +1450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1652">
-          <caret line="88" column="87" selection-start-line="88" selection-start-column="87" selection-end-line="88" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3556">
@@ -1510,13 +1471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1524,10 +1478,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#2019#2020#0" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
+            <element signature="e#2092#2093#0" expanded="true" />
+            <element signature="e#2122#2123#0" expanded="true" />
+            <element signature="e#2154#2155#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2221#2222#0" expanded="true" />
+            <element signature="e#2252#2253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="-92">
           <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="88" column="87" selection-start-line="88" selection-start-column="87" selection-end-line="88" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="45" column="69" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
         </state>
       </provider>
     </entry>
