@@ -43,14 +43,14 @@ public class IndexController extends BaseController {
 			count = 10;
 		}
 		data.put("newArticles",articleService.findListBySql(null,null,count,null,null));
-		data.put("newComments",findListBysql("select id,comment title from ((select id,content,created_date from edu_article_comment ORDER BY created_date DESC) UNION (select id,content,created_date from edu_course_comment ORDER BY created_date DESC)) as comments ORDER BY created_date DESC limit 10"));
+		data.put("newComments",findListBysql("select id,content title from ((select id,content,created_date from edu_article_comment ORDER BY created_date DESC) UNION (select id,content,created_date from edu_course_comment ORDER BY created_date DESC)) as comments ORDER BY created_date DESC limit 10"));
 		List<Map<String,Object>> showArticleTags = findListBysql("select id,show_name name from edu_article_tag where is_show_index=true order by orders");
 		for (Map<String,Object> map:showArticleTags) {
 			map.put("articles",articleService.findListBySql(null,null,count,map.get("id")+"",null));
 		}
 		data.put("tagArticles",showArticleTags);
 		data.put("articleTags",articleTagService.findListBySql(50));
-		data.put("setting", SystemUtils.getSetting());
+		// data.put("setting", SystemUtils.getSetting());
 		return data;
 	}
 
