@@ -105,5 +105,4 @@ public interface ArticleCommentService extends BaseService<ArticleComment, Long>
 	 *            回复评论
 	 */
 	void reply(ArticleComment review, ArticleComment replyReview);
-
 }

@@ -78,7 +78,13 @@ public class ArticleController extends BaseController {
 		Map<String,Object> articleMap = new HashMap<>();
 		Member member = article.getMember();
 		articleMap.put("title",article.getTitle());
+		articleMap.put("id",article.getId());
 		articleMap.put("content",article.getContent());
+		articleMap.put("author",article.getAuthor());
+		articleMap.put("hits",article.getHits());
+		articleMap.put("createdDate",article.getCreatedDate());
+		articleMap.put("avatar",article.getAvatar());
+		articleMap.put("tags",article.getArticleTagNames());
 		data.put("article",articleMap);
 		if(member!=null){
 			Map<String,Object> author = new HashMap<>();
@@ -89,8 +95,6 @@ public class ArticleController extends BaseController {
 			author.put("extra",memberStatisticsService.findByMemberId(member.getId()));
 			data.put("author",author);
 		}
-		// 文章标签
-		data.put("articleTags",article.getArticleTagNames());
 		data.put("relationArticles",articleService.findRelationArticleBySql(5));
 		data.put("newArticles",articleService.findListBySql(1,article.getMember().getId(),5,null,null));
 

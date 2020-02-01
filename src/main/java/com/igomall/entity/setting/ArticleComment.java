@@ -45,7 +45,6 @@ public class ArticleComment extends BaseEntity<Long> {
     @Min(1)
     @Max(5)
     @Column(nullable = false, updatable = false)
-    @JsonView({ListView.class})
     private Integer score;
 
     /**
@@ -61,14 +60,12 @@ public class ArticleComment extends BaseEntity<Long> {
      * 是否显示
      */
     @Column(nullable = false)
-    @JsonView({ListView.class})
     private Boolean isShow;
 
     /**
      * IP
      */
     @Column(nullable = false, updatable = false)
-    @JsonView({ListView.class})
     private String ip;
 
     /**
@@ -253,7 +250,6 @@ public class ArticleComment extends BaseEntity<Long> {
     }
 
     @Transient
-    @JsonView({ListView.class})
     public Long getForReviewId(){
         if(forReview!=null){
             return forReview.getId();
@@ -262,7 +258,6 @@ public class ArticleComment extends BaseEntity<Long> {
     }
 
     @Transient
-    @JsonView({ListView.class})
     public String getForReviewTitle(){
         if(forReview!=null){
             return forReview.getContent();
@@ -271,7 +266,6 @@ public class ArticleComment extends BaseEntity<Long> {
     }
 
     @Transient
-    @JsonView({ListView.class})
     public Long getArticleId(){
         if(article!=null){
             return article.getId();
@@ -280,7 +274,6 @@ public class ArticleComment extends BaseEntity<Long> {
     }
 
     @Transient
-    @JsonView({ListView.class})
     public String getArticleTitle(){
         if(article!=null){
             return article.getTitle();
@@ -289,7 +282,6 @@ public class ArticleComment extends BaseEntity<Long> {
     }
 
     @Transient
-    @JsonView({ListView.class})
     public Long getMemberId(){
         if(member!=null){
             return member.getId();

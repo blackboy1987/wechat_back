@@ -1,6 +1,7 @@
 
 package com.igomall.controller.member;
 
+import com.igomall.common.Message;
 import com.igomall.entity.member.Member;
 import com.igomall.security.CurrentUser;
 import com.igomall.security.UserAuthenticationToken;
@@ -28,8 +29,13 @@ import java.util.Map;
 public class IndexController extends BaseController {
 
 	@PostMapping("/currentUser")
-	public Map<String,Object> currentUser(@CurrentUser Member member){
+	public Map<String,Object> currentUser(@CurrentUser Member member,HttpServletResponse response){
 		Map<String,Object> data = new HashMap<>();
+		if(member==null){
+			data.put("message", Message.error("请先登录"));
+			response.setStatus(999);
+			return data;
+		}
 		data.put("username",member.getUsername());
 		data.put("avatar",member.getAvatar());
 		data.put("name",member.getName());
