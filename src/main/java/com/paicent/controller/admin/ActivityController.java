@@ -89,9 +89,9 @@ public class ActivityController extends BaseController {
 		for (ConfigInfo configInfo:activity.getConfigInfos()) {
 			Map<String,Object> configInfoMap = new HashMap<>();
 			configInfoMap.put("name",configInfo.getDistrict());
-			configInfoMap.put("time",data.get("date")+Date8Utils.formatDateToString(configInfo.getApplyStartTime(),"HH;mm")+Date8Utils.formatDateToString(configInfo.getApplyFinishTime(),"HH;mm"));
-			configInfoMap.put("stime",Date8Utils.formatDateToString(configInfo.getApplyStartTime(),"yyyy-Mm-dd HH;mm:ss"));
-			configInfoMap.put("etime",Date8Utils.formatDateToString(configInfo.getApplyFinishTime(),"yyyy-Mm-dd HH;mm:ss"));
+			configInfoMap.put("time",data.get("date")+Date8Utils.formatDateToString(configInfo.getApplyStartTime(),"HH:mm")+"—"+Date8Utils.formatDateToString(configInfo.getApplyFinishTime(),"HH:mm"));
+			configInfoMap.put("stime",Date8Utils.formatDateToString(configInfo.getApplyStartTime(),"yyyy-MM-dd HH:mm:ss"));
+			configInfoMap.put("etime",Date8Utils.formatDateToString(configInfo.getApplyFinishTime(),"yyyy-MM-dd HH:mm:ss"));
 			data1.add(configInfoMap);
 		}
 		data.put("data",data1);
