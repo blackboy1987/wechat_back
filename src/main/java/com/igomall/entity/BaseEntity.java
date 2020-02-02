@@ -1,31 +1,11 @@
 
 package com.igomall.entity;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.TableGenerator;
-import javax.persistence.Transient;
-import javax.persistence.Version;
-import javax.validation.groups.Default;
-
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.DateBridge;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Resolution;
-import org.hibernate.search.annotations.Store;
-
 import com.fasterxml.jackson.annotation.JsonView;
-import com.igomall.audit.AuditingEntityListener;
-import com.igomall.audit.CreatedDate;
-import com.igomall.audit.LastModifiedDate;
+
+import javax.persistence.*;
+import javax.validation.groups.Default;
+import java.io.Serializable;
 
 /**
  * Entity - 基类
@@ -33,7 +13,6 @@ import com.igomall.audit.LastModifiedDate;
  * @author blackboy
  * @version 1.0
  */
-@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public abstract class BaseEntity<ID extends Serializable> implements Serializable {
 
@@ -43,21 +22,6 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	 * "ID"属性名称
 	 */
 	public static final String ID_PROPERTY_NAME = "id";
-
-	/**
-	 * "创建日期"属性名称
-	 */
-	public static final String CREATED_DATE_PROPERTY_NAME = "createdDate";
-
-	/**
-	 * "最后修改日期"属性名称
-	 */
-	public static final String LAST_MODIFIED_DATE_PROPERTY_NAME = "lastModifiedDate";
-
-	/**
-	 * "版本"属性名称
-	 */
-	public static final String VERSION_PROPERTY_NAME = "version";
 
 	/**
 	 * 保存验证组
@@ -120,33 +84,6 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	private ID id;
 
 	/**
-	 * 创建日期
-	 */
-	@JsonView({BaseView.class,ListView.class})
-	@CreatedDate
-	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
-	@DateBridge(resolution = Resolution.SECOND)
-	@Column(nullable = false, updatable = false)
-	private Date createdDate;
-
-	/**
-	 * 最后修改日期
-	 */
-	@LastModifiedDate
-	@JsonView(BaseView.class)
-	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
-	@DateBridge(resolution = Resolution.SECOND)
-	@Column(nullable = false)
-	private Date lastModifiedDate;
-
-	/**
-	 * 版本
-	 */
-	@Version
-	@Column(nullable = false)
-	private Long version;
-
-	/**
 	 * 获取ID
 	 * 
 	 * @return ID
@@ -163,63 +100,6 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	 */
 	public void setId(ID id) {
 		this.id = id;
-	}
-
-	/**
-	 * 获取创建日期
-	 * 
-	 * @return 创建日期
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * 设置创建日期
-	 * 
-	 * @param createdDate
-	 *            创建日期
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	/**
-	 * 获取最后修改日期
-	 * 
-	 * @return 最后修改日期
-	 */
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	/**
-	 * 设置最后修改日期
-	 * 
-	 * @param lastModifiedDate
-	 *            最后修改日期
-	 */
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-
-	/**
-	 * 获取版本
-	 * 
-	 * @return 版本
-	 */
-	public Long getVersion() {
-		return version;
-	}
-
-	/**
-	 * 设置版本
-	 * 
-	 * @param version
-	 *            版本
-	 */
-	public void setVersion(Long version) {
-		this.version = version;
 	}
 
 	/**

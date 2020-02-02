@@ -1,20 +1,6 @@
 
 package com.igomall.service.impl;
 
-import java.beans.PropertyDescriptor;
-import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
-
 import com.igomall.common.Filter;
 import com.igomall.common.Order;
 import com.igomall.common.Page;
@@ -22,6 +8,18 @@ import com.igomall.common.Pageable;
 import com.igomall.dao.BaseDao;
 import com.igomall.entity.BaseEntity;
 import com.igomall.service.BaseService;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import java.beans.PropertyDescriptor;
+import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Service - 基类
@@ -35,7 +33,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity<ID>, ID extends Seria
 	/**
 	 * 更新忽略属性
 	 */
-	private static final String[] UPDATE_IGNORE_PROPERTIES = new String[] { BaseEntity.CREATED_DATE_PROPERTY_NAME, BaseEntity.LAST_MODIFIED_DATE_PROPERTY_NAME, BaseEntity.VERSION_PROPERTY_NAME };
+	private static final String[] UPDATE_IGNORE_PROPERTIES = new String[] { };
 
 	/**
 	 * BaseDao
