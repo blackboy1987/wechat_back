@@ -9,23 +9,25 @@ import com.paicent.entity.Activity;
 import com.paicent.entity.ConfigInfo;
 import com.paicent.service.ActivityService;
 import com.paicent.service.ConfigInfoService;
-import com.paicent.util.Date8Utils;
+import com.paicent.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.Date;
+import java.util.Map;
 
 /**
- * Controller - 活动
+ * Controller - 活动配置
  * 
  * @author blackboy
  * @version 1.0
  */
 @RestController
-@RequestMapping("/api/activity")
-public class ActivityController extends BaseController {
+@RequestMapping("/api/config_info")
+public class ConfigInfoController extends BaseController {
 
 	@Autowired
 	private ActivityService activityService;
@@ -37,20 +39,23 @@ public class ActivityController extends BaseController {
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public Message save(Activity activity,Boolean status1) {
-		if(status1!=null&&status1){
-			activity.setStatus(1);
-		}else{
-			activity.setStatus(0);
+	public Message save(@RequestBody String configInfos) {
+		Activity activity = JsonUtils.toObject(configInfos,Activity.class);
+		Activity activity1 = activityService.find(activity.getId());
+		if(activity1==null){
+			return Message.error("活动不存在");
 		}
-
-		Map<String,String> validResults = isValid1(activity);
-		if(!validResults.isEmpty()){
-			return Message.error1("参数错误",validResults);
+		for (ConfigInfo configInfo:activity.getConfigInfos()) {
+			configInfo.setActivityId(activity1.getId());
+			configInfo.setYyStartTime(activity1.getStartTime());
+			configInfo.setYyFinishTime(activity1.getFinishTime());
+			if(configInfo.isNew()){
+				configInfoService.save(configInfo);
+			}else{
+				configInfoService.update(configInfo,"createTime","modifyTime");
+			}
 		}
-		activityService.save(activity);
 		return Message.success("操作成功");
-
 	}
 
 	/**
@@ -71,31 +76,6 @@ public class ActivityController extends BaseController {
 		Activity activity = activityService.find(id);
 		activity.setConfigInfos(configInfoService.findList(null,id,null,null));
 		return activity;
-	}
-
-	/**
-	 * 编辑
-	 */
-	@PostMapping("/view1")
-	@JsonView(Activity.ViewView1.class)
-	public Map<String,Object> view1(Long id) {
-		Map<String,Object> data = new HashMap<>();
-		Activity activity = activityService.find(id);
-		data.put("id",activity.getId());
-		data.put("date", Date8Utils.formatDateToString(activity.getStartTime(),"M月d日"));
-		data.put("scene",activity.getName());
-		List<Map<String,Object>> data1 = new ArrayList<>();
-		activity.setConfigInfos(configInfoService.findList(null,id,null,null));
-		for (ConfigInfo configInfo:activity.getConfigInfos()) {
-			Map<String,Object> configInfoMap = new HashMap<>();
-			configInfoMap.put("name",configInfo.getDistrict());
-			configInfoMap.put("time",data.get("date")+Date8Utils.formatDateToString(configInfo.getApplyStartTime(),"HH;mm")+Date8Utils.formatDateToString(configInfo.getApplyFinishTime(),"HH;mm"));
-			configInfoMap.put("stime",Date8Utils.formatDateToString(configInfo.getApplyStartTime(),"yyyy-Mm-dd HH;mm:ss"));
-			configInfoMap.put("etime",Date8Utils.formatDateToString(configInfo.getApplyFinishTime(),"yyyy-Mm-dd HH;mm:ss"));
-			data1.add(configInfoMap);
-		}
-		data.put("data",data1);
-		return data;
 	}
 
 
