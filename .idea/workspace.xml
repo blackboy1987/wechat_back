@@ -1068,7 +1068,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/project-workspace/me/igomall_edu_back/src/main/java/com/igomall/controller/admin/member/MemberDepositController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580611556074" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580611654895" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1110,7 +1110,7 @@
       <module name="com.igomall.igomall_edu_back.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.igomall.util.*" />
+          <option name="PATTERN" value="com.paicent.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -1158,11 +1158,11 @@
       <module name="com.igomall.kz_back.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.igomall.*" />
+          <option name="PATTERN" value="com.paicent.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.igomall.KzBackApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paicent.KzBackApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
