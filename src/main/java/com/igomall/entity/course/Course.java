@@ -247,6 +247,20 @@ public class Course extends OrderedEntity<Long> {
     @JsonIgnore
     private Member member;
 
+    /**
+     * 课程状态
+     * 0：待审核
+     * 1：审核通过
+     * 2：审核拒绝
+     * 3: 已上架
+     * 4：作者自己下架
+     * 5：系统下架
+     */
+    @NotNull
+    @Column(nullable = false)
+    @JsonView(ListView.class)
+    private Integer status;
+
     public Set<Lesson> getLessons() {
         return lessons;
     }
@@ -502,6 +516,14 @@ public class Course extends OrderedEntity<Long> {
         this.author = author;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @JsonView({ListView.class})
     @Transient
     public String getCourseCategoryName(){
@@ -529,6 +551,7 @@ public class Course extends OrderedEntity<Long> {
         setMemo(null);
         setOrder(0);
         setSn(null);
+        setStatus(1);
         setTitle(null);
     }
 

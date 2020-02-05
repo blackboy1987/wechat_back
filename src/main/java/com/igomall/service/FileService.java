@@ -41,6 +41,7 @@ public interface FileService {
 	 * @return 访问URL
 	 */
 	Material upload(FileType fileType, MultipartFile multipartFile, boolean async);
+	Material upload(FileType fileType, MultipartFile multipartFile, boolean async,Integer width,Integer height);
 
 	/**
 	 * 文件上传

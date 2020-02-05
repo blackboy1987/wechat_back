@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController("apiCourseController")
 @RequestMapping("/api/course")
 public class CourseController extends BaseController {
@@ -33,8 +36,11 @@ public class CourseController extends BaseController {
     @JsonView(Course.CommonListView.class)
     public Message list(Pageable pageable,Long courseCategoryId,Boolean isVip){
         CourseCategory courseCategory = courseCategoryService.find(courseCategoryId);
-
-
        return Message.success1("操作成功",courseService.findPage(courseCategory,isVip,pageable));
+    }
+
+    @PostMapping("/category")
+    public List<Map<String,Object>> category(){
+       return jdbcTemplate.queryForList("select id,name from edu_course_category order by orders desc");
     }
 }

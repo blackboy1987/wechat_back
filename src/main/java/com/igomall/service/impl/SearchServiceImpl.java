@@ -162,7 +162,7 @@ public class SearchServiceImpl implements SearchService {
 
 		Query nameQuery = queryBuilder.keyword().fuzzy().onField("name").matching(keyword).createQuery();
 		Query keywordQuery = queryBuilder.keyword().onField("keyword").matching(keyword).createQuery();
-		Query statusQuery = queryBuilder.phrase().onField("status").sentence(String.valueOf(Lesson.Status.success)).createQuery();
+		Query statusQuery = queryBuilder.phrase().onField("status").sentence(String.valueOf(1)).createQuery();
 		Query isEnabledQuery = queryBuilder.phrase().onField("isEnabled").sentence("true").createQuery();
 		Query query = queryBuilder.bool().must(queryBuilder.bool().should(nameQuery).should(keywordQuery).createQuery()).must(statusQuery).must(isEnabledQuery).createQuery();
 

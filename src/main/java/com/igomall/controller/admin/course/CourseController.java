@@ -12,6 +12,7 @@ import com.igomall.service.SnService;
 import com.igomall.service.course.CourseCategoryService;
 import com.igomall.service.course.CourseService;
 import com.igomall.service.course.CourseTagService;
+import com.igomall.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +34,19 @@ public class CourseController extends BaseController {
     private CourseTagService courseTagService;
     @Autowired
     private SnService snService;
+    @Autowired
+    private MemberService memberService;
 
     /**
      * 保存
      */
     @PostMapping("/save")
-    public Message save(Course course, Long courseCategoryId, Long[] courseTagIds,String[] courseTagNames) {
+    public Message save(Course course, Long courseCategoryId, Long[] courseTagIds,String[] courseTagNames,String content) {
         course.setSn(snService.generate(Sn.Type.course));
+        course.setStatus(0);
+        course.setDescription(content);
+        course.setDuration(0L);
+        course.setVideos(0);
         course.setCourseCategory(courseCategoryService.find(courseCategoryId));
         course.setCourseTags(new HashSet<>(courseTagService.findList(courseTagIds)));
         if(courseTagNames!=null){
@@ -48,12 +55,14 @@ public class CourseController extends BaseController {
         course.setIsTop(true);
         course.setIsPublication(true);
         if (!isValid(course)) {
-            return Message.success("参数错误");
+            return Message.error("参数错误");
         }
         course.setHits(0L);
         course.setScore(0f);
         course.setScoreCount(0L);
         course.setTotalScore(0L);
+        course.setMember(memberService.find(1L));
+        course.setAuthor(course.getMember().getUsername());
         courseService.save(course);
         return Message.success("操作成功");
     }
@@ -92,7 +101,7 @@ public class CourseController extends BaseController {
      */
     @PostMapping("/list")
     @JsonView(Course.ListView.class)
-    public Page<Course> list(Pageable pageable, Long courseCategoryId, Boolean isVip){
+    public Page<Course> list(Pageable pageable, Long courseCategoryId, Boolean isVip,Boolean isTop,Boolean isPublish,Integer status){
         return courseService.findPage(pageable);
     }
 
@@ -128,5 +137,20 @@ public class CourseController extends BaseController {
         }
 
         return courseTags;
+    }
+
+
+    @PostMapping("/delete")
+    public Message delete(Long[] ids){
+        for (Long id :ids) {
+          Course course = courseService.find(id);
+          if(course!=null){
+              course.setIsTop(false);
+              course.setIsPublication(false);
+              course.setStatus(5);
+              courseService.update(course);
+          }
+        }
+        return Message.success("操作成功");
     }
 }

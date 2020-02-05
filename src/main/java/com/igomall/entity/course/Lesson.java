@@ -22,26 +22,6 @@ import java.util.Set;
 @Table(name = "edu_lesson")
 public class Lesson extends OrderedEntity<Long> {
 
-    /**
-     * 状态
-     */
-    public enum Status {
-        /**
-         * 审核种
-         */
-        pending,
-
-        /**
-         * 审核拒绝
-         */
-        reject,
-
-        /**
-         * 发布是成功
-         */
-        success,
-    }
-
     @JsonView(BaseView.class)
     @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
     @Length(max = 100)
@@ -58,16 +38,30 @@ public class Lesson extends OrderedEntity<Long> {
     @Column(nullable = false,length = 100)
     private String title;
 
+    @NotNull
+    @Column(nullable = false)
+    private Long duration;
+
     @NotEmpty
     @Length(max = 100)
     @Column(nullable = false,length = 100)
-    private String bilibiliUrl;
+    private String url;
 
-    private Long duration;
+    private String image;
 
-    private Long bilibiliCid;
-
-    private Status status;
+    /**
+     * 课程状态
+     * 0：待审核
+     * 1：审核通过
+     * 2：审核拒绝
+     * 3: 已上架
+     * 4：作者自己下架
+     * 5：系统下架
+     */
+    @NotNull
+    @Column(nullable = false)
+    @JsonView(ListView.class)
+    private Integer status;
 
     /**
      * 评论
@@ -132,14 +126,6 @@ public class Lesson extends OrderedEntity<Long> {
         this.courseConsultations = courseConsultations;
     }
 
-    public String getBilibiliUrl() {
-        return bilibiliUrl;
-    }
-
-    public void setBilibiliUrl(String bilibiliUrl) {
-        this.bilibiliUrl = bilibiliUrl;
-    }
-
     public Long getDuration() {
         return duration;
     }
@@ -148,11 +134,27 @@ public class Lesson extends OrderedEntity<Long> {
         this.duration = duration;
     }
 
-    public Long getBilibiliCid() {
-        return bilibiliCid;
+    public String getUrl() {
+        return url;
     }
 
-    public void setBilibiliCid(Long bilibiliCid) {
-        this.bilibiliCid = bilibiliCid;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

@@ -31,7 +31,7 @@ public class FileController extends BaseController {
 	 * 上传
 	 */
 	@PostMapping("/upload")
-	public @ResponseBody Map<String, Object> upload(FileType fileType, MultipartFile file,String[] fileUrls,Boolean catchImage) {
+	public @ResponseBody Map<String, Object> upload(FileType fileType, MultipartFile file,String[] fileUrls,Boolean catchImage,Integer width,Integer height) {
 		Map<String, Object> data = new HashMap<>();
 		if(catchImage==null || !catchImage){
 			if (fileType == null || file == null || file.isEmpty()) {
@@ -44,7 +44,17 @@ public class FileController extends BaseController {
 				data.put("state", message("admin.upload.invalid"));
 				return data;
 			}
-			Material material = fileService.upload(fileType, file, false);
+			Material material = null;
+			if(width!=null&&width>0&&height!=null&&height>0){
+				if(fileType==FileType.image){
+					material = fileService.upload(fileType, file, false,width,height);
+				}else{
+					material = fileService.upload(fileType, file, false);
+				}
+
+			}else {
+				material = fileService.upload(fileType, file, false);
+			}
 
 			if (material!=null&&StringUtils.isEmpty(material.getUrl())) {
 				data.put("message", Message.warn("admin.upload.error"));

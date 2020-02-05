@@ -10,6 +10,7 @@ import com.igomall.plugin.ossStorage.OssStoragePlugin;
 import com.igomall.service.MaterialService;
 import com.igomall.util.Image1Utils;
 import com.igomall.util.ImageUtils;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.ServletContext;
 
@@ -174,6 +175,63 @@ public class FileServiceImpl implements FileService {
 		return null;
 	}
 
+	@Override
+	public Material upload(FileType fileType, MultipartFile multipartFile, boolean async,Integer width,Integer height) {
+		if(width!=null&&height!=null&&width>0&&height>0){
+			Assert.notNull(fileType,"");
+			Assert.notNull(multipartFile,"");
+			Assert.state(!multipartFile.isEmpty(),"");
+
+			Setting setting = SystemUtils.getSetting();
+			String uploadPath;
+			Map<String, Object> model = new HashMap<>();
+			model.put("uuid", UUID.randomUUID().toString());
+			switch (fileType) {
+				case media:
+					uploadPath = setting.resolveMediaUploadPath(model);
+					break;
+				case video:
+					uploadPath = setting.resolveMediaUploadPath(model);
+					break;
+				case audio:
+					uploadPath = setting.resolveMediaUploadPath(model);
+					break;
+				case file:
+					uploadPath = setting.resolveFileUploadPath(model);
+					break;
+				default:
+					uploadPath = setting.resolveImageUploadPath(model);
+					break;
+			}
+			try {
+				String destPath = uploadPath + UUID.randomUUID() + "." + FilenameUtils.getExtension(multipartFile.getOriginalFilename());
+				for (StoragePlugin storagePlugin : pluginService.getStoragePlugins(true)) {
+					File tempFile = new File(FileUtils.getTempDirectory(), UUID.randomUUID() + "."+FilenameUtils.getExtension(multipartFile.getOriginalFilename()));
+					multipartFile.transferTo(tempFile);
+					Thumbnails.of(tempFile).size(width,height).keepAspectRatio(false).toFile(tempFile);
+					String contentType = multipartFile.getContentType();
+					if (async) {
+						addUploadTask(storagePlugin, destPath, tempFile, contentType);
+					} else {
+						upload(storagePlugin, destPath, tempFile, contentType);
+					}
+					Material material = new Material();
+					material.setWidth(width);
+					material.setHeight(height);
+					material.setSize(multipartFile.getSize());
+					material.setContentType(contentType);
+					material.setType(Material.Type.valueOf(fileType.name()));
+					material.setUrl(storagePlugin.getUrl(destPath));
+					material = materialService.save(material);
+					return material;
+				}
+			} catch (IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+			return null;
+		}
+		return upload(fileType,multipartFile,async);
+	}
 
 	@Override
 	public String upload(FileType fileType, MultipartFile multipartFile, boolean async,String type) {

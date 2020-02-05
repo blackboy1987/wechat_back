@@ -33,7 +33,7 @@ public class IndexController extends BaseController {
 		Map<String,Object> data = new HashMap<>();
 		if(member==null){
 			data.put("message", Message.error("请先登录"));
-			response.setStatus(999);
+			data.put("code",1);
 			return data;
 		}
 		data.put("username",member.getUsername());
@@ -56,6 +56,7 @@ public class IndexController extends BaseController {
 			data.put("area",member.getArea().getFullName());
 		}
 		data.put("id",member.getId());
+		data.put("code",0);
 		return data;
 	}
 
