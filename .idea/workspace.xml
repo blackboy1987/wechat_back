@@ -1,382 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b741262b-10ca-4b37-8a02-29a5fa554ab1" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="b741262b-10ca-4b37-8a02-29a5fa554ab1" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/igomall/controller/admin/FileController.java&#10;#&#9;src/main/java/com/igomall/controller/admin/course/CourseController.java&#10;#&#9;src/main/java/com/igomall/controller/common/course/CourseController.java&#10;#&#9;src/main/java/com/igomall/controller/member/IndexController.java&#10;#&#9;src/main/java/com/igomall/entity/course/Course.java&#10;#&#9;src/main/java/com/igomall/entity/course/Lesson.java&#10;#&#9;src/main/java/com/igomall/service/FileService.java&#10;#&#9;src/main/java/com/igomall/service/impl/FileServiceImpl.java&#10;#&#9;src/main/java/com/igomall/service/impl/SearchServiceImpl.java&#10;#&#9;src/main/java/com/igomall/util/SystemUtils.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/common/FileType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/common/FileType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/common/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/common/Page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/config/WebMvcConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/BaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/FileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/FileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/setting/ArticleCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/setting/ArticleCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/setting/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/setting/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/setting/ArticleTagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/admin/setting/ArticleTagController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/InitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/InitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/setting/ArticleCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/setting/ArticleCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/setting/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/common/setting/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/member/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/member/BaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/member/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/member/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/member/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/controller/member/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/MaterialDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/MaterialDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/course/CourseTagDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/course/CourseTagDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/course/impl/CourseTagDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/course/impl/CourseTagDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/impl/MaterialDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/impl/MaterialDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/MemberDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/MemberDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/MemberRankDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/MemberRankDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/impl/MemberDaoImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/impl/MemberDaoImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/impl/MemberDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/impl/MemberDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/impl/MemberRankDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/member/impl/MemberRankDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/setting/ArticleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/setting/ArticleDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/setting/impl/ArticleDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/dao/setting/impl/ArticleDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/BaseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/Material.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/Material.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/Course.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/CourseCategory$EditView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/CourseCategory$ListView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/CourseCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/CourseCategory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/Lesson.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/course/Lesson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/Member$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/Member$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/Member$TagConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/Member$TagConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/MemberRank.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/member/MemberRank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/Article$ListView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/Article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/ArticleCategory$ListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/ArticleCategory$ListView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/ArticleCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/ArticleCategory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/ArticleTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/entity/setting/ArticleTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/plugin/ossStorage/OssStoragePlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/plugin/ossStorage/OssStoragePlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/FileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/FileService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/MaterialService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/MaterialService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/FileServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/FileServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/FileServiceImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/FileServiceImpl$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/FileServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/FileServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/MaterialServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/impl/MaterialServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/MemberRankService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/MemberRankService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/impl/MemberRankServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/impl/MemberRankServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/impl/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/member/impl/MemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/ArticleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/ArticleTagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/ArticleTagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/impl/ArticleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/impl/ArticleServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/impl/ArticleTagServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/service/setting/impl/ArticleTagServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/igomall/util/Image1Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/igomall/util/Image1Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application-release.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application-release.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/ehcache.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/ehcache.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com.igomall.entity.setting.Article/write.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/ActivityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/kaptcha-2.3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/IgomallEduBackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/KzBackApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/Audit.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditLogInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditLogMethodArgumentResolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditingEntityListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditingMetadata.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/AuditorProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/CreatedBy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/CreatedDate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/LastModifiedBy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/audit/LastModifiedDate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/captcha/CaptchaBackground.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/captcha/CaptchaFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/captcha/CaptchaInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/config/EhCacheConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/config/KaptchaConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/config/LocaleResolverConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/config/MessageSourceConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/config/ShiroConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/AuditLogController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/CacheController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/DepartmentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/IndexController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/MaterialController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/PermissionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/RoleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/SettingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/StoragePluginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/TemplateController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCommentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTagController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/member/MemberAttributeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/member/MemberController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/member/MemberDepositController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/member/MemberRankController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AdController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AdPositionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AreaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleCategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleCommentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleTagController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleTopicController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/FriendLinkController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/wechat/WechatArticle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/wechat/WechatResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/AreaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/CaptchaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/ErrorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/FileController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/InitController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/bilibil/BiliBiliResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseCategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleCategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleTagController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticlelCommentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LogoutController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/MessageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/OrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/ProfileController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/AdminDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/AuditLogDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/DepartmentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/MaterialDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/MenuDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/PermissionDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/PluginConfigDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/RoleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/SnDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/UserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/AnswerDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseCategoryDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseCommentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseConsultationDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/ActivityDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseTagDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseTopicDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/LessonDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/AnswerDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseCategoryDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseCommentDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseConsultationDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/ActivityDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseTagDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseTopicDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/LessonDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/AdminDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/AuditLogDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/BaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/BaseDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/DepartmentDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/MaterialDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/MenuDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/PermissionDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/PluginConfigDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/RoleDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/SnDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/UserDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/CourseFavoriteDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberAttributeDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberDepositLogDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberRankDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MemberStatisticsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/MessageDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/PointLogDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/CourseFavoriteDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberAttributeDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberDepositLogDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberRankDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MemberStatisticsDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/MessageDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/member/impl/PointLogDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/order/OrderDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/order/impl/OrderDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/AdDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/AdPositionDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/AreaDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleCategoryDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleCommentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleTagDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/ArticleTopicDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/FriendLinkDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/AdDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/AdPositionDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/AreaDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleCategoryDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleCommentDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleTagDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleTopicDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/FriendLinkDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Admin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/AuditLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Department.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Material.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Permission.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/PluginConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/SafeKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/Sn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Answer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseCategory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseComment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseConsultation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseTag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseTopic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Lesson.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/CourseFavorite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/LessonFavorite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberDepositLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberRank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/MemberStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/member/PointLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/order/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/order/OrderItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Ad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/AdPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Area.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleCategory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleComment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTopic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/FriendLink.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserLoggedInEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserLoggedOutEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/event/UserRegisteredEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/exception/IncorrectLicenseException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/AdminLoginInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ListInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/LoginInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ValidateLoginInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/StoragePlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ftpStorage/FtpStorageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ftpStorage/FtpStoragePlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/localStorage/LocalStorageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/localStorage/LocalStoragePlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ossStorage/OssStorageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/plugin/ossStorage/OssStoragePlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/AuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/AuthenticationProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/AuthorizingRealm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/CurrentUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/CurrentUserHandlerInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/CurrentUserMethodArgumentResolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/LogoutFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/security/UserAuthenticationToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/AdminService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/AuditLogService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/CacheService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/CaptchaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/DepartmentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/FileService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/MaterialService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/MenuService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/PermissionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/PluginConfigService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/PluginService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/RSAService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/SearchService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/SnService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/TemplateService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseCategoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseCommentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/ActivityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseTagService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseTopicService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/LessonService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseCategoryServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseCommentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/ActivityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseTagServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseTopicServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/LessonServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/AdminServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/AuditLogServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/BaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/CacheServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/CaptchaServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/DepartmentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/MaterialServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/MenuServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/PermissionServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/PluginConfigServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/PluginServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/RSAServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/RoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/SearchServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/SnServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/TemplateServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/CourseFavoriteService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberAttributeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberDepositLogService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberRankService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MemberStatisticsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/MessageService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/PointLogService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/CourseFavoriteServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberAttributeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberDepositLogServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberRankServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MemberStatisticsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/MessageServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/member/impl/PointLogServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/order/OrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/order/impl/OrderServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/AdPositionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/AdService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/AreaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleCategoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleCommentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleTagService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleTopicService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/FriendLinkService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/AdPositionServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/AdServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/AreaServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleCategoryServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleCommentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleTagServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleTopicServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/FriendLinkServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/util/HanLPUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/util/Image1Utils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/util/ImageUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/util/JWTUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/util/SystemUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/util/WebUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/util/WebUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-release.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-release.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ehcache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/setting.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.igomall.entity.setting.Article/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/LessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/LessonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Lesson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/setting.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -395,17 +33,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="kz_back" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -415,93 +45,55 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/BaseControllerAdvice.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="25" column="30" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="30" />
+            <state relative-caret-position="179">
+              <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="196">
+              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/ActivityController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/Page.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1225#1226#0" expanded="true" />
-                <element signature="e#1263#1264#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="616">
+              <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="557" column="51" lean-forward="true" selection-start-line="557" selection-start-column="51" selection-end-line="557" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/impl/ActivityServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="21" column="88" lean-forward="true" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/ActivityDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="32" column="27" lean-forward="true" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="49" column="23" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            <state relative-caret-position="86">
+              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -534,14 +126,13 @@
       <find>setScoreCount</find>
       <find>score</find>
       <find>article</find>
-      <find>hits</find>
       <find>courseTopics</find>
       <find>isP</find>
       <find>member</find>
       <find>author</find>
       <find>Member</find>
-      <find>Type</find>
-      <find>replyReviews</find>
+      <find>hits</find>
+      <find>findListBysql</find>
     </findStrings>
     <replaceStrings>
       <replace>articleComment</replace>
@@ -571,14 +162,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="kz_back" />
+              <option name="name" value="igomall_edu_back" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="kz_back" />
+                <option name="name" value="igomall_edu_back" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -592,7 +183,7 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'kz_back'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 'igomall_edu_back'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
@@ -602,7 +193,7 @@
                 <option name="name" value="buildDependents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'kz_back'." />
+                <option name="description" value="Displays the sub-projects of root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
@@ -612,12 +203,12 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in root project 'kz_back'. [incubating]" />
+                <option name="description" value="Displays the dependent components of components in root project 'igomall_edu_back'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'kz_back'." />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
@@ -647,7 +238,7 @@
                 <option name="name" value="jar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'kz_back'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 'igomall_edu_back'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
@@ -657,7 +248,7 @@
                 <option name="name" value="processResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'kz_back'." />
+                <option name="description" value="Displays the tasks runnable from root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -672,7 +263,7 @@
                 <option name="name" value="test" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the dependency management declared in root project 'kz_back'." />
+                <option name="description" value="Displays the dependency management declared in root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyManagement" />
               </ExternalTaskPojo>
@@ -687,7 +278,7 @@
                 <option name="name" value="compileJava" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'kz_back'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -712,7 +303,7 @@
                 <option name="name" value="compileTestJava" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'kz_back'." />
+                <option name="description" value="Displays all dependencies declared in root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
@@ -737,7 +328,7 @@
                 <option name="name" value="buildNeeded" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'kz_back'." />
+                <option name="description" value="Displays the properties of root project 'igomall_edu_back'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
@@ -748,11 +339,11 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4741821055790" />
+        <entry key="$PROJECT_DIR$" value="4741407594750" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3873263236" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="961970101" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="616841237" />
-        <entry key="$PROJECT_DIR$/settings.gradle" value="1641789037" />
+        <entry key="$PROJECT_DIR$/settings.gradle" value="648313269" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -787,7 +378,7 @@
                   </entry>
                 </map>
               </option>
-              <option name="name" value="kz_back" />
+              <option name="name" value="igomall_edu_back" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="D:/Java/gradle-5.1/lib/ant-1.9.13.jar" />
@@ -888,6 +479,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/common/FileType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/FileService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/Material.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/MaterialController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/MaterialService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/MaterialDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/MaterialDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/MaterialServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/ArticleTagController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTopic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseTopicDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseTopicDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseTopicService.java" />
@@ -914,31 +515,21 @@
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/setting.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/LessonController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Lesson.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleCommentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticlelCommentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleComment.java" />
-        <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/config/WebMvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/BaseDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/BaseServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/util/WebUtils.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-dev.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-release.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/ActivityDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/ActivityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/AdminController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/ActivityController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/entity/Activity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/ActivityDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/impl/ActivityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/common/Page.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java" />
       </list>
     </option>
   </component>
@@ -955,9 +546,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="-199" />
+    <option name="y" value="51" />
+    <option name="width" value="1935" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectId" id="1WEf3esUdq2tcmPWkgRcl8DuSlD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -974,29 +566,29 @@
           <expand>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -1004,7 +596,16 @@
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -1013,36 +614,7 @@
             </path>
             <path>
               <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="igomall" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="igomall" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="igomall" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="igomall_edu_back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kz_back" type="462c0819:PsiDirectoryNode" />
+              <item name="igomall_edu_back" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -1068,8 +640,8 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/project-workspace/me/igomall_edu_back/src/main/java/com/igomall/controller/admin/member/MemberDepositController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580611654895" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580893162327" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -1078,11 +650,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.igomall.service.impl" />
-      <recent name="com.igomall.service" />
-      <recent name="com.igomall.dao.impl" />
-      <recent name="com.igomall.dao" />
-      <recent name="com.igomall.controller.common.setting" />
+      <recent name="com.igomall.service.course.impl" />
+      <recent name="com.igomall.service.course" />
+      <recent name="com.igomall.dao.course.impl" />
+      <recent name="com.igomall.dao.course" />
+      <recent name="com.igomall.entity.course" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\project-workspace\me\igomall_edu_back\src\main\java\com\igomall\controller\admin\course" />
@@ -1104,13 +676,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.KzBackApplication">
+  <component name="RunManager" selected="Spring Boot.IgomallEduBackApplication">
     <configuration name="Image1Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.igomall.util.Image1Utils" />
       <module name="com.igomall.igomall_edu_back.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.paicent.util.*" />
+          <option name="PATTERN" value="com.igomall.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -1118,66 +690,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="igomall_edu_back [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method v="2" />
-    </configuration>
-    <configuration name="igomall_edu_back [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method v="2" />
-    </configuration>
-    <configuration name="KzBackApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="com.igomall.kz_back.main" />
+    <configuration name="IgomallEduBackApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="com.igomall.igomall_edu_back.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.paicent.*" />
+          <option name="PATTERN" value="com.igomall.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paicent.KzBackApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.igomall.IgomallEduBackApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.KzBackApplication" />
+      <item itemvalue="Spring Boot.IgomallEduBackApplication" />
       <item itemvalue="Application.Image1Utils" />
-      <item itemvalue="Gradle.igomall_edu_back [jar]" />
-      <item itemvalue="Gradle.igomall_edu_back [build]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.KzBackApplication" />
-        <item itemvalue="Gradle.igomall_edu_back [build]" />
-        <item itemvalue="Gradle.igomall_edu_back [jar]" />
+        <item itemvalue="Spring Boot.IgomallEduBackApplication" />
         <item itemvalue="Application.Image1Utils" />
       </list>
     </recent_temporary>
@@ -1226,9 +758,8 @@
       <workItem from="1580183645935" duration="14075000" />
       <workItem from="1580272743132" duration="15797000" />
       <workItem from="1580380312942" duration="4141000" />
-      <workItem from="1580447497789" duration="7610000" />
-      <workItem from="1580526684119" duration="9744000" />
-      <workItem from="1580606691711" duration="3976000" />
+      <workItem from="1580447497789" duration="5024000" />
+      <workItem from="1580879765964" duration="5560000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1579539007133</created>
@@ -1342,39 +873,11 @@
       <option name="project" value="LOCAL" />
       <updated>1580451574281</updated>
     </task>
-    <task id="LOCAL-00017" summary="init">
-      <created>1580454247548</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1580454247548</updated>
-    </task>
-    <task id="LOCAL-00018" summary="init">
-      <created>1580455452865</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1580455452865</updated>
-    </task>
-    <task id="LOCAL-00019" summary="init">
-      <created>1580455763261</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1580455763261</updated>
-    </task>
-    <task id="LOCAL-00020" summary="init">
-      <created>1580539414832</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1580539414832</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103602000" />
+    <option name="totallyTimeSpent" value="93846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1387,9 +890,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2989276" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25938338" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1397,11 +899,11 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.38297874" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.2851064" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.43829787" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.41560283" />
+      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.44397163" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
@@ -1418,14 +920,14 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Maven Projects" order="5" side_tool="true" weight="0.3297587" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.20536913" />
+      <window_info anchor="right" id="Gradle" order="6" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2989276" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25938338" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1433,11 +935,11 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.38297874" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.2851064" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.43829787" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.41560283" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.44397163" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
@@ -1454,7 +956,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Maven Projects" order="5" side_tool="true" weight="0.3297587" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.20536913" />
+      <window_info anchor="right" id="Gradle" order="6" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -1670,10 +1172,115 @@
     <SUITE FILE_PATH="coverage/igomall_edu_back$IgomallEduBackApplication.ic" NAME="IgomallEduBackApplication Coverage Results" MODIFIED="1579569837013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Article.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleTopic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="602" column="5" selection-start-line="595" selection-start-column="4" selection-end-line="602" selection-end-column="5" />
+        <state relative-caret-position="253">
+          <caret line="139" column="9" lean-forward="true" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/course/CourseCommentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseCommentDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="70" column="85" selection-start-line="70" selection-start-column="70" selection-end-line="70" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/course/CourseCommentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTagController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ehcache.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseCommentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="67" column="64" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseTopic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/AreaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/course/CourseCategory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="225" column="29" lean-forward="true" selection-start-line="225" selection-start-column="29" selection-end-line="225" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseCategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleCategory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="79" column="19" lean-forward="true" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2044">
+          <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1684,13 +1291,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/InitController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/InitController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/setting/ArticleCategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2128">
@@ -1754,295 +1355,183 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/reports/tests/test/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/SettingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/util/SystemUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2184">
-          <caret line="110" column="76" selection-start-line="110" selection-start-column="60" selection-end-line="110" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/CommonAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5348">
-          <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/interceptor/LoginInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="36" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="26" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticlelCommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/ArticleComment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1932">
-          <caret line="81" column="50" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/setting/ArticleCommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/setting/impl/ArticleCommentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="44" column="35" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/setting/impl/ArticleCommentDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
-          <caret line="55" column="107" selection-start-line="55" selection-start-column="102" selection-end-line="55" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        <state relative-caret-position="-92">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/impl/SearchServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="86" column="58" selection-start-line="86" selection-start-column="58" selection-end-line="86" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/OrderedEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-899">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/KzBackApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/CourseTopicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="6" column="51" lean-forward="true" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/config/WebMvcConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/impl/BaseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/BaseDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="505" column="9" selection-start-line="505" selection-start-column="9" selection-end-line="505" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/exception/IncorrectLicenseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-53">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ListInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="46" column="78" lean-forward="true" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/interceptor/ValidateInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-467">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/util/JWTUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/util/WebUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <element signature="e#2128#2153#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="99" column="7" lean-forward="true" selection-start-line="99" selection-start-column="7" selection-end-line="99" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-release.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/ActivityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="11" column="127" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/ActivityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="13" column="109" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/BaseControllerAdvice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="30" />
+        <state relative-caret-position="3668">
+          <caret line="159" column="27" selection-start-line="159" selection-start-column="27" selection-end-line="159" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="1764">
+          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dom4j/dom4j/2.1.1/a474d56a9ff9ec5973268cb1e80ded8414ffdd40/dom4j-2.1.1-sources.jar!/org/dom4j/io/XMLWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="3752">
+          <caret line="177" column="11" selection-start-line="177" selection-start-column="11" selection-end-line="177" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/setting/Article.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="404">
+          <caret line="587" column="38" selection-start-line="587" selection-start-column="38" selection-end-line="587" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/impl/FileServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="110" column="23" lean-forward="true" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/setting.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="38" column="60" lean-forward="true" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/util/SystemUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="161" column="25" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/FileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/OrderedEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="24" column="73" lean-forward="true" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/course/LessonController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Lesson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="170" column="27" selection-start-line="170" selection-start-column="27" selection-end-line="170" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3798#3799#0" expanded="true" />
+            <element signature="e#3836#3837#0" expanded="true" />
+            <element signature="e#3868#3869#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/member/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="208" column="5" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3400">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/setting/ArticleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/course/impl/CourseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="46" column="28" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/course/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="557" column="51" lean-forward="true" selection-start-line="557" selection-start-column="51" selection-end-line="557" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/Pageable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/common/course/CourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/course/impl/CourseDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/common/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="49" column="23" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/entity/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/controller/admin/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
-            <element signature="e#1263#1264#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/dao/impl/ActivityDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="32" column="27" lean-forward="true" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/igomall/service/impl/ActivityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="21" column="88" lean-forward="true" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="86">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
         </state>
       </provider>
     </entry>
