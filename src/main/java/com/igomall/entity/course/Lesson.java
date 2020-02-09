@@ -2,10 +2,8 @@ package com.igomall.entity.course;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Store;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -18,6 +16,7 @@ import java.util.Set;
 /**
  * 章节的视频
  */
+@Indexed
 @Entity
 @Table(name = "edu_lesson")
 public class Lesson extends OrderedEntity<Long> {
@@ -29,6 +28,7 @@ public class Lesson extends OrderedEntity<Long> {
     @Column(nullable = false, updatable = false, unique = true)
     private String sn;
 
+    @IndexedEmbedded(includeEmbeddedObjectId = true)
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(nullable = false,updatable = false)
     private Course course;

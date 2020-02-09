@@ -14,12 +14,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * 课程
  */
+@Indexed
 @Entity
 @Table(name = "edu_course")
 public class Course extends OrderedEntity<Long> {
@@ -27,7 +29,7 @@ public class Course extends OrderedEntity<Long> {
     /**
      * 点击数缓存名称
      */
-    public static final String HITS_CACHE_NAME = "coursetHits";
+    public static final String HITS_CACHE_NAME = "courseHits";
 
     /**
      * 属性值属性个数
@@ -187,6 +189,30 @@ public class Course extends OrderedEntity<Long> {
 
     @JsonView({ListView.class})
     private Integer videos;
+
+    /**
+     * 周点击数
+     */
+    @Column(nullable = false)
+    private Long weekHits;
+
+    /**
+     * 月点击数
+     */
+    @Column(nullable = false)
+    private Long monthHits;
+
+    /**
+     * 周点击数更新日期
+     */
+    @Column(nullable = false)
+    private Date weekHitsDate;
+
+    /**
+     * 月点击数更新日期
+     */
+    @Column(nullable = false)
+    private Date monthHitsDate;
 
     /**
      * 点击数
@@ -515,7 +541,80 @@ public class Course extends OrderedEntity<Long> {
     public void setAuthor(String author) {
         this.author = author;
     }
+    /**
+     * 获取周点击数更新日期
+     *
+     * @return 周点击数更新日期
+     */
+    public Date getWeekHitsDate() {
+        return weekHitsDate;
+    }
 
+    /**
+     * 设置周点击数更新日期
+     *
+     * @param weekHitsDate
+     *            周点击数更新日期
+     */
+    public void setWeekHitsDate(Date weekHitsDate) {
+        this.weekHitsDate = weekHitsDate;
+    }
+
+    /**
+     * 获取月点击数更新日期
+     *
+     * @return 月点击数更新日期
+     */
+    public Date getMonthHitsDate() {
+        return monthHitsDate;
+    }
+    /**
+     * 获取周点击数
+     *
+     * @return 周点击数
+     */
+    public Long getWeekHits() {
+        return weekHits;
+    }
+
+    /**
+     * 设置周点击数
+     *
+     * @param weekHits
+     *            周点击数
+     */
+    public void setWeekHits(Long weekHits) {
+        this.weekHits = weekHits;
+    }
+
+    /**
+     * 获取月点击数
+     *
+     * @return 月点击数
+     */
+    public Long getMonthHits() {
+        return monthHits;
+    }
+
+    /**
+     * 设置月点击数
+     *
+     * @param monthHits
+     *            月点击数
+     */
+    public void setMonthHits(Long monthHits) {
+        this.monthHits = monthHits;
+    }
+
+    /**
+     * 设置月点击数更新日期
+     *
+     * @param monthHitsDate
+     *            月点击数更新日期
+     */
+    public void setMonthHitsDate(Date monthHitsDate) {
+        this.monthHitsDate = monthHitsDate;
+    }
     public Integer getStatus() {
         return status;
     }

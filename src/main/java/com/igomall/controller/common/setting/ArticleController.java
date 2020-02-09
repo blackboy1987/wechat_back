@@ -97,7 +97,6 @@ public class ArticleController extends BaseController {
 		}
 		data.put("relationArticles",articleService.findRelationArticleBySql(5));
 		data.put("newArticles",articleService.findListBySql(1,article.getMember().getId(),5,null,null));
-
 		return data;
 	}
 
@@ -115,9 +114,9 @@ public class ArticleController extends BaseController {
 	/**
 	 * 点击数
 	 */
-	@PostMapping("/hits/{articleId}")
-	public Long hits(@PathVariable Long articleId) {
-		return articleService.viewHits(articleId);
+	@PostMapping("/hits")
+	public Long hits(Long id) {
+		return articleService.viewHits(id);
 	}
 
 	@GetMapping(path = "/search")

@@ -45,4 +45,24 @@ public interface CourseService extends BaseService<Course,Long> {
     Page<Course> findPage(CourseCategory courseCategory, Boolean isVip, Pageable pageable);
 
     List<Course> findList(CourseCategory courseCategory, Integer first, Integer count, List<Filter> filters, List<Order> orders);
+
+
+    /**
+     * 查看点击数
+     *
+     * @param id
+     *            ID
+     * @return 点击数
+     */
+    long viewHits(Long id);
+
+    /**
+     * 增加点击数
+     *
+     * @param course
+     *            商品
+     * @param amount
+     *            值
+     */
+    void addHits(Course course, long amount);
 }
