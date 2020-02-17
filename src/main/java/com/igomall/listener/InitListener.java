@@ -1,11 +1,6 @@
 
 package com.igomall.listener;
 
-import com.igomall.entity.course.Course;
-import com.igomall.entity.course.Lesson;
-import com.igomall.entity.setting.Article;
-import com.igomall.service.SearchService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -27,9 +22,6 @@ public class InitListener {
 	 */
 	private static final Logger LOGGER = Logger.getLogger(InitListener.class.getName());
 
-	@Autowired
-	private SearchService searchService;
-
 	/**
 	 * 事件处理
 	 * 
@@ -47,9 +39,7 @@ public class InitListener {
 
 
 		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-			searchService.index(Article.class);
-			searchService.index(Course.class);
-			searchService.index(Lesson.class);
+			System.out.println("==============================================ok");
 		});
 	}
 

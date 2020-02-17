@@ -5,7 +5,6 @@ import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.dao.MaterialDao;
 import com.igomall.entity.Material;
-import com.igomall.entity.member.Member;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 

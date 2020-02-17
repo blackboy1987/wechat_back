@@ -2,7 +2,6 @@
 package com.igomall.controller.admin;
 
 import com.igomall.entity.Admin;
-import com.igomall.entity.member.Member;
 import com.igomall.security.UserAuthenticationToken;
 import com.igomall.service.AdminService;
 import com.igomall.service.RoleService;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
