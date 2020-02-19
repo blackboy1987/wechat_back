@@ -72,7 +72,7 @@ public class Sn extends BaseEntity<Long> {
 	/**
 	 * 末值
 	 */
-	@Column(nullable = false)
+	@Column(name = "current_value",nullable = false)
 	private Long lastValue;
 
 	/**

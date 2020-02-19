@@ -1,18 +1,33 @@
 package com.igomall;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Demo {
 
     public static void main(String[] args) {
-        String path = "D:\\Program Files\\JiJiDown\\Download\\【千锋】2020Vue全套教程全开源（完整版）";
+        String path = "F:\\BaiduNetdiskDownload\\新建文件夹\\web前端教程";
         File parent = new File(path);
-        File[] files = parent.listFiles();
-        for (int i=1;i<=files.length;i++) {
-            File file = files[i];
-            String fileName = file.getName();
-            fileName = fileName.replace(i+".千锋Web前端教程：","");
-            System.out.println(fileName);
+        List<File> files = new ArrayList<>();
+        listFile(parent,files);
+        for (File file:files) {
+            System.out.println(file.getAbsolutePath());
         }
+        System.out.println(files.size());
+    }
+
+
+    public static List<File> listFile(File parent,List<File> files){
+        if(parent.isDirectory()){
+            File[] files1 = parent.listFiles();
+            for (int i=0;i<files1.length;i++) {
+                listFile(files1[i],files);
+            }
+        }else{
+            files.add(parent);
+        }
+        return files;
+
     }
 }
