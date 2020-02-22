@@ -11,15 +11,16 @@ import java.util.Set;
 @Table(name = "edu_course")
 public class Course extends OrderedEntity<Long> {
 
-    @JsonView({ListView.class,EditView.class})
+    @JsonView({JsonApiView.class,EditView.class})
     private String title;
 
     private String path;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OrderBy("order asc")
     private Set<Lesson> lessons = new HashSet<>();
 
-    @OrderBy("name asc")
+    @OrderBy("order asc")
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Folder> folders = new HashSet<>();
 

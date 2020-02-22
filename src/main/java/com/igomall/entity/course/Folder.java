@@ -32,7 +32,7 @@ public class Folder extends OrderedEntity<Long> {
 	/**
 	 * 名称
 	 */
-	@JsonView({ListView.class,EditView.class})
+	@JsonView({JsonApiView.class,EditView.class})
 	@NotEmpty
 	@Length(max = 200)
 	@Column(nullable = false)
@@ -50,7 +50,7 @@ public class Folder extends OrderedEntity<Long> {
 	@Column(nullable = false)
 	private String treePath;
 
-	@JsonView({ListView.class,EditView.class})
+	@JsonView({EditView.class})
 	private String path;
 
 	/**
@@ -80,9 +80,9 @@ public class Folder extends OrderedEntity<Long> {
 	/**
 	 * 会员
 	 */
-	@JsonView(ListView.class)
+	@JsonView(JsonApiView.class)
 	@OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
-	@OrderBy("title asc ")
+	@OrderBy("order asc ")
 	private Set<Lesson> lessons = new HashSet<>();
 
 	/**

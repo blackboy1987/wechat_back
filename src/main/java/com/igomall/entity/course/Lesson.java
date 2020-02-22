@@ -33,7 +33,7 @@ public class Lesson extends OrderedEntity<Long> {
     @JsonView({ListView.class,EditView.class})
     private String path;
 
-    @JsonView({ListView.class,EditView.class})
+    @JsonView({ListView.class,EditView.class,JsonApiView.class})
     @NotEmpty
     private String title;
 
@@ -97,10 +97,10 @@ public class Lesson extends OrderedEntity<Long> {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class PlayUrl implements Serializable, Comparable<PlayUrl> {
 
-        @JsonView({ListView.class,EditView.class})
+        @JsonView({JsonApiView.class,EditView.class})
         private String name;
 
-        @JsonView({ListView.class,EditView.class})
+        @JsonView({JsonApiView.class,EditView.class})
         private String url;
 
         @JsonView({ListView.class,EditView.class})

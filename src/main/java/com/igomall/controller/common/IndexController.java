@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController("commonIndexController")
@@ -41,34 +42,40 @@ public class IndexController extends BaseController{
     private MemberService memberService;
 
     @PostMapping("/course")
-    @JsonView(BaseEntity.ListView.class)
+    @JsonView(BaseEntity.JsonApiView.class)
     public List<Course> course(@CurrentUser Member member){
         List<Order> orders = new ArrayList<>();
-        orders.add(Order.asc("title"));
+        orders.add(Order.asc("order"));
         return courseService.findList(null,null,orders);
     }
 
     @PostMapping("/folder")
-    @JsonView(BaseEntity.ListView.class)
+    @JsonView(BaseEntity.JsonApiView.class)
     public List<Folder> folder(Long courseId, @CurrentUser Member member){
         List<Order> orders = new ArrayList<>();
-        orders.add(Order.asc("name"));
+        orders.add(Order.asc("order"));
         List<Folder> folders = folderService.findList(courseService.find(courseId),null,null,orders);
+        if(folders.isEmpty()){
+            Folder folder = new Folder();
+            folder.setName(null);
+            folder.setId(null);
+            folder.setLessons(new HashSet<>(lessonService.findList(courseService.find(courseId),null,null,null,null)));
+            folders.add(folder);
+        }
         return folders;
     }
 
     @PostMapping("/lesson")
-    @JsonView(BaseEntity.ListView.class)
+    @JsonView(BaseEntity.JsonApiView.class)
     public List<Lesson> lesson(Long courseId,Long folderId, @CurrentUser Member member){
-        System.out.println("lesson:"+member);
         List<Order> orders = new ArrayList<>();
-        orders.add(Order.asc("title"));
+        orders.add(Order.asc("order"));
         List<Lesson> lessons = lessonService.findList(courseService.find(courseId),folderService.find(folderId),null,null,orders);
         return lessons;
     }
 
     @PostMapping("/play_url")
-    @JsonView(BaseEntity.ListView.class)
+    @JsonView(BaseEntity.JsonApiView.class)
     public List<Lesson.PlayUrl> playUrl(Long lessonId, @CurrentUser Member member){
         Lesson lesson = lessonService.find(lessonId);
         if(lesson!=null){
@@ -79,19 +86,21 @@ public class IndexController extends BaseController{
 
     @PostMapping("/lesson_record")
     public Message lessonRecord(Long lessonId,String playUrlName,String playUrlUrl, @CurrentUser Member member){
-        if(member==null){
+        /*if(member==null){
             return Message.error("请先登录");
-        }
+        }*/
 
         // 加积分操作
         // 当天，同一个课程，同一个链接只加一次
-        boolean exist = lessonReadRecordService.existToday(lessonId,member.getId(),playUrlName,playUrlUrl);
-        if(!exist){
-           LessonReadRecord lessonReadRecord = lessonReadRecordService.save(lessonId,member.getId(),playUrlName,playUrlUrl);
-           if(lessonReadRecord!=null){
-               memberService.addPoint(member,10, PointLog.Type.reward,"看视频");
+       if(member!=null){
+           boolean exist = lessonReadRecordService.existToday(lessonId,member.getId(),playUrlName,playUrlUrl);
+           if(!exist){
+               LessonReadRecord lessonReadRecord = lessonReadRecordService.save(lessonId,member.getId(),playUrlName,playUrlUrl);
+               if(lessonReadRecord!=null){
+                   memberService.addPoint(member,10, PointLog.Type.reward,"看视频");
+               }
            }
-        }
+       }
         return Message.success("请求成功");
     }
 }

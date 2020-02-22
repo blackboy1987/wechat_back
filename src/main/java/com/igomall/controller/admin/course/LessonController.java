@@ -10,6 +10,8 @@ import com.igomall.controller.admin.BaseController;
 import com.igomall.entity.BaseEntity;
 import com.igomall.entity.course.Folder;
 import com.igomall.entity.course.Lesson;
+import com.igomall.service.course.CourseService;
+import com.igomall.service.course.FolderService;
 import com.igomall.service.course.LessonService;
 import com.igomall.util.JsonUtils;
 import org.apache.commons.collections4.CollectionUtils;
@@ -32,6 +34,10 @@ public class LessonController extends BaseController {
 
     @Autowired
     private LessonService lessonService;
+    @Autowired
+    private CourseService courseService;
+    @Autowired
+    private FolderService folderService;
 
     @PostMapping("/list")
     @JsonView(BaseEntity.ListView.class)
@@ -51,7 +57,9 @@ public class LessonController extends BaseController {
     }
 
     @PostMapping("/save")
-    public Message save(Lesson lesson,String playUrls1){
+    public Message save(Lesson lesson,String playUrls1,Long courseId,Long folderId){
+        lesson.setCourse(courseService.find(courseId));
+        lesson.setFolder(folderService.find(folderId));
         if(StringUtils.isNotEmpty(playUrls1)){
             try {
                 List<Lesson.PlayUrl> playUrls = JsonUtils.toObject(playUrls1, new TypeReference<List<Lesson.PlayUrl>>() {
