@@ -1,5 +1,6 @@
 package com.igomall.entity.other;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,6 +21,7 @@ public class ToolCategory extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
+    @JsonView({JsonApiView.class})
     private String name;
 
     /**

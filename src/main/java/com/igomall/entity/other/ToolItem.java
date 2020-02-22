@@ -1,5 +1,6 @@
 package com.igomall.entity.other;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.OrderedEntity;
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Field;
@@ -18,22 +19,27 @@ public class ToolItem extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
+    @JsonView({JsonApiView.class})
     private String name;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
+    @JsonView({JsonApiView.class})
     private String icon;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
+    @JsonView({JsonApiView.class})
     private String siteUrl;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
+    @JsonView({JsonApiView.class})
     private String downloadUrl;
 
     @Length(max = 500)
     @Column(length = 500)
+    @JsonView({JsonApiView.class})
     private String memo;
 
     @ManyToOne(fetch = FetchType.LAZY)

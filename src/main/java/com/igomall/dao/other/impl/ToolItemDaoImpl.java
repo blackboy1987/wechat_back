@@ -27,40 +27,40 @@ import java.util.List;
 public class ToolItemDaoImpl extends BaseDaoImpl<ToolItem, Long> implements ToolItemDao {
 
 	@Override
-	public List<ToolItem> findList(ToolCategory bookCategory, Boolean isPublication, Integer count, List<Filter> filters, List<Order> orders) {
+	public List<ToolItem> findList(ToolCategory toolCategory, Boolean isPublication, Integer count, List<Filter> filters, List<Order> orders) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ToolItem> criteriaQuery = criteriaBuilder.createQuery(ToolItem.class);
 		Root<ToolItem> root = criteriaQuery.from(ToolItem.class);
 		criteriaQuery.select(root);
 		Predicate restrictions = criteriaBuilder.conjunction();
-		if (bookCategory != null) {
+		if (toolCategory != null) {
 			Subquery<ToolCategory> subquery = criteriaQuery.subquery(ToolCategory.class);
 			Root<ToolCategory> subqueryRoot = subquery.from(ToolCategory.class);
 			subquery.select(subqueryRoot);
-			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ToolCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + ToolCategory.TREE_PATH_SEPARATOR + "%")));
-			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("articleCategory")).value(subquery));
+			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, toolCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ToolCategory.TREE_PATH_SEPARATOR + toolCategory.getId() + ToolCategory.TREE_PATH_SEPARATOR + "%")));
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("toolCategory")).value(subquery));
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
 		}
 		criteriaQuery.where(restrictions);
 		if (orders == null || orders.isEmpty()) {
-			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("isTop")), criteriaBuilder.desc(root.get("createdDate")));
+			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("order")), criteriaBuilder.desc(root.get("createdDate")));
 		}
 		return super.findList(criteriaQuery, null, count, filters, orders);
 	}
 
-	public List<ToolItem> findList(ToolCategory bookCategory, Boolean isPublication, Date beginDate, Date endDate, Integer first, Integer count) {
+	public List<ToolItem> findList(ToolCategory toolCategory, Boolean isPublication, Date beginDate, Date endDate, Integer first, Integer count) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ToolItem> criteriaQuery = criteriaBuilder.createQuery(ToolItem.class);
 		Root<ToolItem> root = criteriaQuery.from(ToolItem.class);
 		criteriaQuery.select(root);
 		Predicate restrictions = criteriaBuilder.conjunction();
-		if (bookCategory != null) {
+		if (toolCategory != null) {
 			Subquery<ToolCategory> subquery = criteriaQuery.subquery(ToolCategory.class);
 			Root<ToolCategory> subqueryRoot = subquery.from(ToolCategory.class);
 			subquery.select(subqueryRoot);
-			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ToolCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + ToolCategory.TREE_PATH_SEPARATOR + "%")));
+			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, toolCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ToolCategory.TREE_PATH_SEPARATOR + toolCategory.getId() + ToolCategory.TREE_PATH_SEPARATOR + "%")));
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("articleCategory")).value(subquery));
 		}
 		if (isPublication != null) {
@@ -76,18 +76,18 @@ public class ToolItemDaoImpl extends BaseDaoImpl<ToolItem, Long> implements Tool
 		return super.findList(criteriaQuery, first, count);
 	}
 
-	public Page<ToolItem> findPage(ToolCategory bookCategory, Boolean isPublication, Pageable pageable) {
+	public Page<ToolItem> findPage(ToolCategory toolCategory, Boolean isPublication, Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ToolItem> criteriaQuery = criteriaBuilder.createQuery(ToolItem.class);
 		Root<ToolItem> root = criteriaQuery.from(ToolItem.class);
 		criteriaQuery.select(root);
 		Predicate restrictions = criteriaBuilder.conjunction();
-		if (bookCategory != null) {
+		if (toolCategory != null) {
 			Subquery<ToolCategory> subquery = criteriaQuery.subquery(ToolCategory.class);
 			Root<ToolCategory> subqueryRoot = subquery.from(ToolCategory.class);
 			subquery.select(subqueryRoot);
-			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ToolCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + ToolCategory.TREE_PATH_SEPARATOR + "%")));
-			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("bookCategory")).value(subquery));
+			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, toolCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ToolCategory.TREE_PATH_SEPARATOR + toolCategory.getId() + ToolCategory.TREE_PATH_SEPARATOR + "%")));
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("toolCategory")).value(subquery));
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));

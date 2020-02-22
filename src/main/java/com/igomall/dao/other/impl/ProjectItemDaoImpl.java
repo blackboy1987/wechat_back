@@ -38,14 +38,14 @@ public class ProjectItemDaoImpl extends BaseDaoImpl<ProjectItem, Long> implement
 			Root<ProjectCategory> subqueryRoot = subquery.from(ProjectCategory.class);
 			subquery.select(subqueryRoot);
 			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ProjectCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + ProjectCategory.TREE_PATH_SEPARATOR + "%")));
-			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("articleCategory")).value(subquery));
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("bookCategory")).value(subquery));
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
 		}
 		criteriaQuery.where(restrictions);
 		if (orders == null || orders.isEmpty()) {
-			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("isTop")), criteriaBuilder.desc(root.get("createdDate")));
+			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("order")), criteriaBuilder.desc(root.get("createdDate")));
 		}
 		return super.findList(criteriaQuery, null, count, filters, orders);
 	}
@@ -61,7 +61,7 @@ public class ProjectItemDaoImpl extends BaseDaoImpl<ProjectItem, Long> implement
 			Root<ProjectCategory> subqueryRoot = subquery.from(ProjectCategory.class);
 			subquery.select(subqueryRoot);
 			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + ProjectCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + ProjectCategory.TREE_PATH_SEPARATOR + "%")));
-			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("articleCategory")).value(subquery));
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("bookCategory")).value(subquery));
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));

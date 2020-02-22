@@ -38,14 +38,14 @@ public class BookItemDaoImpl extends BaseDaoImpl<BookItem, Long> implements Book
 			Root<BookCategory> subqueryRoot = subquery.from(BookCategory.class);
 			subquery.select(subqueryRoot);
 			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + BookCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + BookCategory.TREE_PATH_SEPARATOR + "%")));
-			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("articleCategory")).value(subquery));
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("bookCategory")).value(subquery));
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
 		}
 		criteriaQuery.where(restrictions);
 		if (orders == null || orders.isEmpty()) {
-			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("isTop")), criteriaBuilder.desc(root.get("createdDate")));
+			criteriaQuery.orderBy(criteriaBuilder.asc(root.get("order")), criteriaBuilder.desc(root.get("createdDate")));
 		}
 		return super.findList(criteriaQuery, null, count, filters, orders);
 	}
@@ -61,7 +61,7 @@ public class BookItemDaoImpl extends BaseDaoImpl<BookItem, Long> implements Book
 			Root<BookCategory> subqueryRoot = subquery.from(BookCategory.class);
 			subquery.select(subqueryRoot);
 			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + BookCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + BookCategory.TREE_PATH_SEPARATOR + "%")));
-			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("articleCategory")).value(subquery));
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("bookCategory")).value(subquery));
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
