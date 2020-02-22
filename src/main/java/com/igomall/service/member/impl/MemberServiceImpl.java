@@ -17,6 +17,7 @@ import com.igomall.service.member.MemberService;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -158,6 +159,7 @@ public class MemberServiceImpl extends BaseServiceImpl<Member, Long> implements 
 		memberDepositLogDao.persist(memberDepositLog);
 	}
 
+	@Async
 	public void addPoint(Member member, long amount, PointLog.Type type, String memo) {
 		Assert.notNull(member,"");
 		Assert.notNull(type,"");
