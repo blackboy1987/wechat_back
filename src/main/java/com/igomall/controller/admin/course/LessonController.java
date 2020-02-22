@@ -1,6 +1,7 @@
 package com.igomall.controller.admin.course;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.igomall.common.Message;
 import com.igomall.common.Order;
 import com.igomall.common.Page;
@@ -10,6 +11,10 @@ import com.igomall.entity.BaseEntity;
 import com.igomall.entity.course.Folder;
 import com.igomall.entity.course.Lesson;
 import com.igomall.service.course.LessonService;
+import com.igomall.util.JsonUtils;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.xwpf.usermodel.Borders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +51,20 @@ public class LessonController extends BaseController {
     }
 
     @PostMapping("/save")
-    public Message save(Lesson lesson){
+    public Message save(Lesson lesson,String playUrls1){
+        if(StringUtils.isNotEmpty(playUrls1)){
+            try {
+                List<Lesson.PlayUrl> playUrls = JsonUtils.toObject(playUrls1, new TypeReference<List<Lesson.PlayUrl>>() {
+                });
+                List<Lesson.PlayUrl> result = new ArrayList<>();
+                CollectionUtils.select(playUrls, playUrl->StringUtils.isNotEmpty(playUrl.getName()) && StringUtils.isNotEmpty(playUrl.getUrl()), result);
+                Collections.sort(result);
+                lesson.setPlayUrls(result);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
         if(!isValid(lesson)){
             return Message.error("参数错误");
         }
@@ -54,7 +73,20 @@ public class LessonController extends BaseController {
     }
 
     @PostMapping("/update")
-    public Message update(Lesson lesson){
+    public Message update(Lesson lesson,String playUrls1){
+        if(StringUtils.isNotEmpty(playUrls1)){
+            try {
+                List<Lesson.PlayUrl> playUrls = JsonUtils.toObject(playUrls1, new TypeReference<List<Lesson.PlayUrl>>() {
+                });
+                List<Lesson.PlayUrl> result = new ArrayList<>();
+                CollectionUtils.select(playUrls, playUrl->StringUtils.isNotEmpty(playUrl.getName()) && StringUtils.isNotEmpty(playUrl.getUrl()), result);
+                Collections.sort(result);
+                lesson.setPlayUrls(result);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
         Lesson pLesson = lessonService.find(lesson.getId());
         if(pLesson==null){
             return Message.error("课程不存在");
@@ -62,6 +94,7 @@ public class LessonController extends BaseController {
         pLesson.setTitle(lesson.getTitle());
         pLesson.setOrder(lesson.getOrder());
         pLesson.setPath(lesson.getPath());
+        pLesson.setPlayUrls(lesson.getPlayUrls());
         lessonService.update(pLesson);
         return Message.success("操作成功");
     }

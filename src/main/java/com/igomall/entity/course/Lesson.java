@@ -1,5 +1,6 @@
 package com.igomall.entity.course;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.BaseAttributeConverter;
 import com.igomall.entity.OrderedEntity;
@@ -40,6 +41,7 @@ public class Lesson extends OrderedEntity<Long> {
     @Convert(converter = ProsConverter.class)
     private Map<String,String> props = new HashMap<>();
 
+    @JsonView({EditView.class})
     @Column(length = 4000)
     @Convert(converter = PlayUrlConverter.class)
     private List<PlayUrl> playUrls = new ArrayList<>();
@@ -92,13 +94,17 @@ public class Lesson extends OrderedEntity<Long> {
         this.playUrls = playUrls;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class PlayUrl implements Serializable, Comparable<PlayUrl> {
 
-        @JsonView({ListView.class})
+        @JsonView({ListView.class,EditView.class})
         private String name;
 
-        @JsonView({ListView.class})
+        @JsonView({ListView.class,EditView.class})
         private String url;
+
+        @JsonView({ListView.class,EditView.class})
+        private String order;
 
         public String getName() {
             return name;
@@ -116,6 +122,13 @@ public class Lesson extends OrderedEntity<Long> {
             this.url = url;
         }
 
+        public String getOrder() {
+            return order;
+        }
+
+        public void setOrder(String order) {
+            this.order = order;
+        }
 
         /**
          * 实现compareTo方法
@@ -128,7 +141,7 @@ public class Lesson extends OrderedEntity<Long> {
             if (playUrl == null) {
                 return 1;
             }
-            return new CompareToBuilder().append(getName(), playUrl.getName()).toComparison();
+            return new CompareToBuilder().append(getOrder(), playUrl.getOrder()).toComparison();
         }
 
         /**
