@@ -2,7 +2,7 @@ package com.igomall.entity.course;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.BaseAttributeConverter;
-import com.igomall.entity.BaseEntity;
+import com.igomall.entity.OrderedEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Entity
 @Table(name = "edu_lesson")
-public class Lesson extends BaseEntity<Long> {
+public class Lesson extends OrderedEntity<Long> {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,9 +29,10 @@ public class Lesson extends BaseEntity<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     private Folder folder;
 
+    @JsonView({ListView.class,EditView.class})
     private String path;
 
-    @JsonView(ListView.class)
+    @JsonView({ListView.class,EditView.class})
     @NotEmpty
     private String title;
 
@@ -39,7 +40,6 @@ public class Lesson extends BaseEntity<Long> {
     @Convert(converter = ProsConverter.class)
     private Map<String,String> props = new HashMap<>();
 
-    @JsonView(ListView.class)
     @Column(length = 4000)
     @Convert(converter = PlayUrlConverter.class)
     private List<PlayUrl> playUrls = new ArrayList<>();
@@ -176,8 +176,42 @@ public class Lesson extends BaseEntity<Long> {
             playUrls.add(playUrl);
             setPlayUrls(playUrls);
         }
+    }
 
+    @Transient
+    @JsonView({ListView.class,EditView.class})
+    public Long getCourseId(){
+        if(course!=null){
+            return course.getId();
+        }
+        return null;
+    }
 
+    @Transient
+    @JsonView({ListView.class})
+    public String getCourseTitle(){
+        if(course!=null){
+            return course.getTitle();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({ListView.class,EditView.class})
+    public Long getFolderId(){
+        if(folder!=null){
+            return folder.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public String getFolderName(){
+        if(folder!=null){
+            return folder.getName();
+        }
+        return null;
     }
 
     /**

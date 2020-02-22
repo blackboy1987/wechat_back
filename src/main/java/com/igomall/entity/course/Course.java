@@ -1,8 +1,7 @@
 package com.igomall.entity.course;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.igomall.entity.BaseEntity;
-import org.springframework.core.annotation.Order;
+import com.igomall.entity.OrderedEntity;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,9 +9,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "edu_course")
-public class Course extends BaseEntity<Long> {
+public class Course extends OrderedEntity<Long> {
 
-    @JsonView({ListView.class})
+    @JsonView({ListView.class,EditView.class})
     private String title;
 
     private String path;
@@ -23,6 +22,17 @@ public class Course extends BaseEntity<Long> {
     @OrderBy("name asc")
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Folder> folders = new HashSet<>();
+
+    /**
+     * 0: 待提交
+     * 1： 待审核
+     * 2： 审核通过
+     * 3： 审核失败
+     * 4：后台下架
+     * 5：用户自己下架
+     * 6：已删除
+     */
+    private Integer status;
 
     public String getTitle() {
         return title;

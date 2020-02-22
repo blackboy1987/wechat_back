@@ -81,7 +81,7 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	}
 
 	/**
-	 * 基础视图
+	 * ID视图
 	 */
 	public interface IdView {
 

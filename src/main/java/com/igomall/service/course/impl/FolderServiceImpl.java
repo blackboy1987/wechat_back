@@ -52,7 +52,7 @@ public class FolderServiceImpl extends BaseServiceImpl<Folder, Long> implements 
 	@Transactional
 	@CacheEvict(value = "folder", allEntries = true)
 	public Folder save(Folder folder) {
-		Assert.notNull(folder);
+		Assert.notNull(folder,"");
 
 		setValue(folder);
 		return super.save(folder);
@@ -62,7 +62,7 @@ public class FolderServiceImpl extends BaseServiceImpl<Folder, Long> implements 
 	@Transactional
 	@CacheEvict(value = "folder", allEntries = true)
 	public Folder update(Folder folder) {
-		Assert.notNull(folder);
+		Assert.notNull(folder,"");
 
 		setValue(folder);
 		for (Folder children : folderDao.findChildren(folder, true, null)) {

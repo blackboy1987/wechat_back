@@ -42,7 +42,17 @@ public class PointLog extends BaseEntity<Long> {
 		/**
 		 * 积分调整
 		 */
-		adjustment
+		adjustment,
+
+		/**
+		 * 登陆
+		 */
+		login,
+
+		/**
+		 * 注册
+		 */
+		register,
 	}
 
 	/**

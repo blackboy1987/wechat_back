@@ -32,7 +32,7 @@ public class Folder extends OrderedEntity<Long> {
 	/**
 	 * 名称
 	 */
-	@JsonView(ListView.class)
+	@JsonView({ListView.class,EditView.class})
 	@NotEmpty
 	@Length(max = 200)
 	@Column(nullable = false)
@@ -50,6 +50,7 @@ public class Folder extends OrderedEntity<Long> {
 	@Column(nullable = false)
 	private String treePath;
 
+	@JsonView({ListView.class,EditView.class})
 	private String path;
 
 	/**
@@ -293,4 +294,21 @@ public class Folder extends OrderedEntity<Long> {
 		}
 	}
 
+	@Transient
+	@JsonView({ListView.class,EditView.class})
+	public Long getCourseId(){
+		if(course!=null){
+			return course.getId();
+		}
+		return null;
+	}
+
+	@Transient
+	@JsonView({ListView.class,EditView.class})
+	public String getCourseTitle(){
+		if(course!=null){
+			return course.getTitle();
+		}
+		return null;
+	}
 }

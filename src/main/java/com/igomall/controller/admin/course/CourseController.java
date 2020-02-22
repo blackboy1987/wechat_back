@@ -1,7 +1,12 @@
 package com.igomall.controller.admin.course;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.igomall.common.Message;
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
 import com.igomall.controller.admin.BaseController;
+import com.igomall.entity.BaseEntity;
 import com.igomall.entity.course.Course;
 import com.igomall.entity.course.Folder;
 import com.igomall.entity.course.Lesson;
@@ -14,6 +19,7 @@ import com.igomall.util.WebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/course")
+@RequestMapping("/api/admin/course")
 public class CourseController extends BaseController {
 
     @Autowired
@@ -34,6 +40,56 @@ public class CourseController extends BaseController {
     private FolderService folderService;
     @Autowired
     private LessonService lessonService;
+
+    @PostMapping("/list")
+    @JsonView(BaseEntity.ListView.class)
+    public Page<Course> list(Pageable pageable){
+        return courseService.findPage(pageable);
+    }
+
+    @PostMapping("/edit")
+    @JsonView(BaseEntity.EditView.class)
+    public Course edit(Long id){
+        return courseService.find(id);
+    }
+
+    @PostMapping("/save")
+    public Message save(Course course){
+        if(!isValid(course)){
+            return Message.error("参数错误");
+        }
+        courseService.save(course);
+        return Message.success("操作成功");
+    }
+
+    @PostMapping("/update")
+    public Message update(Course course){
+        Course pCourse = courseService.find(course.getId());
+        if(pCourse==null){
+            return Message.error("课程不存在");
+        }
+        pCourse.setTitle(course.getTitle());
+        pCourse.setOrder(course.getOrder());
+        pCourse.setPath(course.getPath());
+        courseService.update(pCourse);
+        return Message.success("操作成功");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @GetMapping("/course")
@@ -51,8 +107,8 @@ public class CourseController extends BaseController {
     }
 
     @GetMapping("/folder")
-    private String folder(){
-        List<Folder> folders = folderService.findAll();
+    private String folder(Long courseId){
+        List<Folder> folders = folderService.findList(courseService.find(courseId),null,null,null);
         for (Folder parent:folders) {
             File[] files = new File(parent.getPath()).listFiles();
             for (File file:files) {
@@ -63,8 +119,12 @@ public class CourseController extends BaseController {
                     folder.setParent(parent);
                     folderService.save(folder);
                 }else{
+                    String[] titles = file.getName().split("\\.");
+                    Integer order = Integer.valueOf(titles[0]);
+                    String title1 = titles[0]+"."+titles[1];
                     Lesson lesson = new Lesson();
-                    lesson.setTitle(file.getName());
+                    lesson.setTitle(title1);
+                    lesson.setOrder(order);
                     lesson.setPath(file.getAbsolutePath());
                     lesson.setFolder(parent);
                     lesson.setPlayUrls(new ArrayList<>());
@@ -101,7 +161,7 @@ public class CourseController extends BaseController {
         for (BilibiliRespose.LessonList lessonList:bilibiliRespose.getData()) {
             for (Lesson lesson:lessons) {
                 // {"duration":"195956","size":"13598720","width":"1364","height":"768"}
-                if(StringUtils.equalsAnyIgnoreCase(lesson.getTitle(),lessonList.getPart()+".mp4")){
+                if(StringUtils.equalsAnyIgnoreCase(lesson.getTitle(),lessonList.getPart())){
                     lesson.setTitle(lessonList.getPart());
                     lesson.getProps().put("duration",lessonList.getDuration()+"");
                     lesson.getProps().put("width",lessonList.getDimension().get("width")+"");
@@ -118,6 +178,21 @@ public class CourseController extends BaseController {
         return bilibiliRespose;
     }
 
+    @GetMapping("/lesson1")
+    private String lesson1(){
+        List<Lesson> lessons = lessonService.findAll();
+        for (Lesson lesson:lessons) {
+            String title = lesson.getTitle();
+            String[] titles = title.split("\\.");
+            Integer order = Integer.valueOf(titles[0]);
+            String title1 = titles[1];
+            lesson.setOrder(order);
+            lesson.setTitle(title1.replace("_",""));
+            lessonService.update(lesson);
+        }
+
+        return "ok";
+    }
 
 
 

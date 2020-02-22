@@ -52,6 +52,12 @@ dependencies {
 	compile group: 'com.hankcs', name: 'hanlp', version: 'portable-1.7.6'
 	compile group: 'com.drewnoakes', name: 'metadata-extractor', version: '2.13.0'
 
+	compile group: 'ws.schild', name: 'jave-core', version: '2.7.3'
+	compile group: 'ws.schild', name: 'jave-native-win64', version: '2.4.6'
+	compile group: 'ws.schild', name: 'jave-native-linux64', version: '2.4.6'
+	compile group: 'ws.schild', name: 'jave-native-osx64', version: '2.4.6'
+
+
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
