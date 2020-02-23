@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController("commonProjectController")
 @RequestMapping("/api/project")
@@ -25,12 +26,8 @@ public class ProjectController extends BaseController{
     private ProjectItemService projectItemService;
 
     @PostMapping
-    @JsonView(BaseEntity.JsonApiView.class)
-    public List<ProjectCategory> project(@CurrentUser Member member,Long projectCategoryId){
-        if(projectCategoryId!=null){
-            return projectCategoryService.findChildren(projectCategoryService.find(projectCategoryId),false,null);
-        }
-        return projectCategoryService.findRoots();
+    public List<Map<String,Object>> project(@CurrentUser Member member){
+        return projectCategoryService.findRoots1();
 
     }
 

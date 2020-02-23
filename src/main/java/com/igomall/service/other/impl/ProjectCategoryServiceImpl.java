@@ -1,13 +1,18 @@
 
 package com.igomall.service.other.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.igomall.dao.other.ProjectCategoryDao;
 import com.igomall.entity.other.ProjectCategory;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.other.ProjectCategoryService;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,11 +30,43 @@ public class ProjectCategoryServiceImpl extends BaseServiceImpl<ProjectCategory,
 
 	@Autowired
 	private ProjectCategoryDao projectCategoryDao;
+	@Autowired
+	private CacheManager cacheManager;
 
 	@Transactional(readOnly = true)
 	public List<ProjectCategory> findRoots() {
 		return projectCategoryDao.findRoots(null);
 	}
+
+	@Transactional(readOnly = true)
+	public List<Map<String,Object>> findRoots1() {
+		Ehcache cache = cacheManager.getEhcache("projectCategory");
+		List<Map<String,Object>> projectCategories = new ArrayList<>();
+		try {
+			Element element = cache.get("projectCategoryTree");
+			if (element != null) {
+				projectCategories = (List<Map<String,Object>>) element.getObjectValue();
+			} else {
+				// 一级
+				projectCategories = jdbcTemplate.queryForList("select id,name from edu_project_category where parent_id is null order by orders asc ");
+				// 循环二级
+				for (Map<String,Object> projectCategory:projectCategories) {
+					List<Map<String,Object>> children = jdbcTemplate.queryForList("select id,name from edu_project_category where parent_id=? order by orders asc ",projectCategory.get("id"));
+					for (Map<String,Object> child:children) {
+						child.put("projectItems",jdbcTemplate.queryForList("select id,name, memo,icon,download_url downloadUrl,site_url siteUrl from edu_project_item where project_category_id=?",child.get("id")));
+					}
+					projectCategory.put("children",children);
+				}
+
+			}
+			cache.put(new Element("projectCategoryTree", projectCategories));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return projectCategories;
+	}
+
+
 
 	@Transactional(readOnly = true)
 	public List<ProjectCategory> findRoots(Integer count) {

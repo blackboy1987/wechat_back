@@ -49,11 +49,12 @@ public class BookCategory extends OrderedEntity<Long> {
      */
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     @OrderBy("order asc")
+    @JsonView({JsonApiView.class})
     private Set<BookCategory> children = new HashSet<>();
 
     @OneToMany(mappedBy = "bookCategory",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonView({JsonApiView.class})
     private Set<BookItem> bookItems = new HashSet<>();
-
 
     public String getName() {
         return name;

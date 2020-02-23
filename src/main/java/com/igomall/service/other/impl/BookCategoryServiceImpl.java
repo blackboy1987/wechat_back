@@ -1,13 +1,18 @@
 
 package com.igomall.service.other.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.igomall.dao.other.BookCategoryDao;
 import com.igomall.entity.other.BookCategory;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.other.BookCategoryService;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -26,11 +31,43 @@ public class BookCategoryServiceImpl extends BaseServiceImpl<BookCategory, Long>
 
 	@Autowired
 	private BookCategoryDao bookCategoryDao;
+	@Autowired
+	private CacheManager cacheManager;
 
 	@Transactional(readOnly = true)
 	public List<BookCategory> findRoots() {
 		return bookCategoryDao.findRoots(null);
 	}
+
+	@Transactional(readOnly = true)
+	public List<Map<String,Object>> findRoots1() {
+		Ehcache cache = cacheManager.getEhcache("bookCategory");
+		List<Map<String,Object>> bookCategories = new ArrayList<>();
+		try {
+			Element element = cache.get("bookCategoryTree");
+			if (element != null) {
+				bookCategories = (List<Map<String,Object>>) element.getObjectValue();
+			} else {
+				// 一级
+				bookCategories = jdbcTemplate.queryForList("select id,name from edu_book_category where parent_id is null order by orders asc ");
+				// 循环二级
+				for (Map<String,Object> bookCategory:bookCategories) {
+					List<Map<String,Object>> children = jdbcTemplate.queryForList("select id,name from edu_book_category where parent_id=? order by orders asc ",bookCategory.get("id"));
+					for (Map<String,Object> child:children) {
+						child.put("bookItems",jdbcTemplate.queryForList("select id,name, memo,icon,download_url downloadUrl,site_url siteUrl from edu_book_item where book_category_id=?",child.get("id")));
+					}
+					bookCategory.put("children",children);
+				}
+
+			}
+			cache.put(new Element("bookCategoryTree", bookCategories));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return bookCategories;
+	}
+
+
 
 	@Transactional(readOnly = true)
 	public List<BookCategory> findRoots(Integer count) {

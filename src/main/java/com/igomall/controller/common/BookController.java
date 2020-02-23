@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController("commonBookController")
 @RequestMapping("/api/book")
@@ -25,12 +26,8 @@ public class BookController extends BaseController{
     private BookItemService bookItemService;
 
     @PostMapping
-    @JsonView(BaseEntity.JsonApiView.class)
-    public List<BookCategory> book(@CurrentUser Member member,Long bookCategoryId){
-        if(bookCategoryId!=null){
-            return bookCategoryService.findChildren(bookCategoryService.find(bookCategoryId),false,null);
-        }
-        return bookCategoryService.findRoots();
+    public List<Map<String,Object>> book(){
+        return bookCategoryService.findRoots1();
 
     }
 

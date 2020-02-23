@@ -1,9 +1,13 @@
 
 package com.igomall.listener;
 
+import com.igomall.service.other.BookCategoryService;
+import com.igomall.service.other.ProjectCategoryService;
+import com.igomall.service.other.ToolCategoryService;
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
 import net.sf.ehcache.event.CacheEventListenerAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,6 +19,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CacheEventListener extends CacheEventListenerAdapter {
 
+	@Autowired
+	private BookCategoryService bookCategoryService;
+	@Autowired
+	private ToolCategoryService toolCategoryService;
+	@Autowired
+	private ProjectCategoryService projectCategoryService;
+
 	/**
 	 * 元素过期调用
 	 * 
@@ -25,7 +36,9 @@ public class CacheEventListener extends CacheEventListenerAdapter {
 	 */
 	@Override
 	public void notifyElementExpired(Ehcache ehcache, Element element) {
-
+		bookCategoryService.findRoots1();
+		toolCategoryService.findRoots1();
+		projectCategoryService.findRoots1();
 	}
 
 }

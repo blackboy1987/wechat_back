@@ -2,6 +2,7 @@
 package com.igomall.service.other;
 
 import java.util.List;
+import java.util.Map;
 
 import com.igomall.entity.other.BookCategory;
 import com.igomall.service.BaseService;
@@ -20,6 +21,13 @@ public interface BookCategoryService extends BaseService<BookCategory, Long> {
 	 * @return 顶级文章分类
 	 */
 	List<BookCategory> findRoots();
+
+	/**
+	 * 查找顶级文章分类
+	 *
+	 * @return 顶级文章分类
+	 */
+	List<Map<String,Object>> findRoots1();
 
 	/**
 	 * 查找顶级文章分类

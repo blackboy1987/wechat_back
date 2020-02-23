@@ -5,6 +5,7 @@ import com.igomall.entity.other.ToolCategory;
 import com.igomall.service.BaseService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service - 文章分类
@@ -20,6 +21,12 @@ public interface ToolCategoryService extends BaseService<ToolCategory, Long> {
 	 * @return 顶级文章分类
 	 */
 	List<ToolCategory> findRoots();
+	/**
+	 * 查找顶级文章分类
+	 *
+	 * @return 顶级文章分类
+	 */
+	List<Map<String,Object>> findRoots1();
 
 	/**
 	 * 查找顶级文章分类

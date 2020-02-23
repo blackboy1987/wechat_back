@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController("commonToolController")
 @RequestMapping("/api/tool")
@@ -25,12 +26,8 @@ public class ToolController extends BaseController{
     private ToolItemService toolItemService;
 
     @PostMapping
-    @JsonView(BaseEntity.JsonApiView.class)
-    public List<ToolCategory> tool(@CurrentUser Member member,Long toolCategoryId){
-        if(toolCategoryId!=null){
-            return toolCategoryService.findChildren(toolCategoryService.find(toolCategoryId),false,null);
-        }
-        return toolCategoryService.findRoots();
+    public List<Map<String,Object>> tool(@CurrentUser Member member){
+        return toolCategoryService.findRoots1();
 
     }
 

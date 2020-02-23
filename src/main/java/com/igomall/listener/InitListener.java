@@ -1,6 +1,9 @@
 
 package com.igomall.listener;
 
+import com.igomall.entity.other.BookCategory;
+import com.igomall.service.other.BookCategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -22,6 +25,10 @@ public class InitListener {
 	 */
 	private static final Logger LOGGER = Logger.getLogger(InitListener.class.getName());
 
+	@Autowired
+	private BookCategoryService bookCategoryService;
+
+
 	/**
 	 * 事件处理
 	 * 
@@ -34,13 +41,9 @@ public class InitListener {
 			return;
 		}
 
-		String info = "I|n|i|t|i|a|l|i|z|i|n|g| |S|H|O|P|+|+| |B|2|B|2|C| |";
+		String info = "I|n|i|t|i|a|l|i|z|i|n|g| |";
 		LOGGER.info(info.replace("|", ""));
-
-
-		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-			System.out.println("==============================================ok");
-		});
+		bookCategoryService.findRoots();
 	}
 
 }

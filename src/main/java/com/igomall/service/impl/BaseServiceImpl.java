@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -41,6 +42,9 @@ public abstract class BaseServiceImpl<T extends BaseEntity<ID>, ID extends Seria
 	 * BaseDao
 	 */
 	private BaseDao<T, ID> baseDao;
+
+	@Autowired
+	protected JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	protected void setBaseDao(BaseDao<T, ID> baseDao) {

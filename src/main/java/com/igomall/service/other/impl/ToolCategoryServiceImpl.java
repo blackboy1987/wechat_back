@@ -1,13 +1,18 @@
 
 package com.igomall.service.other.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.igomall.dao.other.ToolCategoryDao;
 import com.igomall.entity.other.ToolCategory;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.other.ToolCategoryService;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -26,10 +31,40 @@ public class ToolCategoryServiceImpl extends BaseServiceImpl<ToolCategory, Long>
 
 	@Autowired
 	private ToolCategoryDao toolCategoryDao;
+	@Autowired
+	private CacheManager cacheManager;
 
 	@Transactional(readOnly = true)
 	public List<ToolCategory> findRoots() {
 		return toolCategoryDao.findRoots(null);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Map<String,Object>> findRoots1() {
+		Ehcache cache = cacheManager.getEhcache("toolCategory");
+		List<Map<String,Object>> toolCategories = new ArrayList<>();
+		try {
+			Element element = cache.get("toolCategoryTree");
+			if (element != null) {
+				toolCategories = (List<Map<String,Object>>) element.getObjectValue();
+			} else {
+				// 一级
+				toolCategories = jdbcTemplate.queryForList("select id,name from edu_tool_category where parent_id is null order by orders asc ");
+				// 循环二级
+				for (Map<String,Object> toolCategory:toolCategories) {
+					List<Map<String,Object>> children = jdbcTemplate.queryForList("select id,name from edu_tool_category where parent_id=? order by orders asc ",toolCategory.get("id"));
+					for (Map<String,Object> child:children) {
+						child.put("toolItems",jdbcTemplate.queryForList("select id,name, memo,icon,download_url downloadUrl,site_url siteUrl from edu_tool_item where tool_category_id=?",child.get("id")));
+					}
+					toolCategory.put("children",children);
+				}
+
+			}
+			cache.put(new Element("toolCategoryTree", toolCategories));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return toolCategories;
 	}
 
 	@Transactional(readOnly = true)
