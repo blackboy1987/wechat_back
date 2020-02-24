@@ -1,24 +1,27 @@
 
 package com.igomall.controller.admin.other;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.Demo1;
 import com.igomall.common.Message;
 import com.igomall.controller.admin.BaseController;
+import com.igomall.entity.BaseEntity;
 import com.igomall.entity.other.ToolCategory;
 import com.igomall.entity.other.ToolItem;
 import com.igomall.service.other.ToolCategoryService;
-import com.igomall.service.other.ToolItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
  * Controller - 文章分类
- * 
+ *
  * @author blackboy
  * @version 1.0
  */
@@ -29,9 +32,11 @@ public class ToolCategoryController extends BaseController {
 	@Autowired
 	private ToolCategoryService toolCategoryService;
 
+
 	@GetMapping("/tools")
-	public String tools(String tag) throws Exception{
+	public String tools(String tag,String name) throws Exception{
 		ToolCategory toolCategory = Demo1.parse(tag);
+		toolCategory.setName(name);
 		toolCategoryService.save(toolCategory);
 		for (ToolCategory child:toolCategory.getChildren()) {
 			child.setParent(toolCategory);
@@ -45,78 +50,74 @@ public class ToolCategoryController extends BaseController {
 	/**
 	 * 添加
 	 */
-	@GetMapping("/add")
-	public String add(ModelMap model) {
-		model.addAttribute("toolCategoryTree", toolCategoryService.findTree());
-		return "admin/tool_category/add";
+	@PostMapping("/tree")
+	public List<Map<String,Object>> tree() {
+		return jdbcTemplate.queryForList("select id,name from edu_tool_category where parent_id is null order by orders desc");
 	}
 
 	/**
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public String save(ToolCategory toolCategory, Long parentId) {
+	public Message save(ToolCategory toolCategory, Long parentId) {
 		toolCategory.setParent(toolCategoryService.find(parentId));
 		if (!isValid(toolCategory)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		toolCategory.setTreePath(null);
 		toolCategory.setGrade(null);
 		toolCategory.setChildren(null);
 		toolCategory.setToolItems(null);
-		return "redirect:list";
+		toolCategoryService.save(toolCategory);
+		return Message.success("操作成功");
 	}
 
 	/**
 	 * 编辑
 	 */
-	@GetMapping("/edit")
-	public String edit(Long id, ModelMap model) {
-		ToolCategory toolCategory = toolCategoryService.find(id);
-		model.addAttribute("toolCategoryTree", toolCategoryService.findTree());
-		model.addAttribute("toolCategory", toolCategory);
-		model.addAttribute("children", toolCategoryService.findChildren(toolCategory, true, null));
-		return "admin/tool_category/edit";
+	@PostMapping("/edit")
+	@JsonView(BaseEntity.EditView.class)
+	public ToolCategory edit(Long id) {
+		return toolCategoryService.find(id);
 	}
 
 	/**
 	 * 更新
 	 */
 	@PostMapping("/update")
-	public String update(ToolCategory toolCategory, Long parentId) {
+	public Message update(ToolCategory toolCategory, Long parentId) {
 		toolCategory.setParent(toolCategoryService.find(parentId));
 		if (!isValid(toolCategory)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		if (toolCategory.getParent() != null) {
 			ToolCategory parent = toolCategory.getParent();
 			if (parent.equals(toolCategory)) {
-				return ERROR_VIEW;
+				return Message.error("参数错误");
 			}
 			List<ToolCategory> children = toolCategoryService.findChildren(parent, true, null);
 			if (children != null && children.contains(parent)) {
-				return ERROR_VIEW;
+				return Message.error("参数错误");
 			}
 		}
 		toolCategoryService.update(toolCategory, "treePath", "grade", "children", "toolItems");
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
 	 * 列表
 	 */
-	@GetMapping("/list")
-	public String list(ModelMap model) {
-		model.addAttribute("toolCategoryTree", toolCategoryService.findTree());
-		return "admin/tool_category/list";
+	@PostMapping("/list")
+	@JsonView(BaseEntity.ListView.class)
+	public List<ToolCategory> list() {
+		return toolCategoryService.findTree();
 	}
 
 	/**
 	 * 删除
 	 */
 	@PostMapping("/delete")
-	public @ResponseBody
-	Message delete(Long id) {
+	public Message delete(Long id) {
 		ToolCategory toolCategory = toolCategoryService.find(id);
 		if (toolCategory == null) {
 			return ERROR_MESSAGE;

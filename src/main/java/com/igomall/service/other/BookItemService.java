@@ -66,7 +66,7 @@ public interface BookItemService extends BaseService<BookItem, Long> {
 	 *            分页信息
 	 * @return 文章分页
 	 */
-	Page<BookItem> findPage(BookCategory bookCategory, Boolean isPublication, Pageable pageable);
+	Page<BookItem> findPage(BookCategory bookCategory,String name, Boolean isPublication, Pageable pageable);
 
 
 }

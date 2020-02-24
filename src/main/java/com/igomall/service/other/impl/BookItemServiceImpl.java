@@ -50,8 +50,8 @@ public class BookItemServiceImpl extends BaseServiceImpl<BookItem, Long> impleme
 	}
 
 	@Transactional(readOnly = true)
-	public Page<BookItem> findPage(BookCategory bookCategory, Boolean isPublication, Pageable pageable) {
-		return bookItemDao.findPage(bookCategory, isPublication, pageable);
+	public Page<BookItem> findPage(BookCategory bookCategory,String name,  Boolean isPublication, Pageable pageable) {
+		return bookItemDao.findPage(bookCategory, name,isPublication, pageable);
 	}
 
 	@Override

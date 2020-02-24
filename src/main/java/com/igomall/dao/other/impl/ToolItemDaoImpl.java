@@ -76,7 +76,7 @@ public class ToolItemDaoImpl extends BaseDaoImpl<ToolItem, Long> implements Tool
 		return super.findList(criteriaQuery, first, count);
 	}
 
-	public Page<ToolItem> findPage(ToolCategory toolCategory, Boolean isPublication, Pageable pageable) {
+	public Page<ToolItem> findPage(ToolCategory toolCategory,String name, Boolean isPublication, Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ToolItem> criteriaQuery = criteriaBuilder.createQuery(ToolItem.class);
 		Root<ToolItem> root = criteriaQuery.from(ToolItem.class);
@@ -91,6 +91,9 @@ public class ToolItemDaoImpl extends BaseDaoImpl<ToolItem, Long> implements Tool
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
+		}
+		if (StringUtils.isNotEmpty(name)) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("name"), "%"+name+"%"));
 		}
 		criteriaQuery.where(restrictions);
 		if (pageable == null || ((StringUtils.isEmpty(pageable.getOrderProperty()) || pageable.getOrderDirection() == null) && CollectionUtils.isEmpty(pageable.getOrders()))) {

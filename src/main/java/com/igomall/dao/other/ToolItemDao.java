@@ -67,6 +67,6 @@ public interface ToolItemDao extends BaseDao<ToolItem, Long> {
 	 *            分页信息
 	 * @return 文章分页
 	 */
-	Page<ToolItem> findPage(ToolCategory bookCategory, Boolean isPublication, Pageable pageable);
+	Page<ToolItem> findPage(ToolCategory bookCategory,String name, Boolean isPublication, Pageable pageable);
 
 }

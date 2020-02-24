@@ -1,18 +1,25 @@
 
 package com.igomall.controller.admin.other;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.Demo1;
 import com.igomall.common.Message;
 import com.igomall.controller.admin.BaseController;
+import com.igomall.entity.BaseEntity;
 import com.igomall.entity.other.BookCategory;
 import com.igomall.entity.other.BookItem;
 import com.igomall.service.other.BookCategoryService;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -30,9 +37,10 @@ public class BookCategoryController extends BaseController {
 
 
 	@GetMapping("/tools")
-	public String tools(String tag,String name) throws Exception{
+	public String tools(String tag,String name,Integer order) throws Exception{
 		BookCategory toolCategory = Demo1.parse1(tag);
 		toolCategory.setName(name);
+		toolCategory.setOrder(order);
 		bookCategoryService.save(toolCategory);
 		for (BookCategory child:toolCategory.getChildren()) {
 			child.setParent(toolCategory);
@@ -46,79 +54,74 @@ public class BookCategoryController extends BaseController {
 	/**
 	 * 添加
 	 */
-	@GetMapping("/add")
-	public String add(ModelMap model) {
-		model.addAttribute("bookCategoryTree", bookCategoryService.findTree());
-		return "admin/book_category/add";
+	@PostMapping("/tree")
+	public List<Map<String,Object>> tree() {
+		return jdbcTemplate.queryForList("select id,name from edu_book_category where parent_id is null order by orders desc");
 	}
 
 	/**
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public String save(BookCategory bookCategory, Long parentId, RedirectAttributes redirectAttributes) {
+	public Message save(BookCategory bookCategory, Long parentId) {
 		bookCategory.setParent(bookCategoryService.find(parentId));
 		if (!isValid(bookCategory)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		bookCategory.setTreePath(null);
 		bookCategory.setGrade(null);
 		bookCategory.setChildren(null);
 		bookCategory.setBookItems(null);
 		bookCategoryService.save(bookCategory);
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
 	 * 编辑
 	 */
-	@GetMapping("/edit")
-	public String edit(Long id, ModelMap model) {
-		BookCategory bookCategory = bookCategoryService.find(id);
-		model.addAttribute("bookCategoryTree", bookCategoryService.findTree());
-		model.addAttribute("bookCategory", bookCategory);
-		model.addAttribute("children", bookCategoryService.findChildren(bookCategory, true, null));
-		return "admin/book_category/edit";
+	@PostMapping("/edit")
+	@JsonView(BaseEntity.EditView.class)
+	public BookCategory edit(Long id) {
+		return bookCategoryService.find(id);
 	}
 
 	/**
 	 * 更新
 	 */
 	@PostMapping("/update")
-	public String update(BookCategory bookCategory, Long parentId) {
+	public Message update(BookCategory bookCategory, Long parentId) {
 		bookCategory.setParent(bookCategoryService.find(parentId));
 		if (!isValid(bookCategory)) {
-			return ERROR_VIEW;
+			return Message.error("参数错误");
 		}
 		if (bookCategory.getParent() != null) {
 			BookCategory parent = bookCategory.getParent();
 			if (parent.equals(bookCategory)) {
-				return ERROR_VIEW;
+				return Message.error("参数错误");
 			}
 			List<BookCategory> children = bookCategoryService.findChildren(parent, true, null);
 			if (children != null && children.contains(parent)) {
-				return ERROR_VIEW;
+				return Message.error("参数错误");
 			}
 		}
 		bookCategoryService.update(bookCategory, "treePath", "grade", "children", "bookItems");
-		return "redirect:list";
+		return Message.success("操作成功");
 	}
 
 	/**
 	 * 列表
 	 */
-	@GetMapping("/list")
-	public String list(ModelMap model) {
-		model.addAttribute("bookCategoryTree", bookCategoryService.findTree());
-		return "admin/book_category/list";
+	@PostMapping("/list")
+	@JsonView(BaseEntity.ListView.class)
+	public List<BookCategory> list() {
+		return bookCategoryService.findTree();
 	}
 
 	/**
 	 * 删除
 	 */
 	@PostMapping("/delete")
-	public @ResponseBody
-	Message delete(Long id) {
+	public Message delete(Long id) {
 		BookCategory bookCategory = bookCategoryService.find(id);
 		if (bookCategory == null) {
 			return ERROR_MESSAGE;
@@ -134,5 +137,4 @@ public class BookCategoryController extends BaseController {
 		bookCategoryService.delete(id);
 		return SUCCESS_MESSAGE;
 	}
-
 }

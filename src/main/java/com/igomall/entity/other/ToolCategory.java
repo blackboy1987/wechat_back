@@ -14,6 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "edu_tool_category")
 public class ToolCategory extends OrderedEntity<Long> {
+
     /**
      * 树路径分隔符
      */
@@ -21,7 +22,7 @@ public class ToolCategory extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String name;
 
     /**
@@ -34,6 +35,7 @@ public class ToolCategory extends OrderedEntity<Long> {
      * 层级
      */
     @Column(nullable = false)
+    @JsonView({ListView.class})
     private Integer grade;
 
     /**
@@ -47,12 +49,12 @@ public class ToolCategory extends OrderedEntity<Long> {
      */
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     @OrderBy("order asc")
+    @JsonView({JsonApiView.class})
     private Set<ToolCategory> children = new HashSet<>();
 
-
     @OneToMany(mappedBy = "toolCategory",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonView({JsonApiView.class})
     private Set<ToolItem> toolItems = new HashSet<>();
-
 
     public String getName() {
         return name;
@@ -116,6 +118,15 @@ public class ToolCategory extends OrderedEntity<Long> {
             result[i] = Long.valueOf(parentIds[i]);
         }
         return result;
+    }
+
+    @Transient
+    @JsonView({EditView.class})
+    public Long getParentId() {
+        if(parent!=null){
+            return parent.getId();
+        }
+        return null;
     }
 
     /**

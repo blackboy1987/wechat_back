@@ -19,27 +19,27 @@ public class BookItem extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String name;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String icon;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,EditView.class})
     private String siteUrl;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,EditView.class})
     private String downloadUrl;
 
     @Length(max = 500)
     @Column(length = 500)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,EditView.class, ListView.class})
     private String memo;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -51,6 +51,7 @@ public class BookItem extends OrderedEntity<Long> {
     @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
     @NotNull
     @Column(nullable = false)
+    @JsonView({EditView.class, ListView.class})
     private Boolean isPublication;
 
     /**
@@ -118,5 +119,26 @@ public class BookItem extends OrderedEntity<Long> {
 
     public void setBookCategory(BookCategory bookCategory) {
         this.bookCategory = bookCategory;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public String getCategoryNname(){
+        if(bookCategory!=null){
+            if(bookCategory.getParent()!=null){
+               return bookCategory.getParent().getName()+"/"+bookCategory.getName();
+            }
+            return bookCategory.getName();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({EditView.class})
+    public Long getCategoryId(){
+        if(bookCategory!=null){
+            return bookCategory.getId();
+        }
+        return null;
     }
 }

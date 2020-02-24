@@ -1,10 +1,13 @@
 
 package com.igomall.controller.admin.other;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.Message;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.controller.admin.BaseController;
+import com.igomall.entity.BaseEntity;
+import com.igomall.entity.other.ToolCategory;
 import com.igomall.entity.other.ToolItem;
 import com.igomall.service.other.ToolCategoryService;
 import com.igomall.service.other.ToolItemService;
@@ -13,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Controller - 文章
- * 
+ *
  * @author blackboy
  * @version 1.0
  */
@@ -32,8 +37,8 @@ public class ToolItemController extends BaseController {
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public Message save(ToolItem toolItem, Long toolItemCategoryId) {
-		toolItem.setToolCategory(toolCategoryService.find(toolItemCategoryId));
+	public Message save(ToolItem toolItem, Long toolCategoryId) {
+		toolItem.setToolCategory(toolCategoryService.find(toolCategoryId));
 		if (!isValid(toolItem)) {
 			return Message.error("参数错误");
 		}
@@ -45,6 +50,7 @@ public class ToolItemController extends BaseController {
 	 * 编辑
 	 */
 	@PostMapping("/edit")
+	@JsonView(BaseEntity.EditView.class)
 	public ToolItem edit(Long id) {
 		return toolItemService.find(id);
 	}
@@ -53,8 +59,8 @@ public class ToolItemController extends BaseController {
 	 * 更新
 	 */
 	@PostMapping("/update")
-	public Message update(ToolItem toolItem, Long toolItemCategoryId) {
-		toolItem.setToolCategory(toolCategoryService.find(toolItemCategoryId));
+	public Message update(ToolItem toolItem, Long toolCategoryId) {
+		toolItem.setToolCategory(toolCategoryService.find(toolCategoryId));
 		if (!isValid(toolItem)) {
 			return Message.error("参数错误");
 		}
@@ -66,8 +72,9 @@ public class ToolItemController extends BaseController {
 	 * 列表
 	 */
 	@PostMapping("/list")
-	public Page<ToolItem> list(Pageable pageable) {
-		return toolItemService.findPage(pageable);
+	@JsonView(BaseEntity.ListView.class)
+	public Page<ToolItem> list(Long categoryId,Pageable pageable,String name) {
+		return toolItemService.findPage(toolCategoryService.find(categoryId),name,null,pageable);
 	}
 
 	/**
@@ -77,6 +84,15 @@ public class ToolItemController extends BaseController {
 	public Message delete(Long[] ids) {
 		toolItemService.delete(ids);
 		return SUCCESS_MESSAGE;
+	}
+
+	/**
+	 * 删除
+	 */
+	@PostMapping("/category")
+	@JsonView(BaseEntity.ListView.class)
+	public List<ToolCategory> category() {
+		return toolCategoryService.findTree();
 	}
 
 }

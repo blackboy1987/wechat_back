@@ -14,6 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "edu_project_category")
 public class ProjectCategory extends OrderedEntity<Long> {
+
     /**
      * 树路径分隔符
      */
@@ -21,7 +22,7 @@ public class ProjectCategory extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String name;
 
     /**
@@ -34,6 +35,7 @@ public class ProjectCategory extends OrderedEntity<Long> {
      * 层级
      */
     @Column(nullable = false)
+    @JsonView({ListView.class})
     private Integer grade;
 
     /**
@@ -47,12 +49,12 @@ public class ProjectCategory extends OrderedEntity<Long> {
      */
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     @OrderBy("order asc")
+    @JsonView({JsonApiView.class})
     private Set<ProjectCategory> children = new HashSet<>();
 
-
     @OneToMany(mappedBy = "projectCategory",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonView({JsonApiView.class})
     private Set<ProjectItem> projectItems = new HashSet<>();
-
 
     public String getName() {
         return name;
@@ -102,6 +104,7 @@ public class ProjectCategory extends OrderedEntity<Long> {
         this.projectItems = projectItems;
     }
 
+
     /**
      * 获取所有上级分类ID
      *
@@ -115,6 +118,15 @@ public class ProjectCategory extends OrderedEntity<Long> {
             result[i] = Long.valueOf(parentIds[i]);
         }
         return result;
+    }
+
+    @Transient
+    @JsonView({EditView.class})
+    public Long getParentId() {
+        if(parent!=null){
+            return parent.getId();
+        }
+        return null;
     }
 
     /**
@@ -134,14 +146,14 @@ public class ProjectCategory extends OrderedEntity<Long> {
      *
      * @param parents
      *            上级分类
-     * @param toolCategory
+     * @param projectCategory
      *            文章分类
      */
-    private void recursiveParents(List<ProjectCategory> parents, ProjectCategory toolCategory) {
-        if (toolCategory == null) {
+    private void recursiveParents(List<ProjectCategory> parents, ProjectCategory projectCategory) {
+        if (projectCategory == null) {
             return;
         }
-        ProjectCategory parent = toolCategory.getParent();
+        ProjectCategory parent = projectCategory.getParent();
         if (parent != null) {
             parents.add(0, parent);
             recursiveParents(parents, parent);

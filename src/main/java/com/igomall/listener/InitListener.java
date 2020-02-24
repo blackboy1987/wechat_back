@@ -1,8 +1,12 @@
 
 package com.igomall.listener;
 
+import com.igomall.entity.course.Course;
+import com.igomall.entity.course.Lesson;
 import com.igomall.entity.other.BookCategory;
 import com.igomall.service.other.BookCategoryService;
+import com.igomall.service.other.ProjectCategoryService;
+import com.igomall.service.other.ToolCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -27,6 +31,10 @@ public class InitListener {
 
 	@Autowired
 	private BookCategoryService bookCategoryService;
+	@Autowired
+	private ToolCategoryService toolCategoryService;
+	@Autowired
+	private ProjectCategoryService projectCategoryService;
 
 
 	/**
@@ -43,7 +51,11 @@ public class InitListener {
 
 		String info = "I|n|i|t|i|a|l|i|z|i|n|g| |";
 		LOGGER.info(info.replace("|", ""));
-		bookCategoryService.findRoots();
+		CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+			bookCategoryService.findRoots1();
+			toolCategoryService.findRoots1();
+			projectCategoryService.findRoots1();
+		});
 	}
 
 }

@@ -76,7 +76,7 @@ public class BookItemDaoImpl extends BaseDaoImpl<BookItem, Long> implements Book
 		return super.findList(criteriaQuery, first, count);
 	}
 
-	public Page<BookItem> findPage(BookCategory bookCategory, Boolean isPublication, Pageable pageable) {
+	public Page<BookItem> findPage(BookCategory bookCategory,String name, Boolean isPublication, Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<BookItem> criteriaQuery = criteriaBuilder.createQuery(BookItem.class);
 		Root<BookItem> root = criteriaQuery.from(BookItem.class);
@@ -89,14 +89,16 @@ public class BookItemDaoImpl extends BaseDaoImpl<BookItem, Long> implements Book
 			subquery.where(criteriaBuilder.or(criteriaBuilder.equal(subqueryRoot, bookCategory), criteriaBuilder.like(subqueryRoot.<String>get("treePath"), "%" + BookCategory.TREE_PATH_SEPARATOR + bookCategory.getId() + BookCategory.TREE_PATH_SEPARATOR + "%")));
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.in(root.get("bookCategory")).value(subquery));
 		}
+		if (StringUtils.isNotEmpty(name)) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("name"), "%"+name+"%"));
+		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
 		}
 		criteriaQuery.where(restrictions);
 		if (pageable == null || ((StringUtils.isEmpty(pageable.getOrderProperty()) || pageable.getOrderDirection() == null) && CollectionUtils.isEmpty(pageable.getOrders()))) {
-			criteriaQuery.orderBy(criteriaBuilder.asc(root.get("order")), criteriaBuilder.desc(root.get("createdDate")));
+			criteriaQuery.orderBy(criteriaBuilder.asc(root.get("bookCategory")),criteriaBuilder.asc(root.get("order")), criteriaBuilder.desc(root.get("createdDate")));
 		}
 		return super.findPage(criteriaQuery, pageable);
 	}
-
 }

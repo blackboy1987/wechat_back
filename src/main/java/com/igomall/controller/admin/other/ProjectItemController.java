@@ -1,10 +1,13 @@
 
 package com.igomall.controller.admin.other;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.Message;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.controller.admin.BaseController;
+import com.igomall.entity.BaseEntity;
+import com.igomall.entity.other.ProjectCategory;
 import com.igomall.entity.other.ProjectItem;
 import com.igomall.service.other.ProjectCategoryService;
 import com.igomall.service.other.ProjectItemService;
@@ -13,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Controller - 文章
- * 
+ *
  * @author blackboy
  * @version 1.0
  */
@@ -32,8 +37,8 @@ public class ProjectItemController extends BaseController {
 	 * 保存
 	 */
 	@PostMapping("/save")
-	public Message save(ProjectItem projectItem, Long projectItemCategoryId) {
-		projectItem.setProjectCategory(projectCategoryService.find(projectItemCategoryId));
+	public Message save(ProjectItem projectItem, Long projectCategoryId) {
+		projectItem.setProjectCategory(projectCategoryService.find(projectCategoryId));
 		if (!isValid(projectItem)) {
 			return Message.error("参数错误");
 		}
@@ -45,6 +50,7 @@ public class ProjectItemController extends BaseController {
 	 * 编辑
 	 */
 	@PostMapping("/edit")
+	@JsonView(BaseEntity.EditView.class)
 	public ProjectItem edit(Long id) {
 		return projectItemService.find(id);
 	}
@@ -53,8 +59,8 @@ public class ProjectItemController extends BaseController {
 	 * 更新
 	 */
 	@PostMapping("/update")
-	public Message update(ProjectItem projectItem, Long projectItemCategoryId) {
-		projectItem.setProjectCategory(projectCategoryService.find(projectItemCategoryId));
+	public Message update(ProjectItem projectItem, Long projectCategoryId) {
+		projectItem.setProjectCategory(projectCategoryService.find(projectCategoryId));
 		if (!isValid(projectItem)) {
 			return Message.error("参数错误");
 		}
@@ -66,8 +72,9 @@ public class ProjectItemController extends BaseController {
 	 * 列表
 	 */
 	@PostMapping("/list")
-	public Page<ProjectItem> list(Pageable pageable) {
-		return projectItemService.findPage(pageable);
+	@JsonView(BaseEntity.ListView.class)
+	public Page<ProjectItem> list(Long categoryId,Pageable pageable,String name) {
+		return projectItemService.findPage(projectCategoryService.find(categoryId),name,null,pageable);
 	}
 
 	/**
@@ -77,6 +84,15 @@ public class ProjectItemController extends BaseController {
 	public Message delete(Long[] ids) {
 		projectItemService.delete(ids);
 		return SUCCESS_MESSAGE;
+	}
+
+	/**
+	 * 删除
+	 */
+	@PostMapping("/category")
+	@JsonView(BaseEntity.ListView.class)
+	public List<ProjectCategory> category() {
+		return projectCategoryService.findTree();
 	}
 
 }

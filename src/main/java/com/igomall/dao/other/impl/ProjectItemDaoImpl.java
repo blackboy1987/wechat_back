@@ -76,7 +76,7 @@ public class ProjectItemDaoImpl extends BaseDaoImpl<ProjectItem, Long> implement
 		return super.findList(criteriaQuery, first, count);
 	}
 
-	public Page<ProjectItem> findPage(ProjectCategory bookCategory, Boolean isPublication, Pageable pageable) {
+	public Page<ProjectItem> findPage(ProjectCategory bookCategory,String name, Boolean isPublication, Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ProjectItem> criteriaQuery = criteriaBuilder.createQuery(ProjectItem.class);
 		Root<ProjectItem> root = criteriaQuery.from(ProjectItem.class);
@@ -91,6 +91,9 @@ public class ProjectItemDaoImpl extends BaseDaoImpl<ProjectItem, Long> implement
 		}
 		if (isPublication != null) {
 			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isPublication"), isPublication));
+		}
+		if (StringUtils.isNotEmpty(name)) {
+			restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("name"), "%"+name+"%"));
 		}
 		criteriaQuery.where(restrictions);
 		if (pageable == null || ((StringUtils.isEmpty(pageable.getOrderProperty()) || pageable.getOrderDirection() == null) && CollectionUtils.isEmpty(pageable.getOrders()))) {

@@ -23,7 +23,7 @@ public class BookCategory extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String name;
 
     /**
@@ -36,6 +36,7 @@ public class BookCategory extends OrderedEntity<Long> {
      * 层级
      */
     @Column(nullable = false)
+    @JsonView({ListView.class})
     private Integer grade;
 
     /**
@@ -118,6 +119,15 @@ public class BookCategory extends OrderedEntity<Long> {
             result[i] = Long.valueOf(parentIds[i]);
         }
         return result;
+    }
+
+    @Transient
+    @JsonView({EditView.class})
+    public Long getParentId() {
+        if(parent!=null){
+            return parent.getId();
+        }
+        return null;
     }
 
     /**

@@ -1,12 +1,19 @@
 package com.igomall;
 
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
 import com.igomall.entity.other.*;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Demo1 {
 
@@ -62,6 +69,7 @@ public class Demo1 {
             BookCategory child = new BookCategory();
             child.setName(categoryName);
             child.setParent(toolCategory);
+            child.setOrder(i+1);
             toolCategory.getChildren().add(child);
 
             Element element1 = element1s.get(i);
@@ -76,6 +84,7 @@ public class Demo1 {
                     toolItem.setIcon(image);
                     toolItem.setName(name);
                     toolItem.setMemo(memo);
+                    toolItem.setOrder(j+1);
                     toolItem.setIsPublication(true);
                     toolItem.setBookCategory(child);
                     child.getBookItems().add(toolItem);
@@ -120,5 +129,70 @@ public class Demo1 {
             }
         }
         return toolCategory;
+    }
+
+
+    public static List<String> parse3() throws Exception{
+
+        File file = new File("d:/project.txt");
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+
+        byte bytes[]=new byte[512];
+        FileWriter fw = new FileWriter(file, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        List<String> urls = new ArrayList<>();
+        String url = "https://ishangedu.oss-cn-hangzhou.aliyuncs.com/project.html";
+        Document document = Jsoup.parse(new URL(url),10000);
+        Elements elements = document.getElementsByClass("tool-menu");
+        for (int i=0;i<elements.size();i++) {
+           try{
+               Element a = elements.get(i).getElementsByTag("a").first();
+               String link = a.attr("href");
+               bw.write(link+"\r\n");
+               bw.flush();
+               urls.add(a.attr("href"));
+           }catch (Exception e){
+               System.out.println(elements.get(i).html());
+               e.printStackTrace();
+           }
+        }
+
+        bw.close();
+        fw.close();
+
+        return urls;
+    }
+
+    public static void rename() throws Exception{
+        String path = "E:\\迅雷\\tools";
+
+        File parent = new File(path);
+        File[] files = parent.listFiles();
+        for (File file:files) {
+            if(StringUtils.endsWith(file.getName(),".pdf.pdf")){
+                String newPath = file.getAbsolutePath().substring(0,file.getAbsolutePath().length()-4);
+                File newFile =new File(newPath);
+                FileUtils.copyFile(file,newFile);
+                FileUtils.deleteQuietly(file);
+            }else if(StringUtils.endsWith(file.getName(),".zip.zip")){
+                String newPath = file.getAbsolutePath().substring(0,file.getAbsolutePath().length()-4);
+                File newFile =new File(newPath);
+                FileUtils.copyFile(file,newFile);
+                FileUtils.deleteQuietly(file);
+            }else if(StringUtils.endsWith(file.getName(),".gz.gz")){
+                String newPath = file.getAbsolutePath().substring(0,file.getAbsolutePath().length()-3);
+                File newFile =new File(newPath);
+                FileUtils.copyFile(file,newFile);
+                FileUtils.deleteQuietly(file);
+            }
+        }
+    }
+
+
+    public static void main(String[] args) throws Exception{
+        rename();
     }
 }

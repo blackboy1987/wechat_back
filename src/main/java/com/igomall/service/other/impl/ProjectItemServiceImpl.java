@@ -50,8 +50,8 @@ public class ProjectItemServiceImpl extends BaseServiceImpl<ProjectItem, Long> i
 	}
 
 	@Transactional(readOnly = true)
-	public Page<ProjectItem> findPage(ProjectCategory projectCategory, Boolean isPublication, Pageable pageable) {
-		return projectItemDao.findPage(projectCategory, isPublication, pageable);
+	public Page<ProjectItem> findPage(ProjectCategory projectCategory,String name, Boolean isPublication, Pageable pageable) {
+		return projectItemDao.findPage(projectCategory,name, isPublication, pageable);
 	}
 
 	@Override

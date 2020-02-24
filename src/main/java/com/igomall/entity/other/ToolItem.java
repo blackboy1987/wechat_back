@@ -19,27 +19,27 @@ public class ToolItem extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String name;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String icon;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,EditView.class})
     private String siteUrl;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,ListView.class,EditView.class})
     private String downloadUrl;
 
     @Length(max = 500)
     @Column(length = 500)
-    @JsonView({JsonApiView.class})
+    @JsonView({JsonApiView.class,EditView.class, ListView.class})
     private String memo;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -51,6 +51,7 @@ public class ToolItem extends OrderedEntity<Long> {
     @Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
     @NotNull
     @Column(nullable = false)
+    @JsonView({EditView.class, ListView.class})
     private Boolean isPublication;
 
     /**
@@ -118,5 +119,26 @@ public class ToolItem extends OrderedEntity<Long> {
 
     public void setToolCategory(ToolCategory toolCategory) {
         this.toolCategory = toolCategory;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public String getCategoryNname(){
+        if(toolCategory!=null){
+            if(toolCategory.getParent()!=null){
+                return toolCategory.getParent().getName()+"/"+toolCategory.getName();
+            }
+            return toolCategory.getName();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({EditView.class})
+    public Long getCategoryId(){
+        if(toolCategory!=null){
+            return toolCategory.getId();
+        }
+        return null;
     }
 }

@@ -50,8 +50,8 @@ public class ToolItemServiceImpl extends BaseServiceImpl<ToolItem, Long> impleme
 	}
 
 	@Transactional(readOnly = true)
-	public Page<ToolItem> findPage(ToolCategory toolCategory, Boolean isPublication, Pageable pageable) {
-		return toolItemDao.findPage(toolCategory, isPublication, pageable);
+	public Page<ToolItem> findPage(ToolCategory toolCategory,String name, Boolean isPublication, Pageable pageable) {
+		return toolItemDao.findPage(toolCategory,name, isPublication, pageable);
 	}
 
 	@Override
