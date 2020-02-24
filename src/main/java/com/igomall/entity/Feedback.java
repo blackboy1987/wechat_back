@@ -29,11 +29,13 @@ public class Feedback extends BaseEntity<Long> {
 	@NotEmpty
 	@Length(max = 4000)
 	@Column(length = 400,nullable = false)
+	@JsonView({ListView.class})
 	private String content;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Member member;
 
+	@JsonView({ListView.class})
 	private Integer status;
 
 

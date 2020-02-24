@@ -58,35 +58,35 @@ public class PointLog extends BaseEntity<Long> {
 	/**
 	 * 类型
 	 */
-	@JsonView(BaseView.class)
+	@JsonView(ListView.class)
 	@Column(nullable = false, updatable = false)
 	private Type type;
 
 	/**
 	 * 获取积分
 	 */
-	@JsonView(BaseView.class)
+	@JsonView(ListView.class)
 	@Column(nullable = false, updatable = false)
 	private Long credit;
 
 	/**
 	 * 扣除积分
 	 */
-	@JsonView(BaseView.class)
+	@JsonView(ListView.class)
 	@Column(nullable = false, updatable = false)
 	private Long debit;
 
 	/**
 	 * 当前积分
 	 */
-	@JsonView(BaseView.class)
+	@JsonView(ListView.class)
 	@Column(nullable = false, updatable = false)
 	private Long balance;
 
 	/**
 	 * 备注
 	 */
-	@JsonView(BaseView.class)
+	@JsonView(ListView.class)
 	@Column(updatable = false)
 	private String memo;
 
