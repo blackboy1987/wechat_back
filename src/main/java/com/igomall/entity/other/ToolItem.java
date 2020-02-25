@@ -17,6 +17,8 @@ import javax.validation.constraints.Pattern;
 @Table(name = "edu_tool_item")
 public class ToolItem extends OrderedEntity<Long> {
 
+    public static final String QUERY_LIST = "select id,name,icon,site_url siteUrl,download_url downloadUrl,memo from edu_tool_item where is_publication=true and tool_category_id=? order by orders asc, created_date desc";
+
     @NotEmpty
     @Column(nullable = false)
     @JsonView({JsonApiView.class,ListView.class,EditView.class})

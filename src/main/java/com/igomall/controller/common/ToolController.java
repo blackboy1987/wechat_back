@@ -3,7 +3,6 @@ package com.igomall.controller.common;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.BaseEntity;
 import com.igomall.entity.member.Member;
-import com.igomall.entity.other.ToolCategory;
 import com.igomall.entity.other.ToolItem;
 import com.igomall.security.CurrentUser;
 import com.igomall.service.other.ToolCategoryService;
@@ -26,9 +25,15 @@ public class ToolController extends BaseController{
     private ToolItemService toolItemService;
 
     @PostMapping
-    public List<Map<String,Object>> tool(@CurrentUser Member member){
-        return toolCategoryService.findRoots1();
-
+    public List<Map<String,Object>> tool(Long parentId,@CurrentUser Member member){
+        if(parentId==null){
+            return jdbcTemplate.queryForList("select id,name from edu_tool_category where parent_id is null order by orders asc");
+        }
+        List<Map<String, Object>> toolCategories = jdbcTemplate.queryForList("select id, name from edu_tool_category where parent_id=? order by orders asc",parentId);
+        for (Map<String,Object> toolCategory:toolCategories) {
+            toolCategory.put("toolItems",jdbcTemplate.queryForList(ToolItem.QUERY_LIST,toolCategory.get("id")));
+        }
+        return toolCategories;
     }
 
     @PostMapping("/item")

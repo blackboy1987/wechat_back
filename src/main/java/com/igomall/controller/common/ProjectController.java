@@ -3,6 +3,7 @@ package com.igomall.controller.common;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.entity.BaseEntity;
 import com.igomall.entity.member.Member;
+import com.igomall.entity.other.ProjectItem;
 import com.igomall.entity.other.ProjectCategory;
 import com.igomall.entity.other.ProjectItem;
 import com.igomall.security.CurrentUser;
@@ -26,9 +27,15 @@ public class ProjectController extends BaseController{
     private ProjectItemService projectItemService;
 
     @PostMapping
-    public List<Map<String,Object>> project(@CurrentUser Member member){
-        return projectCategoryService.findRoots1();
-
+    public List<Map<String,Object>> project(Long parentId,@CurrentUser Member member){
+        if(parentId==null){
+            return jdbcTemplate.queryForList("select id,name from edu_project_category where parent_id is null order by orders asc");
+        }
+        List<Map<String, Object>> projectCategories = jdbcTemplate.queryForList("select id, name from edu_project_category where parent_id=? order by orders asc",parentId);
+        for (Map<String,Object> projectCategory:projectCategories) {
+            projectCategory.put("projectItems",jdbcTemplate.queryForList(ProjectItem.QUERY_LIST,projectCategory.get("id")));
+        }
+        return projectCategories;
     }
 
     @PostMapping("/item")

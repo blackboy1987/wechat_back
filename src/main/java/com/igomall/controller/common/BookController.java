@@ -8,6 +8,7 @@ import com.igomall.entity.other.BookItem;
 import com.igomall.security.CurrentUser;
 import com.igomall.service.other.BookCategoryService;
 import com.igomall.service.other.BookItemService;
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +27,17 @@ public class BookController extends BaseController{
     private BookItemService bookItemService;
 
     @PostMapping
-    public List<Map<String,Object>> book(){
-        return bookCategoryService.findRoots1();
+    public List<Map<String,Object>> book(Long parentId,@CurrentUser Member member){
+        if(parentId==null){
+            return jdbcTemplate.queryForList("select id,name from edu_book_category where parent_id is null order by orders asc");
+        }
+        List<Map<String, Object>> bookCategories = jdbcTemplate.queryForList("select id, name from edu_book_category where parent_id=? order by orders asc",parentId);
+        for (Map<String,Object> bookCategory:bookCategories) {
+            bookCategory.put("bookItems",jdbcTemplate.queryForList(BookItem.QUERY_LIST,bookCategory.get("id")));
+        }
 
+
+        return bookCategories;
     }
 
     @PostMapping("/item")
