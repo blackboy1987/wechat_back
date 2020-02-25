@@ -1,6 +1,7 @@
 
 package com.igomall.listener;
 
+import com.igomall.service.course.CourseService;
 import com.igomall.service.other.BookCategoryService;
 import com.igomall.service.other.ProjectCategoryService;
 import com.igomall.service.other.ToolCategoryService;
@@ -25,6 +26,8 @@ public class CacheEventListener extends CacheEventListenerAdapter {
 	private ToolCategoryService toolCategoryService;
 	@Autowired
 	private ProjectCategoryService projectCategoryService;
+	@Autowired
+	private CourseService courseService;
 
 	/**
 	 * 元素过期调用
@@ -39,6 +42,7 @@ public class CacheEventListener extends CacheEventListenerAdapter {
 		bookCategoryService.findRoots1();
 		toolCategoryService.findRoots1();
 		projectCategoryService.findRoots1();
+		courseService.addCache();
 	}
 
 }

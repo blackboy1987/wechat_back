@@ -121,4 +121,37 @@ public class ToolItemError extends OrderedEntity<Long> {
     public void setMember(Member member) {
         this.member = member;
     }
+
+    @Transient
+    public Long getMemberId(){
+        if(member!=null){
+            return member.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    public String getUserName(){
+        if(member!=null){
+            return member.getUsername();
+        }
+        return null;
+    }
+
+    @Transient
+    public Long getItemId(){
+        if(toolItem!=null){
+            return toolItem.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public String getItemName(){
+        if(toolItem!=null){
+            return toolItem.getName();
+        }
+        return null;
+    }
 }

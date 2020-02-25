@@ -178,6 +178,30 @@ public class CourseController extends BaseController {
         return bilibiliRespose;
     }
 
+    @GetMapping("/bilibili2")
+    private BilibiliRespose bilibili2(String avId,Long courseId){
+        String url = "https://api.bilibili.com/x/player/pagelist?aid="+avId;
+        String result = WebUtils.get(url,null);
+
+        BilibiliRespose bilibiliRespose = JsonUtils.toObject(result,BilibiliRespose.class);
+        for (BilibiliRespose.LessonList lessonList:bilibiliRespose.getData()) {
+            Lesson lesson = new Lesson();
+            lesson.setFolder(null);
+            lesson.setCourse(courseService.find(courseId));
+            lesson.setOrder(lessonList.getPage());
+            lesson.setTitle(lessonList.getPart());
+            lesson.setPath(lessonList.getCid()+"");
+            lesson.getProps().put("duration",lessonList.getDuration()+"");
+            lesson.getProps().put("width",lessonList.getDimension().get("width")+"");
+            lesson.getProps().put("height",lessonList.getDimension().get("height")+"");
+            lesson.addPlayUrl("哔哩哔哩","https://www.bilibili.com/video/av"+avId+"?p="+lessonList.getPage());
+            lessonService.save(lesson);
+        }
+
+        return bilibiliRespose;
+    }
+
+
     @GetMapping("/lesson1")
     private String lesson1(){
         List<Lesson> lessons = lessonService.findAll();

@@ -8,6 +8,7 @@ import com.igomall.entity.course.Folder;
 import com.igomall.service.BaseService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service - 地区
@@ -61,4 +62,8 @@ public interface FolderService extends BaseService<Folder, Long> {
 
 
 	List<Folder> findList(Course course, Integer count, List<Filter> filters, List<Order> orders);
+
+	List<Map<String,Object>> findAllBySql();
+
+	List<Map<String,Object>> findAllBySql(Long courseId);
 }

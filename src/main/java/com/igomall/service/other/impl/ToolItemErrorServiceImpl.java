@@ -1,10 +1,18 @@
 
 package com.igomall.service.other.impl;
 
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
+import com.igomall.dao.member.PointLogDao;
+import com.igomall.dao.other.ToolItemErrorDao;
+import com.igomall.entity.member.Member;
+import com.igomall.entity.member.PointLog;
 import com.igomall.entity.other.ToolItemError;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.other.ToolItemErrorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service - 文章
@@ -14,5 +22,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ToolItemErrorServiceImpl extends BaseServiceImpl<ToolItemError, Long> implements ToolItemErrorService {
+    @Autowired
+    private ToolItemErrorDao toolItemErrorDao;
 
+    @Transactional(readOnly = true)
+    public Page<ToolItemError> findPage(Member member, Pageable pageable) {
+        return toolItemErrorDao.findPage(member, pageable);
+    }
 }

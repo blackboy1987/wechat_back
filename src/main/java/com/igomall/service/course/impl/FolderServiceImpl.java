@@ -7,14 +7,21 @@ import com.igomall.dao.course.FolderDao;
 import com.igomall.entity.course.Course;
 import com.igomall.entity.course.Folder;
 import com.igomall.service.course.FolderService;
+import com.igomall.service.course.LessonService;
 import com.igomall.service.impl.BaseServiceImpl;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service - 地区
@@ -25,8 +32,14 @@ import java.util.List;
 @Service
 public class FolderServiceImpl extends BaseServiceImpl<Folder, Long> implements FolderService {
 
+
+	@Autowired
+	private CacheManager cacheManager;
+
 	@Autowired
 	private FolderDao folderDao;
+	@Autowired
+	private LessonService lessonService;
 
 	@Transactional(readOnly = true)
 	public List<Folder> findRoots() {
@@ -124,5 +137,38 @@ public class FolderServiceImpl extends BaseServiceImpl<Folder, Long> implements 
 	@Override
 	public List<Folder> findList(Course course, Integer count, List<Filter> filters, List<Order> orders) {
 		return folderDao.findList(course,count,filters,orders);
+	}
+
+	@Override
+	public List<Map<String,Object>> findAllBySql(){
+		return jdbcTemplate.queryForList(Folder.QUERY_ALL);
+	}
+
+	@Override
+	public List<Map<String,Object>> findAllBySql(Long courseId){
+		List<Map<String,Object>> folders = new ArrayList<>();
+		Ehcache cache = cacheManager.getEhcache("course");
+		try {
+			Element element = cache.get("folder_"+courseId);
+			if (element != null) {
+				folders = (List<Map<String,Object>>) element.getObjectValue();
+			} else {
+				folders = jdbcTemplate.queryForList(Folder.QUERY_ALL_BY_COURSE.replace("courseId",courseId+""));
+				if(folders==null||folders.isEmpty()){
+					Map<String,Object> folder = new HashMap<>();
+					folder.put("id",0L);
+					folders.add(folder);
+				}
+			}
+			cache.put(new Element("courseList", folders));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		for (Map<String,Object> folder:folders) {
+			folder.put("lessons",lessonService.findAllBySql(courseId,Long.parseLong(folder.get("id").toString())));
+		}
+
+
+		return folders ;
 	}
 }

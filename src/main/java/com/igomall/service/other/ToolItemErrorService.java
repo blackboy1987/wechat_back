@@ -1,6 +1,9 @@
 
 package com.igomall.service.other;
 
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
+import com.igomall.entity.member.Member;
 import com.igomall.entity.other.ToolItemError;
 import com.igomall.service.BaseService;
 
@@ -12,4 +15,14 @@ import com.igomall.service.BaseService;
  */
 public interface ToolItemErrorService extends BaseService<ToolItemError, Long> {
 
+    /**
+     * 查找积分记录分页
+     *
+     * @param member
+     *            会员
+     * @param pageable
+     *            分页信息
+     * @return 积分记录分页
+     */
+    Page<ToolItemError> findPage(Member member, Pageable pageable);
 }

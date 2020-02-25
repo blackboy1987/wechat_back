@@ -8,6 +8,8 @@ import com.igomall.security.UserAuthenticationToken;
 import com.igomall.service.UserService;
 import com.igomall.service.member.MemberRankService;
 import com.igomall.service.member.MemberService;
+import com.igomall.service.member.PointLogService;
+import com.igomall.util.Date8Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,8 +37,9 @@ public class LoginController extends BaseController {
 
 	@Autowired
 	private UserService userService;
+
 	@Autowired
-	private MemberRankService memberRankService;
+	private PointLogService pointLogService;
 
 	/**
 	 * 登录页面
@@ -51,15 +55,9 @@ public class LoginController extends BaseController {
 		}
 		Member member = memberService.findByUsername(username);
 		if(member==null){
-			/*data.put("status","error");
+			data.put("status","error");
 			data.put("msg","用户名或密码输入错误");
-			return data;*/
-			Member member1 = new Member();
-			member1.init();
-			member1.setUsername(username);
-			member1.setPassword(password);
-			member1.setMemberRank(memberRankService.findDefault());
-			member = memberService.save(member1);
+			return data;
 		}
 		if(!member.isValidCredentials(password)){
 			data.put("status","error");
@@ -78,7 +76,11 @@ public class LoginController extends BaseController {
 		/**
 		 * 登陆积分。每天只送一次
 		 */
-		memberService.addPoint(member,50, PointLog.Type.login,"登陆");
+
+		if(!pointLogService.exists(PointLog.Type.login,member, Date8Utils.getBeginDay(new Date()),Date8Utils.getEndDay(new Date()))){
+			memberService.addPoint(member,50, PointLog.Type.login,"登陆");
+		}
+
 
 		return data;
 	}

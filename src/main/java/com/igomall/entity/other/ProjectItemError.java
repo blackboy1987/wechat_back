@@ -121,4 +121,37 @@ public class ProjectItemError extends OrderedEntity<Long> {
     public void setMember(Member member) {
         this.member = member;
     }
+
+    @Transient
+    public Long getMemberId(){
+        if(member!=null){
+            return member.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    public String getUserName(){
+        if(member!=null){
+            return member.getUsername();
+        }
+        return null;
+    }
+
+    @Transient
+    public Long getItemId(){
+        if(projectItem!=null){
+            return projectItem.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public String getItemName(){
+        if(projectItem!=null){
+            return projectItem.getName();
+        }
+        return null;
+    }
 }

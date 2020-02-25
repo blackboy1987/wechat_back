@@ -1,13 +1,11 @@
 
 package com.igomall.service.course;
 
-import com.igomall.common.Filter;
-import com.igomall.common.Order;
 import com.igomall.entity.course.Course;
-import com.igomall.entity.course.Folder;
 import com.igomall.service.BaseService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service - 管理员
@@ -17,4 +15,9 @@ import java.util.List;
  */
 public interface CourseService extends BaseService<Course, Long> {
 
+    void addCache();
+
+    void removeCache();
+
+    List<Map<String,Object>> findAllBySql();
 }

@@ -15,28 +15,38 @@ import javax.validation.constraints.Pattern;
 public class BookItemError extends OrderedEntity<Long> {
 
     @NotEmpty
-    @Column(nullable = false)
+    @Column(nullable = false,updatable = false)
+    @JsonView({ListView.class})
     private String name;
 
     @Length(max = 200)
     @Pattern(regexp = "^(?i)(http:\\/\\/|https:\\/\\/|\\/).*$")
+    @JsonView({ListView.class})
+    @Column(nullable = false,updatable = false)
     private String icon;
 
     @Length(max = 200)
-    @JsonView({JsonApiView.class,EditView.class})
+    @JsonView({ListView.class})
+    @Column(nullable = false,updatable = false)
     private String siteUrl;
 
     @Length(max = 200)
-    @JsonView({JsonApiView.class,EditView.class})
+    @JsonView({ListView.class})
+    @Column(nullable = false,updatable = false)
     private String downloadUrl;
 
     @Length(max = 500)
-    @Column(length = 500)
+    @JsonView({ListView.class})
+    @Column(nullable = false,updatable = false)
     private String memo;
 
+    @NotNull
+    @JoinColumn(nullable = false,updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private BookItem bookItem;
 
+    @NotNull
+    @JoinColumn(nullable = false,updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
@@ -120,5 +130,38 @@ public class BookItemError extends OrderedEntity<Long> {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    @Transient
+    public Long getMemberId(){
+        if(member!=null){
+            return member.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    public String getUserName(){
+        if(member!=null){
+            return member.getUsername();
+        }
+        return null;
+    }
+
+    @Transient
+    public Long getItemId(){
+        if(bookItem!=null){
+            return bookItem.getId();
+        }
+        return null;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public String getItemName(){
+        if(bookItem!=null){
+            return bookItem.getName();
+        }
+        return null;
     }
 }

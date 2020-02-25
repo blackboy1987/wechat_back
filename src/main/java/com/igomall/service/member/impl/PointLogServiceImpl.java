@@ -13,6 +13,8 @@ import com.igomall.entity.member.Member;
 import com.igomall.entity.member.PointLog;
 import com.igomall.service.member.PointLogService;
 
+import java.util.Date;
+
 /**
  * Service - 积分记录
  * 
@@ -29,5 +31,9 @@ public class PointLogServiceImpl extends BaseServiceImpl<PointLog, Long> impleme
 	public Page<PointLog> findPage(Member member, Pageable pageable) {
 		return pointLogDao.findPage(member, pageable);
 	}
-
+	@Transactional(readOnly = true)
+	@Override
+	public boolean exists(PointLog.Type type, Member member, Date beginDate, Date endDate){
+		return pointLogDao.exists(type,member,beginDate,endDate);
+	}
 }

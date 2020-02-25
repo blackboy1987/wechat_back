@@ -22,6 +22,14 @@ import java.util.Map;
 @Table(name = "edu_lesson")
 public class Lesson extends OrderedEntity<Long> {
 
+    public final static String QUERY_ALL = "select id,title from edu_lesson orders asc,created_date desc ";
+
+    public final static String QUERY_ALL_COURSE = "select id,title from edu_lesson where course_id=courseId order by orders asc,created_date desc ";
+
+    public final static String QUERY_ALL_FOLDER = "select id,title from edu_lesson where folder_id=folderId order by orders asc,created_date desc ";
+
+    public final static String QUERY_ALL_COURSE_AND_FOLDER = "select id,title from edu_lesson where folder_id=folderId and course_id=courseId order by orders asc,created_date desc ";
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false,updatable = false)

@@ -7,6 +7,8 @@ import com.igomall.dao.BaseDao;
 import com.igomall.entity.member.Member;
 import com.igomall.entity.member.PointLog;
 
+import java.util.Date;
+
 /**
  * Dao - 积分记录
  * 
@@ -26,4 +28,5 @@ public interface PointLogDao extends BaseDao<PointLog, Long> {
 	 */
 	Page<PointLog> findPage(Member member, Pageable pageable);
 
+	boolean exists(PointLog.Type type, Member member, Date beginDate, Date endDate);
 }

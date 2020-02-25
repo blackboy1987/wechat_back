@@ -1,11 +1,15 @@
 
 package com.igomall.service.member;
 
+import com.igomall.common.Filter;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.entity.member.Member;
 import com.igomall.entity.member.PointLog;
 import com.igomall.service.BaseService;
+import com.igomall.util.Date8Utils;
+
+import java.util.Date;
 
 /**
  * Service - 积分记录
@@ -26,4 +30,5 @@ public interface PointLogService extends BaseService<PointLog, Long> {
 	 */
 	Page<PointLog> findPage(Member member, Pageable pageable);
 
+	boolean exists(PointLog.Type type, Member member, Date beginDate,Date endDate);
 }

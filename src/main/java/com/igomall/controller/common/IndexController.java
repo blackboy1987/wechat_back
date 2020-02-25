@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @RestController("commonIndexController")
 @RequestMapping("/api")
@@ -43,26 +40,14 @@ public class IndexController extends BaseController{
 
     @PostMapping("/course")
     @JsonView(BaseEntity.JsonApiView.class)
-    public List<Course> course(@CurrentUser Member member){
-        List<Order> orders = new ArrayList<>();
-        orders.add(Order.asc("order"));
-        return courseService.findList(null,null,orders);
+    public List<Map<String,Object>> course(@CurrentUser Member member){
+        return courseService.findAllBySql();
     }
 
     @PostMapping("/folder")
     @JsonView(BaseEntity.JsonApiView.class)
-    public List<Folder> folder(Long courseId, @CurrentUser Member member){
-        List<Order> orders = new ArrayList<>();
-        orders.add(Order.asc("order"));
-        List<Folder> folders = folderService.findList(courseService.find(courseId),null,null,orders);
-        if(folders.isEmpty()){
-            Folder folder = new Folder();
-            folder.setName(null);
-            folder.setId(null);
-            folder.setLessons(new HashSet<>(lessonService.findList(courseService.find(courseId),null,null,null,null)));
-            folders.add(folder);
-        }
-        return folders;
+    public List<Map<String,Object>> folder(Long courseId, @CurrentUser Member member){
+        return folderService.findAllBySql(courseId);
     }
 
     @PostMapping("/lesson")

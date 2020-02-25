@@ -24,6 +24,9 @@ import java.util.Set;
 @Table(name = "edu_folder")
 public class Folder extends OrderedEntity<Long> {
 
+	public final static String QUERY_ALL = "select id,name from edu_folder order by orders asc,created_date desc ";
+	public final static String QUERY_ALL_BY_COURSE = "select id,name from edu_folder where course_id=courseId order by orders asc,created_date desc ";
+
 	/**
 	 * 树路径分隔符
 	 */

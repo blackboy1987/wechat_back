@@ -11,6 +11,9 @@ import java.util.Set;
 @Table(name = "edu_course")
 public class Course extends OrderedEntity<Long> {
 
+    public final static String QUERY_ALL = "select id,title from edu_course order by orders asc,created_date desc ";
+
+
     @JsonView({JsonApiView.class,EditView.class})
     private String title;
 

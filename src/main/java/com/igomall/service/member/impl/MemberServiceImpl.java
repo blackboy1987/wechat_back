@@ -159,7 +159,6 @@ public class MemberServiceImpl extends BaseServiceImpl<Member, Long> implements 
 		memberDepositLogDao.persist(memberDepositLog);
 	}
 
-	@Async
 	public void addPoint(Member member, long amount, PointLog.Type type, String memo) {
 		Assert.notNull(member,"");
 		Assert.notNull(type,"");
