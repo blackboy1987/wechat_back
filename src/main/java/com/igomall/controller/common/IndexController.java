@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 @RestController("commonIndexController")
 @RequestMapping("/api")
@@ -40,14 +43,26 @@ public class IndexController extends BaseController{
 
     @PostMapping("/course")
     @JsonView(BaseEntity.JsonApiView.class)
-    public List<Map<String,Object>> course(@CurrentUser Member member){
-        return courseService.findAllBySql();
+    public List<Course> course(@CurrentUser Member member){
+        List<Order> orders = new ArrayList<>();
+        orders.add(Order.asc("order"));
+        return courseService.findList(null,null,orders);
     }
 
     @PostMapping("/folder")
     @JsonView(BaseEntity.JsonApiView.class)
-    public List<Map<String,Object>> folder(Long courseId, @CurrentUser Member member){
-        return folderService.findAllBySql(courseId);
+    public List<Folder> folder(Long courseId, @CurrentUser Member member){
+        List<Order> orders = new ArrayList<>();
+        orders.add(Order.asc("order"));
+        List<Folder> folders = folderService.findList(courseService.find(courseId),null,null,orders);
+        if(folders.isEmpty()){
+            Folder folder = new Folder();
+            folder.setName(null);
+            folder.setId(null);
+            folder.setLessons(new HashSet<>(lessonService.findList(courseService.find(courseId),null,null,null,null)));
+            folders.add(folder);
+        }
+        return folders;
     }
 
     @PostMapping("/lesson")
@@ -77,15 +92,15 @@ public class IndexController extends BaseController{
 
         // 加积分操作
         // 当天，同一个课程，同一个链接只加一次
-       if(member!=null){
-           boolean exist = lessonReadRecordService.existToday(lessonId,member.getId(),playUrlName,playUrlUrl);
-           if(!exist){
-               LessonReadRecord lessonReadRecord = lessonReadRecordService.save(lessonId,member.getId(),playUrlName,playUrlUrl);
-               if(lessonReadRecord!=null){
-                   memberService.addPoint(member,10, PointLog.Type.reward,"看视频");
-               }
-           }
-       }
+        if(member!=null){
+            boolean exist = lessonReadRecordService.existToday(lessonId,member.getId(),playUrlName,playUrlUrl);
+            if(!exist){
+                LessonReadRecord lessonReadRecord = lessonReadRecordService.save(lessonId,member.getId(),playUrlName,playUrlUrl);
+                if(lessonReadRecord!=null){
+                    memberService.addPoint(member,10, PointLog.Type.reward,"看视频");
+                }
+            }
+        }
         return Message.success("请求成功");
     }
 }
