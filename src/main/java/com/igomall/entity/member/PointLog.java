@@ -53,6 +53,11 @@ public class PointLog extends BaseEntity<Long> {
 		 * 注册
 		 */
 		register,
+
+		/**
+		 * 资料下载
+		 */
+		download,
 	}
 
 	/**

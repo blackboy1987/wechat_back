@@ -20,22 +20,23 @@ public class Demo {
         System.out.println(files.size());*/
 
 
-        String path = "F:\\BaiduNetdiskDownload\\02：2019千锋web前端系列教程（共1300集）";
+        String path = "D:\\Program Files\\JiJiDown\\Download\\2019年最全最新Vue、Vuejs教程，从入门到精通";
         File parent = new File(path);
-        List<File> files = new ArrayList<>();
-        listFile(parent,files);
-        for (int i=0;i<files.size();i++) {
-            File file = files.get(i);
+        //List<File> files = new ArrayList<>();
+       // listFile(parent,files);
+        File[] files = parent.listFiles();
+        for (int i=0;i<files.length;i++) {
+            File file = files[i];
             String fileName = file.getName();
-            if(fileName.indexOf(".mp4")>0 && StringUtils.contains(fileName,"千锋Web")){
-                System.out.println(file.getAbsolutePath());
-                System.out.println(file.getParentFile().getAbsolutePath());
-                fileName = fileName.replace("千锋Web前端教程：","");
-                fileName = fileName.replace("2019千锋Web前端：","");
-                System.out.println(fileName);
-                FileUtils.copyFile(file,new File(file.getParentFile().getAbsolutePath(),fileName));
-                FileUtils.deleteQuietly(file);
-            }
+            String[] fileNames = fileName.split("\\.");
+            // 01-(了解)Vuejs课程介绍(Av89760569,P1);
+            String aa = fileNames[1].substring(3);
+            String bb = aa.substring(0,aa.lastIndexOf("("));
+            fileName = fileNames[0]+"."+ bb + "." +fileNames[2];
+            System.out.println(fileName);
+
+            FileUtils.copyFile(file,new File(file.getParentFile().getAbsolutePath(),fileName));
+            FileUtils.deleteQuietly(file);
         }
 
     }

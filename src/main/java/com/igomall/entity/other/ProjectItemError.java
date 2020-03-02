@@ -16,6 +16,7 @@ public class ProjectItemError extends OrderedEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false)
+    @JsonView({ListView.class})
     private String name;
 
     @Length(max = 200)
@@ -23,15 +24,16 @@ public class ProjectItemError extends OrderedEntity<Long> {
     private String icon;
 
     @Length(max = 200)
-    @JsonView({JsonApiView.class,EditView.class})
+    @JsonView({JsonApiView.class,EditView.class,ListView.class})
     private String siteUrl;
 
     @Length(max = 200)
-    @JsonView({JsonApiView.class,EditView.class})
+    @JsonView({JsonApiView.class,EditView.class,ListView.class})
     private String downloadUrl;
 
     @Length(max = 500)
     @Column(length = 500)
+    @JsonView({ListView.class})
     private String memo;
 
     @ManyToOne(fetch = FetchType.LAZY)

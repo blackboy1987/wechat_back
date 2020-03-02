@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.BaseAttributeConverter;
 import com.igomall.entity.OrderedEntity;
+import com.igomall.entity.other.BookItem;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -54,6 +55,9 @@ public class Lesson extends OrderedEntity<Long> {
     @Convert(converter = PlayUrlConverter.class)
     private List<PlayUrl> playUrls = new ArrayList<>();
 
+    @JsonView({EditView.class})
+    private String documentUrl;
+
     public Course getCourse() {
         return course;
     }
@@ -100,6 +104,14 @@ public class Lesson extends OrderedEntity<Long> {
 
     public void setPlayUrls(List<PlayUrl> playUrls) {
         this.playUrls = playUrls;
+    }
+
+    public String getDocumentUrl() {
+        return documentUrl;
+    }
+
+    public void setDocumentUrl(String documentUrl) {
+        this.documentUrl = documentUrl;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -233,6 +245,15 @@ public class Lesson extends OrderedEntity<Long> {
             return folder.getName();
         }
         return null;
+    }
+
+    @Transient
+    @JsonView({ListView.class})
+    public Boolean getDocument(){
+       if(StringUtils.isNotEmpty(documentUrl)){
+           return true;
+       }
+       return false;
     }
 
     /**

@@ -58,5 +58,7 @@
 	<cache name="projectCategory" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
 	<cache name="toolItem" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
 	<cache name="toolCategory" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
+	<cache name="baiDuTag" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
+	<cache name="baiDuResource" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
 
 </ehcache>

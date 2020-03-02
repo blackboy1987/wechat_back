@@ -16,6 +16,7 @@ import com.igomall.service.course.FolderService;
 import com.igomall.service.course.LessonService;
 import com.igomall.service.member.LessonReadRecordService;
 import com.igomall.service.member.MemberService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,6 +77,12 @@ public class IndexController extends BaseController{
     public List<Lesson.PlayUrl> playUrl(Long lessonId, @CurrentUser Member member){
         Lesson lesson = lessonService.find(lessonId);
         if(lesson!=null){
+            if(lesson.getDocument()){
+                Lesson.PlayUrl playUrl = new Lesson.PlayUrl();
+                playUrl.setName("资料下载");
+                playUrl.setUrl("资料下载");
+                lesson.getPlayUrls().add(playUrl);
+            }
             return lesson.getPlayUrls();
         }
         return Collections.emptyList();
@@ -100,4 +107,22 @@ public class IndexController extends BaseController{
         }
         return Message.success("请求成功");
     }
+
+    @PostMapping("/download")
+    public Message download(Long lessonId,String playUrlName,String playUrlUrl, @CurrentUser Member member){
+        if(member==null){
+            return Message.error("请先登录");
+        }
+        Lesson lesson = lessonService.find(lessonId);
+        if(lesson!=null){
+            if(StringUtils.isNotEmpty(lesson.getDocumentUrl())){
+                memberService.addPoint(member,-50, PointLog.Type.download,"下载资源");
+                return Message.success(lesson.getDocumentUrl());
+            }else{
+                return Message.error("暂未提供文档下载服务");
+            }
+        }
+        return Message.error("课程不存在！！！");
+    }
+
 }
