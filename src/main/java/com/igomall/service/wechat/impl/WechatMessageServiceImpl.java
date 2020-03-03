@@ -5,18 +5,23 @@ import com.igomall.entity.wechat.WeChatMessage;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.other.BaiDuTagService;
 import com.igomall.service.wechat.WechatMessageService;
+import com.igomall.service.wechat.WechatUserService;
 import com.igomall.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long> implements WechatMessageService {
 
     @Autowired
     private BaiDuTagService baiDuTagService;
+    @Autowired
+    private WechatUserService wechatUserService;
+
 
    public String getHelpMessage(){
        List<BaiDuTag> baiDuTags = baiDuTagService.findAll();
@@ -32,6 +37,12 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
     }
 
     public WeChatMessage saveMessage(Map<String,String> map){
+       // 保存一下用户。这样可以把以前已经关注的用户也可以保存进来
+        CompletableFuture.runAsync(()->{
+            wechatUserService.saveUser(map.get("FromUserName"));
+        });
+
+
         WeChatMessage weChatMessage = JsonUtils.toObject(JsonUtils.toJson(map),WeChatMessage.class);
         return super.save(weChatMessage);
     }

@@ -1,5 +1,9 @@
 package com.igomall.util;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.igomall.common.Pageable;
+import com.igomall.entity.wechat.material.NewsMaterial;
+import com.igomall.entity.wechat.material.NewsMaterialResponse;
 import com.igomall.entity.wechat.response.AccessToken;
 import com.igomall.entity.wechat.response.WeChatUserResponse;
 import org.dom4j.Document;
@@ -57,8 +61,8 @@ public final class WechatUtils {
     }
 
     public static void main(String[] args) {
-        AccessToken accessToken = getAccessToken();
-        System.out.println(accessToken);
+        Pageable pageable = new Pageable();
+       getMaterial("news",pageable);
     }
 
 
@@ -72,6 +76,16 @@ public final class WechatUtils {
         String result = WebUtils.get(url,params);
         return JsonUtils.toObject(result, WeChatUserResponse.class);
 
+    }
+
+    public static NewsMaterialResponse getMaterial(String type, Pageable pageable){
+        String url="https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token="+getAccessToken().getAccessToken();
+        Map<String,Object> params = new HashMap<>();
+        params.put("type",type);
+        params.put("offset",(pageable.getPageNumber()-1)*pageable.getPageSize());
+        params.put("count",pageable.getPageSize());
+        String result = WebUtils.postJson(url,JsonUtils.toJson(params));
+        return JsonUtils.toObject(result,NewsMaterialResponse.class);
     }
 
 }

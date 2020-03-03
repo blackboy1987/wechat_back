@@ -8,6 +8,7 @@ import com.igomall.entity.wechat.WeChatUser;
 import com.igomall.service.AreaService;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.wechat.WechatUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -31,5 +32,19 @@ public class WechatUserServiceImpl extends BaseServiceImpl<WeChatUser, Long> imp
 
     public WeChatUser findByFromUserName(String fromUserName){
         return wechatUserDao.find("fromUserName",fromUserName);
+    }
+
+    public WeChatUser saveUser(String fromUserName){
+        if(StringUtils.isNotEmpty(fromUserName)){
+            WeChatUser weChatUser = findByFromUserName(fromUserName);
+            if(weChatUser==null){
+                weChatUser = new WeChatUser();
+                weChatUser.setFromUserName(fromUserName);
+                return super.save(weChatUser);
+            }
+
+            return weChatUser;
+        }
+        return null;
     }
 }

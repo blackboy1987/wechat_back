@@ -16,4 +16,6 @@ import java.util.List;
 public interface WechatUserService extends BaseService<WeChatUser, Long> {
 
 	WeChatUser findByFromUserName(String fromUserName);
+
+	WeChatUser saveUser(String fromUserName);
 }

@@ -34,6 +34,7 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -515,6 +516,34 @@ public final class WebUtils {
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
+		return result;
+	}
+
+	public static String postJson(String url, String json) {
+		Assert.hasText(url,"");
+
+		String result = null;
+
+		try {
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+
+			HttpPost httpPost = new HttpPost(url);
+			httpPost.addHeader("Content-Type", "application/json");
+			httpPost.setEntity(new StringEntity(json,"UTF-8")); //防止中文乱码
+
+			CloseableHttpResponse response = httpClient.execute(httpPost);
+			System.out.println(response.getStatusLine().getStatusCode() + "\n");
+			HttpEntity entity = response.getEntity();
+			result = EntityUtils.toString(entity, "UTF-8");
+			System.out.println(result);
+
+			response.close();
+			httpClient.close();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+
 		return result;
 	}
 
