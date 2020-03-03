@@ -1,8 +1,8 @@
 package com.igomall.entity.wechat.receive;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.igomall.entity.wechat.MsgType;
 
 /**
  * 微信用户向公众账号发消息的基类
@@ -22,7 +22,7 @@ public class BaseMessage {
 
     @JacksonXmlCData
     @JacksonXmlProperty(localName="MsgType")
-    private String msgType;
+    private MsgType msgType;
 
     @JacksonXmlProperty(localName="MsgId")
     private Long msgId;
@@ -52,11 +52,11 @@ public class BaseMessage {
         this.createTime = createTime;
     }
 
-    public String getMsgType() {
+    public MsgType getMsgType() {
         return msgType;
     }
 
-    public void setMsgType(String msgType) {
+    public void setMsgType(MsgType msgType) {
         this.msgType = msgType;
     }
 
