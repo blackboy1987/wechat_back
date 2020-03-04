@@ -32,6 +32,7 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
                sb.append("\n"+baiDuTag.getCode()+"   "+baiDuTag.getName()+" 课程");
            }
        }
+       sb.append("\n\n回复“yzm”获取idea全家桶注册码");
        sb.append("\n\n回复“?”显示帮助菜单");
        return sb.toString();
     }

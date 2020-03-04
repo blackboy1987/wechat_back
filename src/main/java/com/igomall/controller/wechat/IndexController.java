@@ -19,6 +19,7 @@ import com.igomall.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,8 @@ public class IndexController {
     private BaiDuTagService baiDuTagService;
     @Autowired
     private BaiDuResourceService baiDuResourceService;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @GetMapping
     public String index(String signature,String timestamp,String nonce,String echostr){
@@ -135,6 +138,19 @@ public class IndexController {
             if(StringUtils.equalsAnyIgnoreCase("?",content)||StringUtils.equalsAnyIgnoreCase("？",content)){
                 StringBuffer sb = new StringBuffer();
                 sb.append(wechatMessageService.getHelpMessage());
+                // 关注就给回复消息
+                textMessage = new TextMessage();
+                textMessage.setContent(sb.toString());
+                textMessage.setFromUserName(map.get("ToUserName"));
+                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setMsgType("text");
+                wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
+                return XmlUtils.toXml(textMessage);
+            }if(StringUtils.equalsAnyIgnoreCase("yzm",content)){
+                StringBuffer sb = new StringBuffer();
+                Map<String,Object> result = jdbcTemplate.queryForMap("select yzm from edu_site_config order createdDate desc limit 1");
+
+                sb.append(result.get("yzm").toString());
                 // 关注就给回复消息
                 textMessage = new TextMessage();
                 textMessage.setContent(sb.toString());

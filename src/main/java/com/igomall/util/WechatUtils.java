@@ -6,6 +6,7 @@ import com.igomall.entity.wechat.material.NewsMaterial;
 import com.igomall.entity.wechat.material.NewsMaterialResponse;
 import com.igomall.entity.wechat.response.AccessToken;
 import com.igomall.entity.wechat.response.WeChatUserResponse;
+import jdk.nashorn.internal.ir.IdentNode;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -50,6 +51,10 @@ public final class WechatUtils {
         return map;
     }
 
+    /**
+     * 获取accesstoken
+     * @return
+     */
     public static AccessToken getAccessToken(){
         String url = "https://api.weixin.qq.com/cgi-bin/token";
         Map<String,Object> params = new HashMap<>();
@@ -60,12 +65,11 @@ public final class WechatUtils {
         return JsonUtils.toObject(result, AccessToken.class);
     }
 
-    public static void main(String[] args) {
-        Pageable pageable = new Pageable();
-       getMaterial("news",pageable);
-    }
-
-
+    /**
+     * 获取用户基本信息
+     * @param openid
+     * @return
+     */
     public static WeChatUserResponse getUserInfo(String openid){
         String url = "https://api.weixin.qq.com/cgi-bin/user/info";
         Map<String,Object> params = new HashMap<>();
@@ -78,6 +82,12 @@ public final class WechatUtils {
 
     }
 
+    /**
+     * 获取素材，分页展示
+     * @param type
+     * @param pageable
+     * @return
+     */
     public static NewsMaterialResponse getMaterial(String type, Pageable pageable){
         String url="https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token="+getAccessToken().getAccessToken();
         Map<String,Object> params = new HashMap<>();
@@ -88,4 +98,77 @@ public final class WechatUtils {
         return JsonUtils.toObject(result,NewsMaterialResponse.class);
     }
 
+    /**
+     * 获取评论
+     * @param msgDataId
+     * @param pageable
+     * @return
+     */
+    public static String getComments(String msgDataId, Integer index, Integer type, Pageable pageable){
+        String url="https://api.weixin.qq.com/cgi-bin/comment/list?access_token="+getAccessToken().getAccessToken();
+        Map<String,Object> params = new HashMap<>();
+        params.put("msg_data_id",msgDataId);
+        params.put("index",index);
+        params.put("type",type);
+        params.put("begin",(pageable.getPageNumber()-1)*pageable.getPageSize());
+        params.put("count",pageable.getPageSize());
+        String result = WebUtils.postJson(url,JsonUtils.toJson(params));
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+        Pageable pageable = new Pageable();
+        getComments("4PCbTGwo9Nmscuv1McTgoCw0dBE2n8drTaDUixur1J0",0,0,pageable);
+    }
 }
