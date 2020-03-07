@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.igomall.common.BaseAttributeConverter;
 import com.igomall.entity.BaseEntity;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,14 +18,18 @@ import java.util.List;
 public class WeChatUser extends BaseEntity<Long> {
 
     @NotEmpty
-    @Column(nullable = false,updatable = true,unique = true)
+    @Column(nullable = false,updatable = false,unique = true)
     private String fromUserName;
+
+    @Column(unique = true)
+    private String weChatId;
 
     private Date updateTime;
 
     /**
-     * 0:取消关注
-     * 1：关注
+     * 0：未关注
+     * 1：已关注
+     * 2：已取关
      */
     private Integer status;
 
@@ -37,6 +42,7 @@ public class WeChatUser extends BaseEntity<Long> {
     /**
      * 用户的标识，对当前公众号唯一
      */
+    @Column(updatable = false,unique = true)
     private String openid;
 
     /**
@@ -134,6 +140,12 @@ public class WeChatUser extends BaseEntity<Long> {
      */
     @JsonProperty("qr_scene_str")
     private String qrSceneStr;
+
+    private String mobile;
+
+    private String name;
+
+    private String address;
 
     public String getFromUserName() {
         return fromUserName;
@@ -293,6 +305,52 @@ public class WeChatUser extends BaseEntity<Long> {
 
     public void setQrSceneStr(String qrSceneStr) {
         this.qrSceneStr = qrSceneStr;
+    }
+
+    public String getWeChatId() {
+        return weChatId;
+    }
+
+    public void setWeChatId(String weChatId) {
+        this.weChatId = weChatId;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @PrePersist
+    public void preSave(){
+        if(StringUtils.isEmpty(openid)){
+            this.setOpenid(fromUserName);
+        }
+    }
+
+    @PreUpdate
+    public void preUpdate(){
+        if(StringUtils.isEmpty(openid)){
+            this.setOpenid(fromUserName);
+        }
     }
 
     /**

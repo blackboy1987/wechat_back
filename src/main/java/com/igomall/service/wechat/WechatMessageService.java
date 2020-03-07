@@ -11,4 +11,10 @@ public interface WechatMessageService extends BaseService<WeChatMessage,Long> {
 
     WeChatMessage saveMessage(Map<String,String> map);
     WeChatMessage updateMessage(WeChatMessage weChatMessage,String receiveContent);
+
+
+    String getCourseListInfo(String title);
+    String getShareUrl();
+
+    String getXxsbInfo();
 }

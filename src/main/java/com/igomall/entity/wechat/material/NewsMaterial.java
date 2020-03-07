@@ -46,4 +46,11 @@ public class NewsMaterial extends BaseEntity<Long> {
     public void setContent(NewsMaterialContent content) {
         this.content = content;
     }
+
+    @PrePersist
+    public void preSave(){
+        if(updateTime==null){
+            updateTime = new Date();
+        }
+    }
 }
