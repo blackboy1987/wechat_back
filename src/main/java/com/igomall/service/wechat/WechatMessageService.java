@@ -7,14 +7,14 @@ import java.util.Map;
 
 public interface WechatMessageService extends BaseService<WeChatMessage,Long> {
 
-    String getHelpMessage();
+    String getHelpMessage(String fromUserName);
 
     WeChatMessage saveMessage(Map<String,String> map);
     WeChatMessage updateMessage(WeChatMessage weChatMessage,String receiveContent);
 
 
     String getCourseListInfo(String title);
-    String getShareUrl();
+    String getShareUrl(String fromUserName);
 
     String getXxsbInfo();
 }

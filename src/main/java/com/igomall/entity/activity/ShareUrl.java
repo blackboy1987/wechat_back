@@ -23,6 +23,8 @@ public class ShareUrl extends BaseEntity<Long> {
      */
     private Integer status;
 
+    private Long readCount;
+
     public String getUrl() {
         return url;
     }
@@ -45,5 +47,13 @@ public class ShareUrl extends BaseEntity<Long> {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Long getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(Long readCount) {
+        this.readCount = readCount;
     }
 }

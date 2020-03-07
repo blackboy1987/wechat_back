@@ -1,9 +1,14 @@
 package com.igomall.service.wechat.impl;
 
 import com.igomall.common.Filter;
+import com.igomall.dao.active.ShareUrlDao;
+import com.igomall.dao.active.ShareUrlRecordDao;
+import com.igomall.entity.activity.ShareUrl;
+import com.igomall.entity.activity.ShareUrlRecord;
 import com.igomall.entity.other.BaiDuResource;
 import com.igomall.entity.other.BaiDuTag;
 import com.igomall.entity.wechat.WeChatMessage;
+import com.igomall.entity.wechat.WeChatUser;
 import com.igomall.service.impl.BaseServiceImpl;
 import com.igomall.service.other.BaiDuResourceService;
 import com.igomall.service.other.BaiDuTagService;
@@ -16,27 +21,34 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 @Service
 public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long> implements WechatMessageService {
 
     @Autowired
-    private BaiDuTagService baiDuTagService;
-    @Autowired
     private BaiDuResourceService baiDuResourceService;
     @Autowired
     private WechatUserService wechatUserService;
+    @Autowired
+    private ShareUrlRecordDao shareUrlRecordDao;
+    @Autowired
+    private ShareUrlDao shareUrlDao;
 
 
-   public String getHelpMessage(){
-       StringBuffer sb = new StringBuffer();
+   public String getHelpMessage(String fromUserName){
+       return getShareUrl(fromUserName);
+
+
+       /*StringBuffer sb = new StringBuffer();
        sb.append("请回复:课程+课程关键字 获取课程信息\n");
        sb.append("\n比如:课程html 获取包含html关键字的课程\n");
+       sb.append("\n\n回复“wyfx”获取分享文章");
        sb.append("\n\n回复“xxsb”获取信息绑定操作");
        sb.append("\n\n回复“yzm”获取idea全家桶注册码");
        sb.append("\n\n回复“?”显示帮助菜单");
-       return sb.toString();
+       return sb.toString();*/
     }
 
     public WeChatMessage saveMessage(Map<String,String> map){
@@ -83,14 +95,33 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
     }
 
     @Override
-    public String getShareUrl() {
-        List<Map<String,Object>> shareUrls = jdbcTemplate.queryForList("select title,url from edu_share_url where status=0");
+    public String getShareUrl(String fromUserName) {
+        Random random = new Random();
+        List<ShareUrl> shareUrls = shareUrlDao.findList(null,null,null,null);
         StringBuffer sb = new StringBuffer();
         if(shareUrls!=null&&!shareUrls.isEmpty()){
-            sb.append("您的分享资源为：\n");
-            sb.append("<a href=\""+shareUrls.get(0).get("url")+"\">"+shareUrls.get(0).get("title")+"</a>");
+            Integer index = random.nextInt(shareUrls.size());
+            sb.append("正在举办积赞送礼品活动。\n\n");
+            sb.append("规则：");
+            sb.append("\n1：参与用户必须关注公众号。");
+            sb.append("\n2：分享朋友圈集满200赞。");
+            sb.append("\n3：分享开始48小时内有效。");
+            sb.append("\n4：集满赞将截图发给公众号。");
+            sb.append("\n\n分享资源：\n");
+            sb.append("<a href=\""+shareUrls.get(index).getUrl()+"\">"+shareUrls.get(index).getTitle()+"</a>");
+
+            // 保存获取的记录
+            ShareUrlRecord shareUrlRecord = new ShareUrlRecord();
+            shareUrlRecord.setShareUrl(shareUrls.get(index));
+            WeChatUser weChatUser = wechatUserService.findByFromUserName(fromUserName);
+            if(weChatUser.getStatus()==0){
+                sb.append("您未关注公众号，无法参与活动。");
+            }else{
+                shareUrlRecord.setWeChatUser(weChatUser);
+                shareUrlRecordDao.persist(shareUrlRecord);
+            }
         }else{
-            sb.append("暂未找到相关课程。");
+            sb.append("暂未找到相关活动文章。");
         }
 
         sb.append("\n\n回复“?”显示帮助菜单");

@@ -91,7 +91,8 @@ public class IndexController {
 
             StringBuffer sb = new StringBuffer();
             sb.append("感谢您的关注\n\n");
-            sb.append(wechatMessageService.getHelpMessage());
+            sb.append("公众号正在举办积赞送礼品活动。\n\n");
+            sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
             // 关注就给回复消息
             textMessage = new TextMessage();
             textMessage.setContent(sb.toString());
@@ -135,7 +136,7 @@ public class IndexController {
             TextMessage textMessage = null;
             if(StringUtils.equalsAnyIgnoreCase("?",content)||StringUtils.equalsAnyIgnoreCase("？",content)){
                 StringBuffer sb = new StringBuffer();
-                sb.append(wechatMessageService.getHelpMessage());
+                sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
                 // 关注就给回复消息
                 textMessage = new TextMessage();
                 textMessage.setContent(sb.toString());
@@ -170,7 +171,7 @@ public class IndexController {
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase(content,"wyfx")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatMessageService.getShareUrl());
+                textMessage.setContent(wechatMessageService.getShareUrl(map.get("FromUserName")));
                 textMessage.setFromUserName(map.get("ToUserName"));
                 textMessage.setToUserName(map.get("FromUserName"));
                 textMessage.setMsgType("text");
@@ -290,7 +291,7 @@ public class IndexController {
                     return XmlUtils.toXml(textMessage);
                 }else{
                     StringBuffer sb = new StringBuffer();
-                    sb.append(wechatMessageService.getHelpMessage());
+                    sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
                     // 关注就给回复消息
                     textMessage = new TextMessage();
                     textMessage.setContent(sb.toString());
@@ -303,7 +304,7 @@ public class IndexController {
             }
         }
         StringBuffer sb = new StringBuffer();
-        sb.append(wechatMessageService.getHelpMessage());
+        sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
         // 关注就给回复消息
         TextMessage textMessage = new TextMessage();
         textMessage.setContent(sb.toString());
