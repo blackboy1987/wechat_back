@@ -15,6 +15,7 @@ import com.igomall.service.other.BaiDuTagService;
 import com.igomall.service.wechat.WechatMessageService;
 import com.igomall.service.wechat.WechatUserService;
 import com.igomall.util.JsonUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,18 +38,29 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
     private ShareUrlDao shareUrlDao;
 
 
-   public String getHelpMessage(String fromUserName){
-       return getShareUrl(fromUserName);
+   public String getHelpMessage(String fromUserName,String type, WeChatUser weChatUser){
+       // return getShareUrl(fromUserName);
 
 
-       /*StringBuffer sb = new StringBuffer();
+       StringBuffer sb = new StringBuffer();
        sb.append("请回复:课程+课程关键字 获取课程信息\n");
        sb.append("\n比如:课程html 获取包含html关键字的课程\n");
-       sb.append("\n\n回复“wyfx”获取分享文章");
-       sb.append("\n\n回复“xxsb”获取信息绑定操作");
-       sb.append("\n\n回复“yzm”获取idea全家桶注册码");
+       sb.append("\n回复“wyfx”获取分享文章");
+       sb.append("\n回复“xxsb”获取信息绑定操作");
+       sb.append("\n回复“yzm”获取idea全家桶注册码");
+
+       if(StringUtils.equalsAnyIgnoreCase("subscribe",type)){
+           Random random = new Random();
+           // 如果是关注就给他一套课程
+           List<BaiDuResource> baiDuResources = baiDuResourceService.findAll();
+           Integer index = random.nextInt(baiDuResources.size());
+           sb.append("\n");
+           sb.append("\n课程名称："+baiDuResources.get(index).getTitle());
+           sb.append("\n课程地址："+baiDuResources.get(index).getBaiDuUrl());
+       }
+
        sb.append("\n\n回复“?”显示帮助菜单");
-       return sb.toString();*/
+       return sb.toString();
     }
 
     public WeChatMessage saveMessage(Map<String,String> map){

@@ -91,8 +91,7 @@ public class IndexController {
 
             StringBuffer sb = new StringBuffer();
             sb.append("感谢您的关注\n\n");
-            sb.append("公众号正在举办积赞送礼品活动。\n\n");
-            sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
+            sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"subscribe",weChatUser));
             // 关注就给回复消息
             textMessage = new TextMessage();
             textMessage.setContent(sb.toString());
@@ -136,7 +135,7 @@ public class IndexController {
             TextMessage textMessage = null;
             if(StringUtils.equalsAnyIgnoreCase("?",content)||StringUtils.equalsAnyIgnoreCase("？",content)){
                 StringBuffer sb = new StringBuffer();
-                sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
+                sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"text",null));
                 // 关注就给回复消息
                 textMessage = new TextMessage();
                 textMessage.setContent(sb.toString());
@@ -291,7 +290,7 @@ public class IndexController {
                     return XmlUtils.toXml(textMessage);
                 }else{
                     StringBuffer sb = new StringBuffer();
-                    sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
+                    sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"text",null));
                     // 关注就给回复消息
                     textMessage = new TextMessage();
                     textMessage.setContent(sb.toString());
@@ -304,7 +303,7 @@ public class IndexController {
             }
         }
         StringBuffer sb = new StringBuffer();
-        sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName")));
+        sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"text",null));
         // 关注就给回复消息
         TextMessage textMessage = new TextMessage();
         textMessage.setContent(sb.toString());
@@ -314,5 +313,4 @@ public class IndexController {
         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
         return XmlUtils.toXml(textMessage);
     }
-
 }
