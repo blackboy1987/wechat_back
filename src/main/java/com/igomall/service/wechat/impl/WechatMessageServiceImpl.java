@@ -104,9 +104,14 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
             sb.append("正在举办积赞送礼品活动。\n\n");
             sb.append("规则：");
             sb.append("\n1：参与用户必须关注公众号。");
-            sb.append("\n2：分享朋友圈集满200赞。");
+            sb.append("\n2：分享朋友圈集满100赞。");
             sb.append("\n3：分享开始48小时内有效。");
             sb.append("\n4：集满赞将截图发给公众号。");
+            sb.append("\n5：奖品只能选择一个。");
+            sb.append("\n6：可以发送信息，选择一个。");
+            sb.append("\n\n奖品：\n");
+            sb.append("1.键盘一个。\n");
+            sb.append("2.鼠标一个。\n");
             sb.append("\n\n分享资源：\n");
             sb.append("<a href=\""+shareUrls.get(index).getUrl()+"\">"+shareUrls.get(index).getTitle()+"</a>");
 

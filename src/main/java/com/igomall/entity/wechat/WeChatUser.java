@@ -342,14 +342,20 @@ public class WeChatUser extends BaseEntity<Long> {
     @PrePersist
     public void preSave(){
         if(StringUtils.isEmpty(openid)){
-            this.setOpenid(fromUserName);
+            setOpenid(fromUserName);
+        }
+        if(status==null){
+            setStatus(0);
         }
     }
 
     @PreUpdate
     public void preUpdate(){
         if(StringUtils.isEmpty(openid)){
-            this.setOpenid(fromUserName);
+            setOpenid(fromUserName);
+        }
+        if(status==null){
+            setStatus(0);
         }
     }
 
