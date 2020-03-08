@@ -347,6 +347,9 @@ public class WeChatUser extends BaseEntity<Long> {
         if(status==null){
             setStatus(0);
         }
+        if(updateTime==null){
+            setUpdateTime(new Date());
+        }
     }
 
     @PreUpdate
@@ -356,6 +359,9 @@ public class WeChatUser extends BaseEntity<Long> {
         }
         if(status==null){
             setStatus(0);
+        }
+        if(updateTime==null){
+            setUpdateTime(getCreatedDate());
         }
     }
 
