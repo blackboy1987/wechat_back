@@ -2,6 +2,7 @@ package com.igomall.controller.wechat;
 
 import com.igomall.entity.other.BaiDuResource;
 import com.igomall.entity.other.BaiDuTag;
+import com.igomall.entity.wechat.MsgType;
 import com.igomall.entity.wechat.WeChatMessage;
 import com.igomall.entity.wechat.WeChatUser;
 import com.igomall.entity.wechat.WeChatUserLog;
@@ -15,8 +16,8 @@ import com.igomall.service.wechat.WechatMessageService;
 import com.igomall.service.wechat.WechatUserLogService;
 import com.igomall.service.wechat.WechatUserService;
 import com.igomall.util.JsonUtils;
-import com.igomall.util.SignUtil;
-import com.igomall.util.WechatUtils;
+import com.igomall.util.wechat.SignUtil;
+import com.igomall.util.wechat.WechatUtils;
 import com.igomall.util.XmlUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -59,7 +60,7 @@ public class IndexController {
     @PostMapping
     public String index(HttpServletRequest request){
         Map<String,String> map = WechatUtils.parseXml(request);
-        String event = map.get("Event");
+        String event = map.get("event");
         WeChatMessage weChatMessage = null;
         try {
             weChatMessage = wechatMessageService.saveMessage(map);
@@ -76,7 +77,7 @@ public class IndexController {
 
 
     private String subscribe(Map<String,String> map, WeChatMessage weChatMessage){
-        String event = map.get("Event");
+        String event = map.get("event");
         BaseEvent baseEvent = null;
         TextMessage textMessage = null;
         WeChatUserLog weChatUserLog = new WeChatUserLog();
@@ -93,7 +94,7 @@ public class IndexController {
             weChatUserLog.setMemo("关注");
             StringBuffer sb = new StringBuffer();
             sb.append("感谢您的关注\n\n");
-            sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"subscribe",weChatUser));
+            sb.append(wechatMessageService.getHelpMessage(map.get("fromUserName"),"subscribe",weChatUser));
             // 关注就给回复消息
             textMessage = new TextMessage();
             textMessage.setContent(sb.toString());
@@ -140,99 +141,99 @@ public class IndexController {
     }
 
     private String parseMessage(Map<String,String> map, WeChatMessage weChatMessage){
-        String msgType = map.get("MsgType");
-        String content = map.get("Content");
-
-        if(StringUtils.equalsAnyIgnoreCase(msgType,"text")){
+        String msgType = map.get("msgType");
+        String content = map.get("content");
+        System.out.println("--------"+msgType);
+        if(StringUtils.equalsAnyIgnoreCase(msgType,MsgType.text.name())){
             TextMessage textMessage = null;
             if(StringUtils.equalsAnyIgnoreCase("?",content)||StringUtils.equalsAnyIgnoreCase("？",content)){
                 StringBuffer sb = new StringBuffer();
-                sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"text",null));
+                sb.append(wechatMessageService.getHelpMessage(map.get("fromUserName"),"text",null));
                 // 关注就给回复消息
                 textMessage = new TextMessage();
                 textMessage.setContent(sb.toString());
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase("yzm",content)){
                 textMessage = new TextMessage();
                 textMessage.setContent("<a href=\"https://ishangedu.oss-cn-hangzhou.aliyuncs.com/yzm.txt\">戳我吧</a>");
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase("yq",content)){
                 textMessage = new TextMessage();
                 textMessage.setContent("<a href=\"https://news.qq.com/zt2020/page/feiyan.htm#/\">新冠肺炎数据</a>");
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWith(content,"课程")){
                 textMessage = new TextMessage();
                 textMessage.setContent(wechatMessageService.getCourseListInfo(content.substring(2)));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase(content,"wyfx")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatMessageService.getShareUrl(map.get("FromUserName")));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setContent(wechatMessageService.getShareUrl(map.get("fromUserName")));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase(content,"xxbd")){
                 textMessage = new TextMessage();
                 textMessage.setContent(wechatMessageService.getXxsbInfo());
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"微信")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatUserService.updateInfo(map.get("FromUserName"),content,"weChatId"));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"weChatId"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"昵称")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatUserService.updateInfo(map.get("FromUserName"),content,"nickname"));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"nickname"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"姓名")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatUserService.updateInfo(map.get("FromUserName"),content,"name"));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"name"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"地址")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatUserService.updateInfo(map.get("FromUserName"),content,"address"));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"address"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"电话")){
                 textMessage = new TextMessage();
-                textMessage.setContent(wechatUserService.updateInfo(map.get("FromUserName"),content,"mobile"));
-                textMessage.setFromUserName(map.get("ToUserName"));
-                textMessage.setToUserName(map.get("FromUserName"));
+                textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"mobile"));
+                textMessage.setFromUserName(map.get("toUserName"));
+                textMessage.setToUserName(map.get("fromUserName"));
                 textMessage.setMsgType("text");
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
@@ -247,8 +248,8 @@ public class IndexController {
                         // 关注就给回复消息
                         textMessage = new TextMessage();
                         textMessage.setContent("无相关课程");
-                        textMessage.setFromUserName(map.get("ToUserName"));
-                        textMessage.setToUserName(map.get("FromUserName"));
+                        textMessage.setFromUserName(map.get("toUserName"));
+                        textMessage.setToUserName(map.get("fromUserName"));
                         textMessage.setMsgType("text");
                         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                         return XmlUtils.toXml(textMessage);
@@ -264,14 +265,11 @@ public class IndexController {
                     // 关注就给回复消息
                     textMessage = new TextMessage();
                     textMessage.setContent(sb.toString());
-                    textMessage.setFromUserName(map.get("ToUserName"));
-                    textMessage.setToUserName(map.get("FromUserName"));
+                    textMessage.setFromUserName(map.get("toUserName"));
+                    textMessage.setToUserName(map.get("fromUserName"));
                     textMessage.setMsgType("text");
                     wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                     return XmlUtils.toXml(textMessage);
-
-
-
                 }else if(content.matches(regEx1)){
                     // 课程
                     BaiDuResource baiDuResource = baiDuResourceService.findByCode(content);
@@ -280,8 +278,8 @@ public class IndexController {
                         // 关注就给回复消息
                         textMessage = new TextMessage();
                         textMessage.setContent("无课程");
-                        textMessage.setFromUserName(map.get("ToUserName"));
-                        textMessage.setToUserName(map.get("FromUserName"));
+                        textMessage.setFromUserName(map.get("toUserName"));
+                        textMessage.setToUserName(map.get("fromUserName"));
                         textMessage.setMsgType("text");
                         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                         return XmlUtils.toXml(textMessage);
@@ -295,32 +293,35 @@ public class IndexController {
                     // 关注就给回复消息
                     textMessage = new TextMessage();
                     textMessage.setContent(sb.toString());
-                    textMessage.setFromUserName(map.get("ToUserName"));
-                    textMessage.setToUserName(map.get("FromUserName"));
+                    textMessage.setFromUserName(map.get("toUserName"));
+                    textMessage.setToUserName(map.get("fromUserName"));
                     textMessage.setMsgType("text");
                     wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                     return XmlUtils.toXml(textMessage);
                 }else{
                     StringBuffer sb = new StringBuffer();
-                    sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"text",null));
+                    sb.append(wechatMessageService.getHelpMessage(map.get("fromUserName"),"text",null));
                     // 关注就给回复消息
                     textMessage = new TextMessage();
                     textMessage.setContent(sb.toString());
-                    textMessage.setFromUserName(map.get("ToUserName"));
-                    textMessage.setToUserName(map.get("FromUserName"));
+                    textMessage.setFromUserName(map.get("toUserName"));
+                    textMessage.setToUserName(map.get("fromUserName"));
                     textMessage.setMsgType("text");
                     wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                     return XmlUtils.toXml(textMessage);
                 }
             }
+        }else if(StringUtils.equalsAnyIgnoreCase(msgType, MsgType.video.name())){
+            // 视频消息
+
         }
         StringBuffer sb = new StringBuffer();
-        sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"text",null));
+        sb.append(wechatMessageService.getHelpMessage(map.get("fromUserName"),"text",null));
         // 关注就给回复消息
         TextMessage textMessage = new TextMessage();
         textMessage.setContent(sb.toString());
-        textMessage.setFromUserName(map.get("ToUserName"));
-        textMessage.setToUserName(map.get("FromUserName"));
+        textMessage.setFromUserName(map.get("toUserName"));
+        textMessage.setToUserName(map.get("fromUserName"));
         textMessage.setMsgType("text");
         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
         return XmlUtils.toXml(textMessage);

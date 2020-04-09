@@ -1,38 +1,17 @@
 package com.igomall.entity.wechat.event;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 public class BaseEvent {
 
-    @JacksonXmlProperty(localName="CreateTime")
-    @JsonProperty("CreateTime")
     private Long createTime;
 
-    @JacksonXmlCData
-    @JacksonXmlProperty(localName="EventKey")
-    @JsonProperty("EventKey")
     private String eventKey;
 
-    @JacksonXmlCData
-    @JacksonXmlProperty(localName="Event")
-    @JsonProperty("Event")
     private String event;
 
-    @JacksonXmlCData
-    @JacksonXmlProperty(localName="ToUserName")
-    @JsonProperty("ToUserName")
     private String toUserName;
 
-    @JacksonXmlCData
-    @JacksonXmlProperty(localName="FromUserName")
-    @JsonProperty("FromUserName")
     private String fromUserName;
 
-    @JacksonXmlCData
-    @JacksonXmlProperty(localName="MsgType")
-    @JsonProperty("MsgType")
     private String msgType = "event";
 
     public Long getCreateTime() {

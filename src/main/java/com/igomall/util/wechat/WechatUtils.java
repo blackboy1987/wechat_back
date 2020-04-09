@@ -1,9 +1,15 @@
-package com.igomall.util;
+package com.igomall.util.wechat;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.igomall.common.Pageable;
 import com.igomall.entity.wechat.material.NewsMaterialResponse;
 import com.igomall.entity.wechat.response.AccessToken;
+import com.igomall.entity.wechat.response.IpListResponse;
 import com.igomall.entity.wechat.response.WeChatUserResponse;
+import com.igomall.util.Date8Utils;
+import com.igomall.util.EhCacheUtils;
+import com.igomall.util.JsonUtils;
+import com.igomall.util.WebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -63,6 +69,7 @@ public final class WechatUtils {
     public static AccessToken getAccessToken(){
         AccessToken accessToken = EhCacheUtils.getCacheAccessToken();
         if(accessToken!=null && accessToken.getExpiresDate().compareTo(new Date())>0){
+            System.out.println(accessToken.getAccessToken());
             return accessToken;
         }
         String url = "https://api.weixin.qq.com/cgi-bin/token";
@@ -72,16 +79,28 @@ public final class WechatUtils {
         params.put("secret",APPSECRET);
         String result = WebUtils.get(url,params);
         accessToken = JsonUtils.toObject(result, AccessToken.class);
-        if(accessToken.getExpires()!=0){
-            return null;
-        }
         if(StringUtils.isNotEmpty(accessToken.getAccessToken())){
             accessToken.setExpiresDate(Date8Utils.getNextSecond(accessToken.getExpires()-30));
             EhCacheUtils.setCacheAccessToken(accessToken);
+            System.out.println(accessToken.getAccessToken());
             return accessToken;
         }
         return getAccessToken();
 
+    }
+
+    /**
+     * 获取服务器ip
+     * @return
+     */
+    public IpListResponse getIpList(){
+        AccessToken accessToken = getAccessToken();
+        String url = "https://api.weixin.qq.com/cgi-bin/getcallbackip";
+        Map<String,Object> params = new HashMap<>();
+        params.put("access_token",accessToken.getAccessToken());
+        String result = WebUtils.get(url,params);
+        return JsonUtils.toObject(result, new TypeReference<IpListResponse>() {
+        });
     }
 
     /**

@@ -4,7 +4,7 @@ import com.igomall.common.Pageable;
 import com.igomall.entity.wechat.material.NewsMaterial;
 import com.igomall.entity.wechat.material.NewsMaterialResponse;
 import com.igomall.service.wechat.material.NewsMaterialService;
-import com.igomall.util.WechatUtils;
+import com.igomall.util.wechat.WechatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

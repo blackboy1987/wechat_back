@@ -1,4 +1,4 @@
-package com.igomall.util;
+package com.igomall.util.wechat;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;  

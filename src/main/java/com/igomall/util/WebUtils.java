@@ -2,6 +2,7 @@
 package com.igomall.util;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -476,6 +477,55 @@ public final class WebUtils {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 		return result;
+	}
+
+	/**
+	 * GET请求
+	 *
+	 * @param url
+	 *            URL
+	 * @param parameterMap
+	 *            请求参数
+	 * @return 返回结果
+	 */
+	public static InputStream get1(String url, Map<String, Object> parameterMap) {
+		Assert.hasText(url,"");
+		InputStream inputStream;
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<>();
+			if (parameterMap != null) {
+				for (Map.Entry<String, Object> entry : parameterMap.entrySet()) {
+					String name = entry.getKey();
+					String value = ConvertUtils.convert(entry.getValue());
+					if (StringUtils.isNotEmpty(name)) {
+						nameValuePairs.add(new BasicNameValuePair(name, value));
+					}
+				}
+			}
+			HttpGet httpGet = new HttpGet(url + (StringUtils.contains(url, "?") ? "&" : "?") + EntityUtils.toString(new UrlEncodedFormEntity(nameValuePairs, "UTF-8")));
+			CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(httpGet);
+			try {
+				HttpEntity httpEntity = httpResponse.getEntity();
+				if (httpEntity != null) {
+					inputStream = httpEntity.getContent();
+					return inputStream;
+				}
+			} finally {
+				try {
+					httpResponse.close();
+				} catch (IOException e) {
+				}
+			}
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} catch (ParseException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} catch (ClientProtocolException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} catch (IOException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		return null;
 	}
 
 	/**
