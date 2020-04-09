@@ -1,5 +1,7 @@
 package com.igomall.controller.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.igomall.common.Message;
 import com.igomall.common.Order;
@@ -16,12 +18,33 @@ import com.igomall.service.course.FolderService;
 import com.igomall.service.course.LessonService;
 import com.igomall.service.member.LessonReadRecordService;
 import com.igomall.service.member.MemberService;
+import com.igomall.util.HttpEndpoint;
+import com.igomall.util.JsonUtils;
+import com.igomall.util.MessageResponse;
+import com.igomall.util.MessageResult;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.DataInputStream;
+import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.PublicKey;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController("commonIndexController")
@@ -124,5 +147,25 @@ public class IndexController extends BaseController{
         }
         return Message.error("课程不存在！！！");
     }
+
+    @PostMapping("/messagecallback")
+    public void messagecallback(@RequestBody String body, HttpServletRequest request, HttpServletResponse response) throws Exception{
+        MessageResponse messageResponse = JsonUtils.toObject(body,MessageResponse.class);
+        MessageResult messageResult = JsonUtils.toObject(messageResponse.getMessage(),MessageResult.class);
+        System.out.println(messageResult.getJobId());
+        response.setStatus(HttpStatus.SC_NO_CONTENT);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

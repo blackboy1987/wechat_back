@@ -1,12 +1,10 @@
 package com.igomall.entity.wechat.receive;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+/**
+ * 接受的文本消息
+ */
 public class TextMessage extends BaseMessage {
 
-    @JacksonXmlCData
-    @JacksonXmlProperty(localName="Content")
     private String content;
 
     public String getContent() {

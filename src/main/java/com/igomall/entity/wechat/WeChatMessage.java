@@ -1,56 +1,58 @@
 package com.igomall.entity.wechat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.igomall.entity.BaseEntity;
 import com.vdurmont.emoji.EmojiParser;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "edu_wechat_message")
 public class WeChatMessage extends BaseEntity<Long> {
 
-    @JsonProperty("Content")
+    @JsonView({ListView.class})
     private String content;
 
-    @JsonProperty("CreateTime")
+    @JsonView({ListView.class})
     private Long createTime;
 
-    @JsonProperty("ToUserName")
+    @JsonView({ListView.class})
     private String toUserName;
 
-    @JsonProperty("FromUserName")
+    @JsonView({ListView.class})
     private String fromUserName;
 
-    @JsonProperty("MsgType")
+    @JsonView({ListView.class})
     private String msgType;
 
-    @JsonProperty("MsgId")
+    @JsonView({ListView.class})
     private Long msgId;
 
-    @JsonProperty("MediaId")
+    @JsonView({ListView.class})
     private String mediaId;
 
-    @JsonProperty("PicUrl")
+    @JsonView({ListView.class})
     private String picUrl;
 
-    @JsonProperty("ThumbMediaId")
+    @JsonView({ListView.class})
     private String thumbMediaId;
 
-    @JsonProperty("Location_X")
+    @JsonView({ListView.class})
     private Double locationX;
 
-    @JsonProperty("Location_Y")
+    @JsonView({ListView.class})
     private Double locationY;
 
-    @JsonProperty("Label")
+    @JsonView({ListView.class})
+    @JacksonXmlCData
     private String label;
 
-    @JsonProperty("Scale")
+    @JsonView({ListView.class})
     private Integer scale;
 
     @Column(length = 4000)

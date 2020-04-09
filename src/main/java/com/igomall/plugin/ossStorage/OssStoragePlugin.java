@@ -71,6 +71,9 @@ public class OssStoragePlugin extends StoragePlugin {
 			String accessId = pluginConfig.getAttribute("accessId");
 			String accessKey = pluginConfig.getAttribute("accessKey");
 			String bucketName = pluginConfig.getAttribute("bucketName");
+			String isTransform = pluginConfig.getAttribute("isTransform");
+			String pipelineId = pluginConfig.getAttribute("pipelineId");
+			String templateId = pluginConfig.getAttribute("templateId");
 			InputStream inputStream = null;
 			try {
 				inputStream = new BufferedInputStream(new FileInputStream(file));
@@ -78,8 +81,15 @@ public class OssStoragePlugin extends StoragePlugin {
 				ObjectMetadata objectMetadata = new ObjectMetadata();
 				objectMetadata.setContentType(contentType);
 				objectMetadata.setContentLength(file.length());
-				ossClient.putObject(bucketName, StringUtils.removeStart(path, "/"), inputStream, objectMetadata);
+				String path1 = StringUtils.removeStart(path, "/");
+				ossClient.putObject(bucketName,path1 , inputStream, objectMetadata);
 				ossClient.shutdown();
+
+				// 上传完成之后调用转码服务
+				if(StringUtils.isNotEmpty(isTransform)&&StringUtils.equalsAnyIgnoreCase(isTransform,"1")){
+					SimpleTranscode.transform(accessId,accessKey,pipelineId,templateId,bucketName,path1,path);
+				}
+
 			} catch (FileNotFoundException e) {
 				throw new RuntimeException(e.getMessage(), e);
 			} finally {

@@ -1,7 +1,6 @@
 
 package com.igomall.service.wechat;
 
-import com.igomall.entity.wechat.WeChatUser;
 import com.igomall.entity.wechat.WeChatUserLog;
 import com.igomall.service.BaseService;
 

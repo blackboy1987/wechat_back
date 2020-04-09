@@ -1,7 +1,5 @@
 package com.igomall.controller.wechat;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.igomall.dao.wechat.WechatMessageDao;
 import com.igomall.entity.other.BaiDuResource;
 import com.igomall.entity.other.BaiDuTag;
 import com.igomall.entity.wechat.WeChatMessage;
@@ -12,14 +10,17 @@ import com.igomall.entity.wechat.response.WeChatUserResponse;
 import com.igomall.entity.wechat.send.TextMessage;
 import com.igomall.service.other.BaiDuResourceService;
 import com.igomall.service.other.BaiDuTagService;
+import com.igomall.service.wechat.SubscribeLogService;
 import com.igomall.service.wechat.WechatMessageService;
 import com.igomall.service.wechat.WechatUserLogService;
 import com.igomall.service.wechat.WechatUserService;
-import com.igomall.util.*;
+import com.igomall.util.JsonUtils;
+import com.igomall.util.SignUtil;
+import com.igomall.util.WechatUtils;
+import com.igomall.util.XmlUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,8 @@ public class IndexController {
     private BaiDuTagService baiDuTagService;
     @Autowired
     private BaiDuResourceService baiDuResourceService;
+    @Autowired
+    private SubscribeLogService subscribeLogService;
 
     @GetMapping
     public String index(String signature,String timestamp,String nonce,String echostr){
@@ -88,7 +91,6 @@ public class IndexController {
         }else if(StringUtils.equalsAnyIgnoreCase(event,"subscribe")){
             status = 1;
             weChatUserLog.setMemo("关注");
-
             StringBuffer sb = new StringBuffer();
             sb.append("感谢您的关注\n\n");
             sb.append(wechatMessageService.getHelpMessage(map.get("FromUserName"),"subscribe",weChatUser));
@@ -103,7 +105,9 @@ public class IndexController {
             // 创建用户
             weChatUser = new WeChatUser();
             WeChatUserResponse weChatUserResponse = WechatUtils.getUserInfo(baseEvent.getFromUserName());
-            BeanUtils.copyProperties(weChatUserResponse,weChatUser,"id","fromUserName","status","updateTime");
+            if(weChatUserResponse.getErrcode()!=-1){
+                BeanUtils.copyProperties(weChatUserResponse,weChatUser,"id","fromUserName","status","updateTime");
+            }
             weChatUser.setFromUserName(baseEvent.getFromUserName());
             weChatUser.setStatus(status);
             weChatUser.setUpdateTime(new Date(baseEvent.getCreateTime()));
@@ -111,8 +115,9 @@ public class IndexController {
 
         }else{
             WeChatUserResponse weChatUserResponse = WechatUtils.getUserInfo(baseEvent.getFromUserName());
-            BeanUtils.copyProperties(weChatUserResponse,weChatUser,"id","fromUserName","status","updateTime");
-
+            if(weChatUserResponse.getErrcode()!=-1) {
+                BeanUtils.copyProperties(weChatUserResponse, weChatUser, "id", "fromUserName", "status", "updateTime");
+            }
             weChatUser.setStatus(status);
             weChatUser.setUpdateTime(new Date(baseEvent.getCreateTime()));
             wechatUserService.update(weChatUser);
@@ -120,6 +125,13 @@ public class IndexController {
         weChatUserLog.setContent(JsonUtils.toJson(baseEvent));
         weChatUserLog.setWeChatUser(weChatUser);
         wechatUserLogService.save(weChatUserLog);
+        if(StringUtils.equalsAnyIgnoreCase(event,"unsubscribe")){
+            subscribeLogService.save(weChatUser,"取消关注",2);
+        }else if(StringUtils.equalsAnyIgnoreCase(event,"subscribe")){
+            subscribeLogService.save(weChatUser,"关注",1);
+        }
+
+
         if(textMessage!=null){
             wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
             return XmlUtils.toXml(textMessage);

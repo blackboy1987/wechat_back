@@ -1,8 +1,11 @@
 package com.igomall.service.wechat.impl;
 
 import com.igomall.common.Filter;
+import com.igomall.common.Page;
+import com.igomall.common.Pageable;
 import com.igomall.dao.active.ShareUrlDao;
 import com.igomall.dao.active.ShareUrlRecordDao;
+import com.igomall.dao.wechat.WechatMessageDao;
 import com.igomall.entity.activity.ShareUrl;
 import com.igomall.entity.activity.ShareUrlRecord;
 import com.igomall.entity.other.BaiDuResource;
@@ -19,10 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -32,6 +32,8 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
     private BaiDuResourceService baiDuResourceService;
     @Autowired
     private WechatUserService wechatUserService;
+    @Autowired
+    private WechatMessageDao wechatMessageDao;
     @Autowired
     private ShareUrlRecordDao shareUrlRecordDao;
     @Autowired
@@ -154,5 +156,11 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
         sb.append("\n发送：电话+您的收货联系电话。绑定收件人的联系电话");
         sb.append("\n\n回复“?”显示帮助菜单");
         return sb.toString();
+    }
+
+
+    @Override
+    public Page<WeChatMessage> findPage(Pageable pageable, String content, String toUserName, String fromUserName, String msgType, Date beginDate, Date endDate) {
+        return wechatMessageDao.findPage(pageable,content,toUserName,fromUserName,msgType,beginDate,endDate);
     }
 }
