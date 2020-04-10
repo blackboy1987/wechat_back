@@ -26,6 +26,7 @@ public class WeChatMessageController extends BaseController {
     @PostMapping("/list")
     @JsonView(BaseEntity.ListView.class)
     public Page<WeChatMessage> list(Pageable pageable, String content,String toUserName,String fromUserName,String msgType, Date beginDate, Date endDate){
-        return wechatMessageService.findPage(pageable,content,toUserName,fromUserName,msgType,beginDate,endDate);
+        Page<WeChatMessage> page = wechatMessageService.findPage(pageable,content,toUserName,fromUserName,msgType,beginDate,endDate);
+        return page;
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.igomall.entity.BaseEntity;
 import com.vdurmont.emoji.EmojiParser;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,11 +60,18 @@ public class WeChatMessage extends BaseEntity<Long> {
     private String receiveContent;
 
     public String getContent() {
-        return EmojiParser.parseToUnicode(content);
+        if(StringUtils.isNotEmpty(content)){
+            return EmojiParser.parseToUnicode(content);
+        }
+        return content;
     }
 
     public void setContent(String content) {
-        this.content = EmojiParser.parseToAliases(content);
+        if(StringUtils.isNotEmpty(content)){
+            this.content = EmojiParser.parseToAliases(content);
+        }else{
+            this.content = content;
+        }
     }
 
     public Long getCreateTime() {

@@ -1,12 +1,10 @@
 package com.igomall.util.wechat;
 
 import com.igomall.entity.wechat.response.AccessToken;
-import com.igomall.util.WebUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
@@ -25,10 +23,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.springframework.util.Assert;
 
-import java.io.*;
-import java.nio.charset.Charset;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -115,12 +114,13 @@ public final class MaterialUtils {
     }
 
     /**
-     * 获取临时素材
+     * 获取临时素材：非视频。
+     *
      * @param mediaId
      *  素材id
      * @return
      */
-    public static void get(String mediaId) {
+    public static void get(String mediaId,String path) {
         AccessToken accessToken = WechatUtils.getAccessToken();
         Map<String,Object> params = new HashMap<>();
         params.put("media_id",mediaId);
@@ -144,7 +144,69 @@ public final class MaterialUtils {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 if (httpEntity != null) {
                     inputStream = httpEntity.getContent();
-                    File file = new File("/Users/blackboy/Desktop/wechat/wechat_page/public/icons/3.png");
+                    File file = new File(path);
+                    if(!file.getParentFile().exists()){
+                        file.getParentFile().mkdirs();
+                    }
+                    try {
+                        FileUtils.copyInputStreamToFile(inputStream,file);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    System.out.println(file.getAbsolutePath());
+                }
+            } finally {
+                try {
+                    httpResponse.close();
+                } catch (IOException e) {
+                }
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        } catch (ClientProtocolException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    /**
+     * 获取临时素材:视频。返回的数据如下：
+     *
+     * @param mediaId
+     *  素材id
+     * @return
+     */
+    public static void getVideo(String mediaId,String path) {
+        AccessToken accessToken = WechatUtils.getAccessToken();
+        Map<String,Object> params = new HashMap<>();
+        params.put("media_id",mediaId);
+        params.put("access_token",accessToken.getAccessToken());
+        InputStream inputStream;
+        String url = "https://api.weixin.qq.com/cgi-bin/media/get";
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<>();
+            if (params != null) {
+                for (Map.Entry<String, Object> entry : params.entrySet()) {
+                    String name = entry.getKey();
+                    String value = ConvertUtils.convert(entry.getValue());
+                    if (StringUtils.isNotEmpty(name)) {
+                        nameValuePairs.add(new BasicNameValuePair(name, value));
+                    }
+                }
+            }
+            HttpGet httpGet = new HttpGet(url + (StringUtils.contains(url, "?") ? "&" : "?") + EntityUtils.toString(new UrlEncodedFormEntity(nameValuePairs, "UTF-8")));
+            CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(httpGet);
+            try {
+                HttpEntity httpEntity = httpResponse.getEntity();
+                if (httpEntity != null) {
+                    inputStream = httpEntity.getContent();
+                    File file = new File(path);
+                    if(!file.getParentFile().exists()){
+                        file.getParentFile().mkdirs();
+                    }
                     try {
                         FileUtils.copyInputStreamToFile(inputStream,file);
                     }catch (Exception e){
@@ -173,6 +235,6 @@ public final class MaterialUtils {
     public static void main(String[] args) {
         String path = "/Users/blackboy/Desktop/wechat/wechat_page/public/icons/icon-512x512.png";
         //upload(new File(path),"image");
-        get("cZswiJGARalhVaymkTmvyXeQt6v7Ux7KM9mq-LYLBeH8xL9OMvD2w6ZJu_SX4Ykr");
+        // get("cZswiJGARalhVaymkTmvyXeQt6v7Ux7KM9mq-LYLBeH8xL9OMvD2w6ZJu_SX4Ykr");
     }
 }
