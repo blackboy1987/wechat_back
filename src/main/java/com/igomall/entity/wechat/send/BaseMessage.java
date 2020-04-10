@@ -8,20 +8,32 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
  */
 public class BaseMessage {
 
+    /**
+     *接收方帐号（收到的OpenID）
+     */
     @JacksonXmlCData
     @JacksonXmlProperty(localName="ToUserName")
     private String toUserName;
 
+    /**
+     *开发者微信号
+     */
     @JacksonXmlCData
     @JacksonXmlProperty(localName="FromUserName")
     private String fromUserName;
 
+    /**
+     *消息创建时间 （整型）
+     */
     @JacksonXmlProperty(localName="CreateTime")
     private Long createTime;
 
+    /**
+     *消息类型
+     */
     @JacksonXmlCData
     @JacksonXmlProperty(localName="MsgType")
-    private String msgType;
+    private MsgType msgType;
 
     public String getToUserName() {
         return toUserName;
@@ -47,11 +59,11 @@ public class BaseMessage {
         this.createTime = createTime;
     }
 
-    public String getMsgType() {
+    public MsgType getMsgType() {
         return msgType;
     }
 
-    public void setMsgType(String msgType) {
+    public void setMsgType(MsgType msgType) {
         this.msgType = msgType;
     }
 }
