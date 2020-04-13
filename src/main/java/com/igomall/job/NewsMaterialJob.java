@@ -4,6 +4,7 @@ import com.igomall.common.Pageable;
 import com.igomall.entity.wechat.material.NewsMaterial;
 import com.igomall.entity.wechat.material.NewsMaterialResponse;
 import com.igomall.service.wechat.material.NewsMaterialService;
+import com.igomall.util.wechat.MaterialUtils;
 import com.igomall.util.wechat.WechatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,17 +24,17 @@ public class NewsMaterialJob {
         Integer currentCount = -1;
         Integer itemCount = 0;
         while(currentCount<itemCount){
-            NewsMaterialResponse newsMaterialResponse = WechatUtils.getMaterial("news",pageable);
+            NewsMaterialResponse newsMaterialResponse = MaterialUtils.getMaterial("news",pageable);
             currentCount = pageable.getPageNumber()*pageable.getPageSize();
             itemCount = newsMaterialResponse.getItemCount();
 
             System.out.println(itemCount+":"+currentCount);
-            List<NewsMaterial> newsMaterials = newsMaterialResponse.getItem();
-            for (NewsMaterial newsMaterial:newsMaterials) {
+            List<NewsMaterialResponse.Material> materials = newsMaterialResponse.getItem();
+            /*for (NewsMaterial newsMaterial:newsMaterials) {
                 if(!newsMaterialService.mediaIdExists(newsMaterial.getMediaId())){
                     newsMaterialService.save(newsMaterial);
                 }
-            }
+            }*/
         }
 
 

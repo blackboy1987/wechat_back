@@ -100,7 +100,7 @@ public class IndexController {
             textMessage.setContent(sb.toString());
             textMessage.setFromUserName(baseEvent.getToUserName());
             textMessage.setToUserName(baseEvent.getFromUserName());
-            textMessage.setMsgType("text");
+            textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
         }
         if(weChatUser==null){
             // 创建用户
@@ -154,7 +154,7 @@ public class IndexController {
                 textMessage.setContent(sb.toString());
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase("yzm",content)){
@@ -162,7 +162,7 @@ public class IndexController {
                 textMessage.setContent("<a href=\"https://ishangedu.oss-cn-hangzhou.aliyuncs.com/yzm.txt\">戳我吧</a>");
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase("yq",content)){
@@ -170,7 +170,7 @@ public class IndexController {
                 textMessage.setContent("<a href=\"https://news.qq.com/zt2020/page/feiyan.htm#/\">新冠肺炎数据</a>");
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWith(content,"课程")){
@@ -178,7 +178,7 @@ public class IndexController {
                 textMessage.setContent(wechatMessageService.getCourseListInfo(content.substring(2)));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase(content,"wyfx")){
@@ -186,7 +186,7 @@ public class IndexController {
                 textMessage.setContent(wechatMessageService.getShareUrl(map.get("fromUserName")));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.equalsAnyIgnoreCase(content,"xxbd")){
@@ -194,7 +194,7 @@ public class IndexController {
                 textMessage.setContent(wechatMessageService.getXxsbInfo());
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"微信")){
@@ -202,7 +202,7 @@ public class IndexController {
                 textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"weChatId"));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"昵称")){
@@ -210,7 +210,7 @@ public class IndexController {
                 textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"nickname"));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"姓名")){
@@ -218,7 +218,7 @@ public class IndexController {
                 textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"name"));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"地址")){
@@ -226,7 +226,7 @@ public class IndexController {
                 textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"address"));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }if(StringUtils.startsWithIgnoreCase(content,"电话")){
@@ -234,7 +234,7 @@ public class IndexController {
                 textMessage.setContent(wechatUserService.updateInfo(map.get("fromUserName"),content,"mobile"));
                 textMessage.setFromUserName(map.get("toUserName"));
                 textMessage.setToUserName(map.get("fromUserName"));
-                textMessage.setMsgType("text");
+                textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                 wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                 return XmlUtils.toXml(textMessage);
             }else{
@@ -250,7 +250,7 @@ public class IndexController {
                         textMessage.setContent("无相关课程");
                         textMessage.setFromUserName(map.get("toUserName"));
                         textMessage.setToUserName(map.get("fromUserName"));
-                        textMessage.setMsgType("text");
+                        textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                         return XmlUtils.toXml(textMessage);
                     }
@@ -267,7 +267,7 @@ public class IndexController {
                     textMessage.setContent(sb.toString());
                     textMessage.setFromUserName(map.get("toUserName"));
                     textMessage.setToUserName(map.get("fromUserName"));
-                    textMessage.setMsgType("text");
+                    textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                     wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                     return XmlUtils.toXml(textMessage);
                 }else if(content.matches(regEx1)){
@@ -280,7 +280,7 @@ public class IndexController {
                         textMessage.setContent("无课程");
                         textMessage.setFromUserName(map.get("toUserName"));
                         textMessage.setToUserName(map.get("fromUserName"));
-                        textMessage.setMsgType("text");
+                        textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                         return XmlUtils.toXml(textMessage);
                     }
@@ -295,7 +295,7 @@ public class IndexController {
                     textMessage.setContent(sb.toString());
                     textMessage.setFromUserName(map.get("toUserName"));
                     textMessage.setToUserName(map.get("fromUserName"));
-                    textMessage.setMsgType("text");
+                    textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                     wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                     return XmlUtils.toXml(textMessage);
                 }else{
@@ -306,7 +306,7 @@ public class IndexController {
                     textMessage.setContent(sb.toString());
                     textMessage.setFromUserName(map.get("toUserName"));
                     textMessage.setToUserName(map.get("fromUserName"));
-                    textMessage.setMsgType("text");
+                    textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
                     wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
                     return XmlUtils.toXml(textMessage);
                 }
@@ -322,7 +322,7 @@ public class IndexController {
         textMessage.setContent(sb.toString());
         textMessage.setFromUserName(map.get("toUserName"));
         textMessage.setToUserName(map.get("fromUserName"));
-        textMessage.setMsgType("text");
+        textMessage.setMsgType(com.igomall.entity.wechat.send.MsgType.text);
         wechatMessageService.updateMessage(weChatMessage, JsonUtils.toJson(textMessage));
         return XmlUtils.toXml(textMessage);
     }

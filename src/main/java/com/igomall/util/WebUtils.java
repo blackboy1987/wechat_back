@@ -480,55 +480,6 @@ public final class WebUtils {
 	}
 
 	/**
-	 * GET请求
-	 *
-	 * @param url
-	 *            URL
-	 * @param parameterMap
-	 *            请求参数
-	 * @return 返回结果
-	 */
-	public static InputStream get1(String url, Map<String, Object> parameterMap) {
-		Assert.hasText(url,"");
-		InputStream inputStream;
-		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<>();
-			if (parameterMap != null) {
-				for (Map.Entry<String, Object> entry : parameterMap.entrySet()) {
-					String name = entry.getKey();
-					String value = ConvertUtils.convert(entry.getValue());
-					if (StringUtils.isNotEmpty(name)) {
-						nameValuePairs.add(new BasicNameValuePair(name, value));
-					}
-				}
-			}
-			HttpGet httpGet = new HttpGet(url + (StringUtils.contains(url, "?") ? "&" : "?") + EntityUtils.toString(new UrlEncodedFormEntity(nameValuePairs, "UTF-8")));
-			CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(httpGet);
-			try {
-				HttpEntity httpEntity = httpResponse.getEntity();
-				if (httpEntity != null) {
-					inputStream = httpEntity.getContent();
-					return inputStream;
-				}
-			} finally {
-				try {
-					httpResponse.close();
-				} catch (IOException e) {
-				}
-			}
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (ParseException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (ClientProtocolException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (IOException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
-		return null;
-	}
-
-	/**
 	 * POST请求
 	 * 
 	 * @param url
@@ -568,33 +519,4 @@ public final class WebUtils {
 		}
 		return result;
 	}
-
-	public static String postJson(String url, String json) {
-		Assert.hasText(url,"");
-
-		String result = null;
-
-		try {
-			CloseableHttpClient httpClient = HttpClients.createDefault();
-
-			HttpPost httpPost = new HttpPost(url);
-			httpPost.addHeader("Content-Type", "application/json");
-			httpPost.setEntity(new StringEntity(json,"UTF-8")); //防止中文乱码
-
-			CloseableHttpResponse response = httpClient.execute(httpPost);
-			System.out.println(response.getStatusLine().getStatusCode() + "\n");
-			HttpEntity entity = response.getEntity();
-			result = EntityUtils.toString(entity, "UTF-8");
-			System.out.println(result);
-
-			response.close();
-			httpClient.close();
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-
-
-		return result;
-	}
-
 }
