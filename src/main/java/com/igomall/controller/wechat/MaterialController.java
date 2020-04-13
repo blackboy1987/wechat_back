@@ -23,7 +23,7 @@ public class MaterialController {
     @GetMapping("/news")
     public String index(Pageable pageable){
         NewsMaterialResponse newsMaterialResponse = MaterialUtils.getMaterial("news",pageable);
-        List<NewsMaterialResponse.Material> newsMaterials = newsMaterialResponse.getItem();
+        List<NewsMaterialResponse.Material> newsMaterials = newsMaterialResponse.getMaterials();
         /*for (NewsMaterial newsMaterial:newsMaterials) {
             if(!newsMaterialService.mediaIdExists(newsMaterial.getMediaId())){
                 newsMaterialService.save(newsMaterial);
