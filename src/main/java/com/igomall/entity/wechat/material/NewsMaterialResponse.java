@@ -11,7 +11,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewsMaterialResponse implements Serializable {
 
-    private List<Material> item = new ArrayList<>();
+    @JsonProperty("item")
+    private List<Material> materials = new ArrayList<>();
 
     @JsonProperty("total_count")
     private Integer totalCount;
@@ -19,12 +20,12 @@ public class NewsMaterialResponse implements Serializable {
     @JsonProperty("item_count")
     private Integer itemCount;
 
-    public List<Material> getItem() {
-        return item;
+    public List<Material> getMaterials() {
+        return materials;
     }
 
-    public void setItem(List<Material> item) {
-        this.item = item;
+    public void setMaterials(List<Material> materials) {
+        this.materials = materials;
     }
 
     public Integer getTotalCount() {
@@ -59,7 +60,8 @@ public class NewsMaterialResponse implements Serializable {
 
         private List<String> tags = new ArrayList<>();
 
-        private NewsMaterialContent content;
+        @JsonProperty("content")
+        private NewsMaterialContent newsMaterialContent;
 
         public String getMediaId() {
             return mediaId;
@@ -99,6 +101,14 @@ public class NewsMaterialResponse implements Serializable {
 
         public void setTags(List<String> tags) {
             this.tags = tags;
+        }
+
+        public NewsMaterialContent getNewsMaterialContent() {
+            return newsMaterialContent;
+        }
+
+        public void setNewsMaterialContent(NewsMaterialContent newsMaterialContent) {
+            this.newsMaterialContent = newsMaterialContent;
         }
     }
 
