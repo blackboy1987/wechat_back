@@ -29,7 +29,7 @@ public class NewsMaterialJob {
             itemCount = newsMaterialResponse.getItemCount();
 
             System.out.println(itemCount+":"+currentCount);
-            List<NewsMaterialResponse.Material> materials = newsMaterialResponse.getItem();
+            List<NewsMaterialResponse.Material> materials = newsMaterialResponse.getMaterials();
             /*for (NewsMaterial newsMaterial:newsMaterials) {
                 if(!newsMaterialService.mediaIdExists(newsMaterial.getMediaId())){
                     newsMaterialService.save(newsMaterial);
