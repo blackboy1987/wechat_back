@@ -353,6 +353,6 @@ public final class MaterialUtils {
        // System.out.println(delMaterial("be-XCwSBZ2ezRRUs15-XT9jcug-OQD9E45FMkSyx5_U"));
 // {"voice_count":0,"video_count":0,"image_count":1,"news_count":1}
        // System.out.println(getMaterialCount());
-        System.out.println(getMaterial("image",new Pageable()));
+        System.out.println(getMaterial("news",new Pageable()));
     }
 }
