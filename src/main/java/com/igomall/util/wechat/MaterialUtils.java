@@ -272,7 +272,7 @@ public final class MaterialUtils {
     }
 
     /**
-     * 更新素材
+     * 修改永久图文素材
      * @return
      */
     public static String updateNews(String mediaId,Article article,Integer index){
