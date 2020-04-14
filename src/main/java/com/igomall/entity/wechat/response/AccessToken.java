@@ -2,7 +2,6 @@ package com.igomall.entity.wechat.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.igomall.entity.wechat.response.BaseResponse;
 
 import java.util.Date;
 
