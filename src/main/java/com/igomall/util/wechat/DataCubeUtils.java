@@ -44,7 +44,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUserCumulateResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUserCumulateResponse.class);
     }
 
     /**
@@ -60,7 +60,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeArticleSummaryResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeArticleSummaryResponse.class);
     }
 
     /**
@@ -76,7 +76,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeArticleTotalResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeArticleTotalResponse.class);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUserReadResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUserReadResponse.class);
     }
 
     /**
@@ -108,7 +108,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUserReadHourResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUserReadHourResponse.class);
     }
 
     /**
@@ -124,7 +124,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params), DataCubeUserShareResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params), DataCubeUserShareResponse.class);
     }
 
     /**
@@ -140,7 +140,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUserShareHourResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUserShareHourResponse.class);
     }
 
 
@@ -183,7 +183,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgResponse.class);
     }
     /**
      *获取消息分送分时数据
@@ -198,7 +198,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgHourResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgHourResponse.class);
     }
     /**
      *获取消息发送周数据
@@ -213,7 +213,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgWeekResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgWeekResponse.class);
     }
     /**
      *获取消息发送月数据
@@ -228,7 +228,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgMonthResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgMonthResponse.class);
     }
     /**
      *获取消息发送分布数据
@@ -243,7 +243,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgDistResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgDistResponse.class);
     }
     /**
      *获取消息发送分布周数据
@@ -258,7 +258,7 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgDistWeekResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgDistWeekResponse.class);
     }
     /**
      *获取消息发送分布月数据
@@ -273,7 +273,68 @@ public final class DataCubeUtils {
         params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
         params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
 
-        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgDistMonthResponse.class);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params),DataCubeUpstreamMsgDistMonthResponse.class);
     }
 
+    /**
+     *获取公众号广告汇总数据
+     * @param slotId
+     *      广告位枚举值, 广告位实际上映射的数字
+     *      4090752905805508 : 视频后贴广告位
+     *      72058780271891663 : 文章底部广告位
+     *      9020229299926746 : 文章中部广告位
+     *      20160808 : 互选广告位
+     * @param page
+     *      数据返回页数
+     * @param pageSize
+     *      每页返回数据条数
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     *
+     */
+    public static DataCubePublisherAdposGeneralResponse publisher_adpos_general(Integer slotId,Integer page,Integer pageSize,Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/publisher/stat";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+        params.put("page", page);
+        params.put("page_size", pageSize);
+        params.put("action","publisher_adpos_general");
+        params.put("slot_id",slotId);
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubePublisherAdposGeneralResponse.class);
+    }
+
+    /**
+     *获取公众号返佣商品数据
+     * @param slotId
+     *      广告位枚举值, 广告位实际上映射的数字
+     *      4090752905805508 : 视频后贴广告位
+     *      72058780271891663 : 文章底部广告位
+     *      9020229299926746 : 文章中部广告位
+     *      20160808 : 互选广告位
+     * @param page
+     *      数据返回页数
+     * @param pageSize
+     *      每页返回数据条数
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     *
+     */
+    public static DataCubePublisherCpsGeneralResponse publisher_cps_general(Long slotId,Integer page,Integer pageSize,Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/publisher/stat";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+        params.put("page", page);
+        params.put("page_size", pageSize);
+        params.put("action","publisher_adpos_general");
+        params.put("slot_id",slotId);
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubePublisherCpsGeneralResponse.class);
+    }
 }
