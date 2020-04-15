@@ -143,4 +143,137 @@ public final class DataCubeUtils {
         return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUserShareHourResponse.class);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     *获取消息发送概况数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgResponse getupstreammsg(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsg";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgResponse.class);
+    }
+    /**
+     *获取消息分送分时数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgHourResponse getupstreammsghour(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsghour";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgHourResponse.class);
+    }
+    /**
+     *获取消息发送周数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgWeekResponse getupstreammsgweek(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsgweek";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgWeekResponse.class);
+    }
+    /**
+     *获取消息发送月数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgMonthResponse getupstreammsgmonth(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsgmonth";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgMonthResponse.class);
+    }
+    /**
+     *获取消息发送分布数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgDistResponse getupstreammsgdist(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsgdist";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgDistResponse.class);
+    }
+    /**
+     *获取消息发送分布周数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgDistWeekResponse getupstreammsgdistweek(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsgdistweek";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgDistWeekResponse.class);
+    }
+    /**
+     *获取消息发送分布月数据
+     * @param beginDate
+     *  获取数据的起始日期，begin_date和end_date的差值需小于“最大时间跨度”（比如最大时间跨度为1时，begin_date和end_date的差值只能为0，才能小于1），否则会报错
+     * @param endDate
+     *   获取数据的结束日期，end_date允许设置的最大值为昨日
+     */
+    public static DataCubeUpstreamMsgDistMonthResponse getupstreammsgdistmonth(Date beginDate, Date endDate){
+        String url="https://api.weixin.qq.com/datacube/getupstreammsgdistmonth";
+        Map<String,Object> params = new HashMap<>();
+        params.put("begin_date", Date8Utils.formatDateToString(beginDate,"yyyy-MM-dd"));
+        params.put("end_date", Date8Utils.formatDateToString(endDate,"yyyy-MM-dd"));
+
+        return JsonUtils.toObject(WechatUtils.get(url,params),DataCubeUpstreamMsgDistMonthResponse.class);
+    }
+
 }
