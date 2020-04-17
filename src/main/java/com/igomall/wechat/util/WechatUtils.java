@@ -1,11 +1,10 @@
-package com.igomall.util.wechat;
+package com.igomall.wechat.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.igomall.common.Pageable;
-import com.igomall.entity.wechat.material.NewsMaterialResponse;
-import com.igomall.entity.wechat.response.AccessToken;
-import com.igomall.entity.wechat.response.IpListResponse;
-import com.igomall.entity.wechat.response.WeChatUserResponse;
+import com.igomall.wechat.entity.response.AccessToken;
+import com.igomall.wechat.entity.response.IpListResponse;
+import com.igomall.wechat.entity.response.WeChatUserResponse;
 import com.igomall.util.Date8Utils;
 import com.igomall.util.EhCacheUtils;
 import com.igomall.util.JsonUtils;
@@ -153,8 +152,8 @@ public final class WechatUtils {
         AccessToken accessToken = getAccessToken();
         if(accessToken==null){
             WeChatUserResponse weChatUserResponse = new WeChatUserResponse();
-            weChatUserResponse.setErrcode(-1);
-            weChatUserResponse.setErrmsg("accessToken is null !");
+            weChatUserResponse.setErrCode(-1);
+            weChatUserResponse.setErrMsg("accessToken is null !");
             return weChatUserResponse;
         }
         String url = "https://api.weixin.qq.com/cgi-bin/user/info";
