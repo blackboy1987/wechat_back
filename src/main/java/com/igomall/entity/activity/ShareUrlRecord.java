@@ -1,10 +1,9 @@
 package com.igomall.entity.activity;
 
 import com.igomall.entity.BaseEntity;
-import com.igomall.entity.wechat.WeChatUser;
+import com.igomall.wechat.entity.WeChatUser;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "edu_share_url_record")

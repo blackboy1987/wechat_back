@@ -1,6 +1,6 @@
 package com.igomall.util;
 
-import com.igomall.entity.wechat.response.AccessToken;
+import com.igomall.wechat.entity.response.AccessToken;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
