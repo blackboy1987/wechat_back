@@ -55,7 +55,7 @@ public class WeChatUserController extends BaseController {
                     weChatUser1.setStatus(2);
                 }else{
                     BeanUtils.copyProperties(userInfoResponse,weChatUser1,"subscribeTime","openId","name","address","mobile","weChatId");
-                    weChatUser.setSubscribeTime(new Date(userInfoResponse.getSubscribeTime()*1000));
+                    weChatUser1.setSubscribeTime(new Date(userInfoResponse.getSubscribeTime()*1000));
                     weChatUser1.setStatus(1);
                 }
                 weChatUser1.setUpdateTime(new Date());
