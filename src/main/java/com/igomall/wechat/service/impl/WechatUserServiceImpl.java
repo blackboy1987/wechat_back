@@ -25,16 +25,16 @@ public class WechatUserServiceImpl extends BaseServiceImpl<WeChatUser, Long> imp
     @Autowired
     private WechatUserDao wechatUserDao;
 
-    public WeChatUser findByFromUserName(String fromUserName){
-        return wechatUserDao.find("fromUserName",fromUserName);
+    public WeChatUser findByOpenId(String openId){
+        return wechatUserDao.find("openId",openId);
     }
 
-    public WeChatUser saveUser(String fromUserName){
-        if(StringUtils.isNotEmpty(fromUserName)){
-            WeChatUser weChatUser = findByFromUserName(fromUserName);
+    public WeChatUser saveUser(String openId){
+        if(StringUtils.isNotEmpty(openId)){
+            WeChatUser weChatUser = findByOpenId(openId);
             if(weChatUser==null){
                 weChatUser = new WeChatUser();
-                weChatUser.setFromUserName(fromUserName);
+                weChatUser.setOpenId(openId);
                 return super.save(weChatUser);
             }
 
@@ -56,7 +56,7 @@ public class WechatUserServiceImpl extends BaseServiceImpl<WeChatUser, Long> imp
             if(StringUtils.equalsAnyIgnoreCase(type,"weChatId")){
                 weChatUser.setWeChatId(info.substring(2));
             }else if(StringUtils.equalsAnyIgnoreCase(type,"nickname")){
-                weChatUser.setNickname(info.substring(2));
+                weChatUser.setNickName(info.substring(2));
             }else if(StringUtils.equalsAnyIgnoreCase(type,"name")){
                 weChatUser.setName(info.substring(2));
 

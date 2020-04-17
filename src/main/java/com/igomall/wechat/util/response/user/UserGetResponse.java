@@ -65,7 +65,7 @@ public class UserGetResponse extends BaseResponse {
         this.nextOpenId = nextOpenId;
     }
 
-    private static class Data implements Serializable{
+    public static class Data implements Serializable{
 
         @JsonProperty("openid")
         List<String> openIds = new ArrayList<>();

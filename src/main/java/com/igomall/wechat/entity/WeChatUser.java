@@ -20,51 +20,41 @@ import java.util.List;
 @Table(name = "wechat_user")
 public class WeChatUser extends BaseEntity<Long> {
 
-    @NotEmpty
-    @Column(nullable = false,updatable = false,unique = true)
-    private String fromUserName;
-
-    @Column(unique = true)
-    private String weChatId;
-
-    private Date updateTime;
-
     /**
+     *  用户是否订阅该公众号标识，值为0时，
+     * 代表此用户没有关注该公众号，拉取不到其余信息。
+     * 1: 已关注
      * 0：未关注
-     * 1：已关注
-     * 2：已取关
-     */
-    private Integer status;
-
-    /**
-     * 用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，
-     * 拉取不到其余信息。
      */
     private Integer subscribe;
 
     /**
-     * 用户的标识，对当前公众号唯一
+     *用户的标识，对当前公众号唯一
      */
-    @Column(updatable = false,unique = true)
-    private String openid;
+    @NotEmpty
+    @Column(nullable = false,updatable = false,unique = true)
+    private String openId;
 
     /**
      *用户的昵称
      */
-    private String nickname;
+    private String nickName;
 
     /**
-     *用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+     *用户的性别，
+     * 值为1时是男性，
+     * 值为2时是女性，
+     * 值为0时是未知
      */
     private Integer sex;
 
     /**
-     *用户的语言，简体中文为zh_CN
+     *用户所在城市
      */
     private String language;
 
     /**
-     *用户所在城市
+     *用户所在国家
      */
     private String city;
 
@@ -74,29 +64,25 @@ public class WeChatUser extends BaseEntity<Long> {
     private String province;
 
     /**
-     *用户所在国家
+     *用户的语言，简体中文为zh_CN
      */
     private String country;
 
     /**
-     *用户头像，最后一个数值代表正方形头像大小
-     * （有0、46、64、96、132数值可选，0代表640*640正方形头像），
+     * 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），
      * 用户没有头像时该项为空。
      * 若用户更换头像，原有头像URL将失效。
      */
-    @JsonProperty("headimgurl")
     private String headImgUrl;
 
     /**
-     *用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间
+     * 用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间
      */
-    @JsonProperty("subscribe_time")
-    private Long subscribeTime;
+    private Date subscribeTime;
 
     /**
      * 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
      */
-    @JsonProperty("unionid")
     private String unionId;
 
     /**
@@ -107,42 +93,40 @@ public class WeChatUser extends BaseEntity<Long> {
     /**
      *用户所在的分组ID（兼容旧的用户分组接口）
      */
-    @JsonProperty("groupid")
-    private Integer groupId;
+    private Long groupId;
 
     /**
      *用户被打上的标签ID列表
      */
-    @Column(length = 4000)
     @Convert(converter = OptionConverter.class)
-    @JsonProperty("tagid_list")
-    private List<Long> tagidList = new ArrayList<>();
+    private List<Long> tagIdList = new ArrayList<>();
 
     /**
-     *返回用户关注的渠道来源，
-     * ADD_SCENE_SEARCH 公众号搜索，
-     * ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移，
-     * ADD_SCENE_PROFILE_CARD 名片分享，
-     * ADD_SCENE_QR_CODE 扫描二维码，
-     * ADD_SCENE_PROFILE_LINK 图文页内名称点击，
-     * ADD_SCENE_PROFILE_ITEM 图文页右上角菜单，
-     * ADD_SCENE_PAID 支付后关注，
-     * ADD_SCENE_OTHERS 其他
+     *  返回用户关注的渠道来源，
+     *  ADD_SCENE_SEARCH 公众号搜索，
+     *  ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移，
+     *  ADD_SCENE_PROFILE_CARD 名片分享，
+     *  ADD_SCENE_QR_CODE 扫描二维码，
+     *  ADD_SCENE_PROFILE_LINK 图文页内名称点击，
+     *  ADD_SCENE_PROFILE_ITEM 图文页右上角菜单，
+     *  ADD_SCENE_PAID 支付后关注，
+     *  ADD_SCENE_OTHERS 其他
      */
-    @JsonProperty("subscribe_scene")
     private String subscribeScene;
 
     /**
-     *二维码扫码场景（开发者自定义）
+     * 二维码扫码场景（开发者自定义）
      */
-    @JsonProperty("qr_scene")
-    private String qrScene;
+    private Long qrScene;
 
     /**
      *二维码扫码场景描述（开发者自定义）
      */
-    @JsonProperty("qr_scene_str")
     private String qrSceneStr;
+
+    private Integer status;
+
+    private Date updateTime;
 
     private String mobile;
 
@@ -150,29 +134,8 @@ public class WeChatUser extends BaseEntity<Long> {
 
     private String address;
 
-    public String getFromUserName() {
-        return fromUserName;
-    }
+    private String weChatId;
 
-    public void setFromUserName(String fromUserName) {
-        this.fromUserName = fromUserName;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
 
     public Integer getSubscribe() {
         return subscribe;
@@ -182,20 +145,20 @@ public class WeChatUser extends BaseEntity<Long> {
         this.subscribe = subscribe;
     }
 
-    public String getOpenid() {
-        return openid;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setOpenid(String openid) {
-        this.openid = openid;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public Integer getSex() {
@@ -246,11 +209,11 @@ public class WeChatUser extends BaseEntity<Long> {
         this.headImgUrl = headImgUrl;
     }
 
-    public Long getSubscribeTime() {
+    public Date getSubscribeTime() {
         return subscribeTime;
     }
 
-    public void setSubscribeTime(Long subscribeTime) {
+    public void setSubscribeTime(Date subscribeTime) {
         this.subscribeTime = subscribeTime;
     }
 
@@ -270,20 +233,20 @@ public class WeChatUser extends BaseEntity<Long> {
         this.remark = remark;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Integer groupId) {
+    public void setGroupId(Long groupId) {
         this.groupId = groupId;
     }
 
-    public List<Long> getTagidList() {
-        return tagidList;
+    public List<Long> getTagIdList() {
+        return tagIdList;
     }
 
-    public void setTagidList(List<Long> tagidList) {
-        this.tagidList = tagidList;
+    public void setTagIdList(List<Long> tagIdList) {
+        this.tagIdList = tagIdList;
     }
 
     public String getSubscribeScene() {
@@ -294,11 +257,11 @@ public class WeChatUser extends BaseEntity<Long> {
         this.subscribeScene = subscribeScene;
     }
 
-    public String getQrScene() {
+    public Long getQrScene() {
         return qrScene;
     }
 
-    public void setQrScene(String qrScene) {
+    public void setQrScene(Long qrScene) {
         this.qrScene = qrScene;
     }
 
@@ -310,12 +273,20 @@ public class WeChatUser extends BaseEntity<Long> {
         this.qrSceneStr = qrSceneStr;
     }
 
-    public String getWeChatId() {
-        return weChatId;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setWeChatId(String weChatId) {
-        this.weChatId = weChatId;
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getMobile() {
@@ -342,30 +313,12 @@ public class WeChatUser extends BaseEntity<Long> {
         this.address = address;
     }
 
-    @PrePersist
-    public void preSave(){
-        if(StringUtils.isEmpty(openid)){
-            setOpenid(fromUserName);
-        }
-        if(status==null){
-            setStatus(0);
-        }
-        if(updateTime==null){
-            setUpdateTime(new Date());
-        }
+    public String getWeChatId() {
+        return weChatId;
     }
 
-    @PreUpdate
-    public void preUpdate(){
-        if(StringUtils.isEmpty(openid)){
-            setOpenid(fromUserName);
-        }
-        if(status==null){
-            setStatus(0);
-        }
-        if(updateTime==null){
-            setUpdateTime(getCreatedDate());
-        }
+    public void setWeChatId(String weChatId) {
+        this.weChatId = weChatId;
     }
 
     /**

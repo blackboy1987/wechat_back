@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public interface WechatUserService extends BaseService<WeChatUser, Long> {
 
-	WeChatUser findByFromUserName(String fromUserName);
+	WeChatUser findByOpenId(String openId);
 
 	WeChatUser saveUser(String fromUserName);
 

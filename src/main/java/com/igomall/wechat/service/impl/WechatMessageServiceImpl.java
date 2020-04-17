@@ -130,7 +130,7 @@ public class WechatMessageServiceImpl extends BaseServiceImpl<WeChatMessage,Long
             // 保存获取的记录
             ShareUrlRecord shareUrlRecord = new ShareUrlRecord();
             shareUrlRecord.setShareUrl(shareUrls.get(index));
-            WeChatUser weChatUser = wechatUserService.findByFromUserName(fromUserName);
+            WeChatUser weChatUser = wechatUserService.findByOpenId(fromUserName);
             if(weChatUser.getStatus()==0){
                 sb.append("您未关注公众号，无法参与活动。");
             }else{

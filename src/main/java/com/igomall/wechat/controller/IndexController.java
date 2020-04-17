@@ -83,7 +83,7 @@ public class IndexController {
         WeChatUserLog weChatUserLog = new WeChatUserLog();
         weChatUserLog.setEvent(event);
         baseEvent = JsonUtils.toObject(JsonUtils.toJson(map), BaseEvent.class);
-        WeChatUser weChatUser = wechatUserService.findByFromUserName(baseEvent.getFromUserName());
+        WeChatUser weChatUser = wechatUserService.findByOpenId(baseEvent.getFromUserName());
         Integer status = 0;
         if(StringUtils.equalsAnyIgnoreCase(event,"unsubscribe")){
             // 取消关注
@@ -109,7 +109,7 @@ public class IndexController {
             if(weChatUserResponse.getErrCode()!=-1){
                 BeanUtils.copyProperties(weChatUserResponse,weChatUser,"id","fromUserName","status","updateTime");
             }
-            weChatUser.setFromUserName(baseEvent.getFromUserName());
+            weChatUser.setOpenId(baseEvent.getFromUserName());
             weChatUser.setStatus(status);
             weChatUser.setUpdateTime(new Date(baseEvent.getCreateTime()));
             wechatUserService.save(weChatUser);

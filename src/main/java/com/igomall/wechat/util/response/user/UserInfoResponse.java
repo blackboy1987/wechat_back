@@ -71,7 +71,7 @@ public class UserInfoResponse extends BaseResponse {
      * 用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间
      */
     @JsonProperty("subscribe_time")
-    private Date subscribeTime;
+    private Long subscribeTime;
 
     /**
      * 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
@@ -195,11 +195,11 @@ public class UserInfoResponse extends BaseResponse {
         this.headImgUrl = headImgUrl;
     }
 
-    public Date getSubscribeTime() {
+    public Long getSubscribeTime() {
         return subscribeTime;
     }
 
-    public void setSubscribeTime(Date subscribeTime) {
+    public void setSubscribeTime(Long subscribeTime) {
         this.subscribeTime = subscribeTime;
     }
 

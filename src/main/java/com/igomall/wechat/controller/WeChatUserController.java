@@ -10,6 +10,7 @@ import com.igomall.wechat.util.response.user.UserGetResponse;
 import com.igomall.wechat.util.response.user.UserInfoBatchGetResponse;
 import com.igomall.wechat.util.response.user.UserInfoResponse;
 import com.igomall.wechat.util.response.user.UserInfoUpdateRemarkResponse;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +36,36 @@ public class WeChatUserController extends BaseController {
      * 获取用户列表
      * @return
      */
-    @PostMapping("/get")
-    public UserGetResponse get(){
+    @PostMapping("/userGet")
+    public UserGetResponse userGet(){
         UserGetResponse userGetResponse = UserManagementUtils.userGet(null);
+        List<String> openIds = userGetResponse.getData().getOpenIds();
+        for (String openId:openIds) {
+            UserInfoResponse userInfoResponse = UserManagementUtils.userInfo(openId);
+            WeChatUser weChatUser = new WeChatUser();
+            WeChatUser weChatUser1 = wechatUserService.findByOpenId(openId);
+            if(weChatUser1==null){
+                BeanUtils.copyProperties(userInfoResponse,weChatUser,"subscribeTime");
+                weChatUser.setSubscribeTime(new Date(userInfoResponse.getSubscribeTime()*1000));
+                weChatUser.setUpdateTime(new Date());
+                wechatUserService.save(weChatUser);
+            }else{
+                if(userInfoResponse.getSubscribe()==0){
+                    // 未关注。只更新关注状态
+                    weChatUser1.setStatus(2);
+                }else{
+                    BeanUtils.copyProperties(userInfoResponse,weChatUser1,"subscribeTime","openId","name","address","mobile","weChatId");
+                    weChatUser.setSubscribeTime(new Date(userInfoResponse.getSubscribeTime()*1000));
+                    weChatUser1.setStatus(1);
+                }
+                weChatUser1.setUpdateTime(new Date());
+                wechatUserService.update(weChatUser1);
+
+
+            }
+            System.out.println(weChatUser);
+        }
+
         return userGetResponse;
 
     }
@@ -46,8 +74,19 @@ public class WeChatUserController extends BaseController {
      * 获取用户列表
      * @return
      */
+    @PostMapping("/userInfo")
+    public UserInfoResponse userInfo(String openId){
+        UserInfoResponse userInfoResponse = UserManagementUtils.userInfo(openId);
+        return userInfoResponse;
+
+    }
+
+    /**
+     * 获取用户列表
+     * @return
+     */
     @PostMapping("/info")
-    public UserInfoUpdateRemarkResponse get(String openId){
+    public UserInfoUpdateRemarkResponse info(String openId){
         UserInfoUpdateRemarkResponse userInfoResponse = UserManagementUtils.userInfoUpdateRemark(openId,"aaa");
         return userInfoResponse;
 
