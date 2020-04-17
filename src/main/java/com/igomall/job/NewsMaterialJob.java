@@ -1,11 +1,9 @@
 package com.igomall.job;
 
 import com.igomall.common.Pageable;
-import com.igomall.entity.wechat.material.NewsMaterial;
-import com.igomall.entity.wechat.material.NewsMaterialResponse;
-import com.igomall.service.wechat.material.NewsMaterialService;
-import com.igomall.util.wechat.MaterialUtils;
-import com.igomall.util.wechat.WechatUtils;
+import com.igomall.wechat.entity.material.NewsMaterialResponse;
+import com.igomall.wechat.service.material.NewsMaterialService;
+import com.igomall.wechat.util.MaterialUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

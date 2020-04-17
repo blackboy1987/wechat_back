@@ -1,6 +1,6 @@
 package com.igomall.job;
 
-import com.igomall.service.wechat.SubscribeSummaryLogService;
+import com.igomall.wechat.service.SubscribeSummaryLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
