@@ -1,4 +1,4 @@
-package com.igomall.job;
+package com.igomall.wechat.job;
 
 import com.igomall.common.Pageable;
 import com.igomall.wechat.entity.material.NewsMaterialResponse;

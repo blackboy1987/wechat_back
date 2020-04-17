@@ -18,6 +18,7 @@ public class AccessToken extends BaseResponse {
     private Long expires;
 
     public String getAccessToken() {
+        System.out.println("getAccessToken:"+accessToken);
         return accessToken;
     }
 

@@ -1,4 +1,4 @@
-package com.igomall.job;
+package com.igomall.wechat.job;
 
 import com.igomall.wechat.service.SubscribeSummaryLogService;
 import org.springframework.beans.factory.annotation.Autowired;

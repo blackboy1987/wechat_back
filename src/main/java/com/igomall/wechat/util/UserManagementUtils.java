@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 用户管理工具类
+ */
 public final class UserManagementUtils {
 
     private UserManagementUtils(){}
@@ -115,9 +118,8 @@ public final class UserManagementUtils {
     public static UserInfoUpdateRemarkResponse userInfoUpdateRemark(String openId,String remark){
         String url="https://api.weixin.qq.com/cgi-bin/user/info/updateremark";
         Map<String,Object> params = new HashMap<>();
-        Map<String,Object> map = new HashMap<>();
-        map.put("openid",openId);
-        map.put("remark",remark);
+        params.put("openid",openId);
+        params.put("remark",remark);
         return JsonUtils.toObject(WechatUtils.postJson(url,params), UserInfoUpdateRemarkResponse.class);
     }
 
@@ -127,8 +129,13 @@ public final class UserManagementUtils {
     public static UserInfoResponse userInfo(String openId){
         String url="https://api.weixin.qq.com/cgi-bin/user/info";
         Map<String,Object> params = new HashMap<>();
-        Map<String,Object> map = new HashMap<>();
-        map.put("openid",openId);
+        if(StringUtils.isEmpty(openId)){
+            UserInfoResponse userInfoResponse = new UserInfoResponse();
+            userInfoResponse.setErrCode(-100);
+            userInfoResponse.setErrMsg("openId 不能为空！");
+            return userInfoResponse;
+        }
+        params.put("openid",openId);
         return JsonUtils.toObject(WechatUtils.get(url,params), UserInfoResponse.class);
     }
 
@@ -138,6 +145,13 @@ public final class UserManagementUtils {
      */
     public static UserInfoBatchGetResponse userInfoBatchGet(List<String> openIdList){
         String url="https://api.weixin.qq.com/cgi-bin/user/info/batchget";
+        if(openIdList.isEmpty()){
+            UserInfoBatchGetResponse userInfoBatchGetResponse = new UserInfoBatchGetResponse();
+            userInfoBatchGetResponse.setErrCode(-100);
+            userInfoBatchGetResponse.setErrMsg("openIdList 不能为空！");
+            return userInfoBatchGetResponse;
+        }
+
         List<Map<String,Object>> result = new ArrayList<>();
         for (String openId:openIdList) {
             Map<String,Object> map = new HashMap<>();
@@ -151,7 +165,8 @@ public final class UserManagementUtils {
     }
 
     /**
-     * 公众号可通过本接口来获取帐号的关注者列表，关注者列表由一串OpenID（加密后的微信号，每个用户对每个公众号的OpenID是唯一的）组成。
+     * 公众号可通过本接口来获取帐号的关注者列表，
+     * 关注者列表由一串OpenID（加密后的微信号，每个用户对每个公众号的OpenID是唯一的）组成。
      * 一次拉取调用最多拉取10000个关注者的OpenID，可以通过多次拉取的方式来满足需求。
      *
      */

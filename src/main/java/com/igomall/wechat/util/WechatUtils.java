@@ -122,7 +122,6 @@ public final class WechatUtils {
         if(StringUtils.isNotEmpty(accessToken.getAccessToken())){
             accessToken.setExpiresDate(Date8Utils.getNextSecond(accessToken.getExpires()-30));
             EhCacheUtils.setCacheAccessToken(accessToken);
-            System.out.println("accessToken:"+accessToken.getAccessToken());
             return accessToken;
         }
         return getAccessToken();
@@ -315,6 +314,7 @@ public final class WechatUtils {
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
+        System.out.println(result);
         return result;
     }
 
