@@ -1,5 +1,6 @@
 package com.igomall.wechat.controller;
 
+import com.igomall.common.Message;
 import com.igomall.common.Order;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
@@ -38,6 +39,25 @@ public class WeChatUserController extends BaseController {
 
         return wechatUserService.findPage(pageable,nickName,status,beginDate,endDate);
     }
+
+    @PostMapping("/remark")
+    public Message remark(String openId, String remark){
+        if(StringUtils.isEmpty(openId)){
+            return Message.error("请选择需要设置的用户");
+        }
+        if(StringUtils.isEmpty(remark)){
+            return Message.error("请输入备注信息");
+        }
+        UserInfoUpdateRemarkResponse userInfoUpdateRemarkResponse = UserManagementUtils.userInfoUpdateRemark(openId,remark);
+        if(userInfoUpdateRemarkResponse.getErrCode()==0){
+            wechatUserService.remark(openId,remark);
+            return Message.success("操作成功");
+        }
+        return Message.error(userInfoUpdateRemarkResponse.getErrMsg());
+    }
+
+
+
 
     /**
      * 获取用户列表

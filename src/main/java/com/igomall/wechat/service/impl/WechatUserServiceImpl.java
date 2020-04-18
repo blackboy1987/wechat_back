@@ -74,4 +74,17 @@ public class WechatUserServiceImpl extends BaseServiceImpl<WeChatUser, Long> imp
 
         return "绑定失败";
     }
+
+    @Override
+    public WeChatUser remark(String openId,String remark){
+        if(StringUtils.isNotEmpty(openId)){
+            WeChatUser weChatUser = findByOpenId(openId);
+            if(weChatUser!=null){
+                weChatUser.setRemark(remark);
+                return super.update(weChatUser);
+            }
+            return null;
+        }
+        return null;
+    }
 }
