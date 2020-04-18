@@ -16,6 +16,6 @@ import java.util.Date;
  */
 public interface WechatUserDao extends BaseDao<WeChatUser, Long> {
 
-    Page<WeChatUser> findPage(Pageable pageable, Integer status, Date beginDate, Date endDate);
+    Page<WeChatUser> findPage(Pageable pageable,String nickName, Integer status, Date beginDate, Date endDate);
 
 }

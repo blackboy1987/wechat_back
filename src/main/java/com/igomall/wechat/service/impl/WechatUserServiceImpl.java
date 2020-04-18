@@ -43,8 +43,8 @@ public class WechatUserServiceImpl extends BaseServiceImpl<WeChatUser, Long> imp
         return null;
     }
 
-    public Page<WeChatUser> findPage(Pageable pageable, Integer status, Date beginDate, Date endDate){
-        return wechatUserDao.findPage(pageable,status,beginDate,endDate);
+    public Page<WeChatUser> findPage(Pageable pageable,String nickName, Integer status, Date beginDate, Date endDate){
+        return wechatUserDao.findPage(pageable,nickName,status,beginDate,endDate);
     }
 
     public String updateInfo(String openId,String info,String type){

@@ -30,13 +30,13 @@ public class WeChatUserController extends BaseController {
     private WechatUserService wechatUserService;
 
     @PostMapping("/list")
-    public Page<WeChatUser> list(Pageable pageable, Integer status, Date beginDate,Date endDate){
+    public Page<WeChatUser> list(Pageable pageable,String nickName, Integer status, Date beginDate,Date endDate){
         if(StringUtils.isEmpty(pageable.getOrderProperty()) || pageable.getOrderDirection()==null){
             pageable.setOrderDirection(Order.Direction.desc);
             pageable.setOrderProperty("subscribeTime");
         }
 
-        return wechatUserService.findPage(pageable,status,beginDate,endDate);
+        return wechatUserService.findPage(pageable,nickName,status,beginDate,endDate);
     }
 
     /**

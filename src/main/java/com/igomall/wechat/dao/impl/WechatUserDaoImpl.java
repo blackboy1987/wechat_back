@@ -6,6 +6,7 @@ import com.igomall.common.Pageable;
 import com.igomall.dao.impl.BaseDaoImpl;
 import com.igomall.wechat.dao.WechatUserDao;
 import com.igomall.wechat.entity.WeChatUser;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -24,7 +25,7 @@ import java.util.Date;
 public class WechatUserDaoImpl extends BaseDaoImpl<WeChatUser, Long> implements WechatUserDao {
 
     @Override
-    public Page<WeChatUser> findPage(Pageable pageable, Integer status, Date beginDate, Date endDate) {
+    public Page<WeChatUser> findPage(Pageable pageable,String nickName, Integer status, Date beginDate, Date endDate) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<WeChatUser> criteriaQuery = criteriaBuilder.createQuery(WeChatUser.class);
         Root<WeChatUser> root = criteriaQuery.from(WeChatUser.class);
@@ -38,6 +39,9 @@ public class WechatUserDaoImpl extends BaseDaoImpl<WeChatUser, Long> implements 
         }
         if (endDate != null) {
             restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.lessThanOrEqualTo(root.<Date>get("createdDate"), endDate));
+        }
+        if (StringUtils.isNotEmpty(nickName)) {
+            restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("nickName"), "%"+nickName+"%"));
         }
         criteriaQuery.where(restrictions);
         return super.findPage(criteriaQuery,pageable);

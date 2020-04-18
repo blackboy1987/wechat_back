@@ -20,7 +20,7 @@ public interface WechatUserService extends BaseService<WeChatUser, Long> {
 
 	WeChatUser saveUser(String fromUserName);
 
-	Page<WeChatUser> findPage(Pageable pageable, Integer status, Date beginDate, Date endDate);
+	Page<WeChatUser> findPage(Pageable pageable,String nickName, Integer status, Date beginDate, Date endDate);
 
 	String updateInfo(String openId,String info,String type);
 }
