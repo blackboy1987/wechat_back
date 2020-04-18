@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class IgomallEduBackApplication {
+public class WeChatApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IgomallEduBackApplication.class, args);
+		SpringApplication.run(WeChatApplication.class, args);
 	}
 
 }
