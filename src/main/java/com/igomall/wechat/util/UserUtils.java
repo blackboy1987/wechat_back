@@ -13,9 +13,9 @@ import java.util.Map;
 /**
  * 用户管理工具类
  */
-public final class UserManagementUtils {
+public final class UserUtils {
 
-    private UserManagementUtils(){}
+    private UserUtils(){}
 
 
     /**

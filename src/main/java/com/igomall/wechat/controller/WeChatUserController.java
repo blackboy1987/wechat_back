@@ -7,9 +7,8 @@ import com.igomall.common.Pageable;
 import com.igomall.controller.admin.BaseController;
 import com.igomall.wechat.entity.WeChatUser;
 import com.igomall.wechat.service.WechatUserService;
-import com.igomall.wechat.util.UserManagementUtils;
+import com.igomall.wechat.util.UserUtils;
 import com.igomall.wechat.util.response.user.UserGetResponse;
-import com.igomall.wechat.util.response.user.UserInfoBatchGetResponse;
 import com.igomall.wechat.util.response.user.UserInfoResponse;
 import com.igomall.wechat.util.response.user.UserInfoUpdateRemarkResponse;
 import org.apache.commons.lang3.StringUtils;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +45,7 @@ public class WeChatUserController extends BaseController {
         if(StringUtils.isEmpty(remark)){
             return Message.error("请输入备注信息");
         }
-        UserInfoUpdateRemarkResponse userInfoUpdateRemarkResponse = UserManagementUtils.userInfoUpdateRemark(openId,remark);
+        UserInfoUpdateRemarkResponse userInfoUpdateRemarkResponse = UserUtils.userInfoUpdateRemark(openId,remark);
         if(userInfoUpdateRemarkResponse.getErrCode()==0){
             wechatUserService.remark(openId,remark);
             return Message.success("操作成功");
@@ -64,10 +62,10 @@ public class WeChatUserController extends BaseController {
      */
     @PostMapping("/userGet")
     public UserGetResponse userGet(){
-        UserGetResponse userGetResponse = UserManagementUtils.userGet(null);
+        UserGetResponse userGetResponse = UserUtils.userGet(null);
         List<String> openIds = userGetResponse.getData().getOpenIds();
         for (String openId:openIds) {
-            UserInfoResponse userInfoResponse = UserManagementUtils.userInfo(openId);
+            UserInfoResponse userInfoResponse = UserUtils.userInfo(openId);
             WeChatUser weChatUser = new WeChatUser();
             WeChatUser weChatUser1 = wechatUserService.findByOpenId(openId);
             if(weChatUser1==null){
@@ -102,7 +100,7 @@ public class WeChatUserController extends BaseController {
      */
     @PostMapping("/userInfo")
     public UserInfoResponse userInfo(String openId){
-        UserInfoResponse userInfoResponse = UserManagementUtils.userInfo(openId);
+        UserInfoResponse userInfoResponse = UserUtils.userInfo(openId);
         return userInfoResponse;
 
     }
@@ -113,7 +111,7 @@ public class WeChatUserController extends BaseController {
      */
     @PostMapping("/info")
     public UserInfoUpdateRemarkResponse info(String openId){
-        UserInfoUpdateRemarkResponse userInfoResponse = UserManagementUtils.userInfoUpdateRemark(openId,"aaa");
+        UserInfoUpdateRemarkResponse userInfoResponse = UserUtils.userInfoUpdateRemark(openId,"aaa");
         return userInfoResponse;
 
     }
