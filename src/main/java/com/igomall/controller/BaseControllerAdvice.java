@@ -23,7 +23,7 @@ import com.igomall.exception.UnauthorizedException;
  * @author blackboy
  * @version 1.0
  */
-@ControllerAdvice("com.igomall.controller")
+@ControllerAdvice(basePackages={"com.igomall.controller","com.igomall.wechat.controller"})
 public class BaseControllerAdvice {
 
 	/**
