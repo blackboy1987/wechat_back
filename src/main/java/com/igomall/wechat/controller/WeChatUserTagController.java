@@ -36,15 +36,11 @@ public class WeChatUserTagController extends BaseController {
         if (!isValid(weChatUserTag,BaseEntity.Save.class)) {
             return Message.error("参数错误");
         }
-        weChatUserTag.setCount(0L);
-        UserTagCreateResponse userTagCreateResponse = UserManagementUtils.tagCreate(weChatUserTag.getName());
-        if(userTagCreateResponse.getErrCode()==null){
-            weChatUserTag.setName(userTagCreateResponse.getTag().getName());
-            weChatUserTag.setWeChatId(userTagCreateResponse.getTag().getId());
-            weChatUserTagService.save(weChatUserTag);
+        WeChatUserTag parent = weChatUserTagService.save(weChatUserTag);
+        if(parent==null){
+            return Message.error("接口调用失败");
         }
-
-        return Message.success("操作成果");
+        return Message.success("操作成功");
     }
 
     /**
@@ -68,18 +64,11 @@ public class WeChatUserTagController extends BaseController {
             return Message.error("参数错误");
         }
 
-        WeChatUserTag parent = weChatUserTagService.find(weChatUserTag.getId());
-        parent.setName(weChatUserTag.getName());
-        parent.setMemo(weChatUserTag.getMemo());
-        parent.setIsEnabled(weChatUserTag.getIsEnabled());
-        UserTagUpdateResponse userTagUpdateResponse = UserManagementUtils.tagUpdate(parent.getWeChatId(),parent.getName());
-        // 接口调用成果
-        if(userTagUpdateResponse.getErrCode()==0){
-            weChatUserTagService.update(parent,"count","weChatId");
-        }else {
+        WeChatUserTag parent = weChatUserTagService.update(weChatUserTag);
+        if(parent==null){
             return Message.error("接口调用失败");
         }
-        return Message.success("操作成果");
+        return Message.success("操作成功");
     }
 
     @PostMapping("/list")
