@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController("adminWeChatUserController")
-@RequestMapping("/api/wechat/user")
+@RequestMapping("/api/we_chat/user")
 public class WeChatUserController extends BaseController {
 
     @Autowired
@@ -36,7 +36,6 @@ public class WeChatUserController extends BaseController {
             pageable.setOrderDirection(Order.Direction.desc);
             pageable.setOrderProperty("subscribeTime");
         }
-
         return wechatUserService.findPage(pageable,nickName,status,beginDate,endDate);
     }
 

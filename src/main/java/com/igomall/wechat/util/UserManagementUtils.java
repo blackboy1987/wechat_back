@@ -35,6 +35,20 @@ public final class UserManagementUtils {
      *  获取公众号已创建的标签
      * @return
      */
+    public static UserTagUpdateResponse tagUpdate(Long weChatId,String name){
+        String url="https://api.weixin.qq.com/cgi-bin/tags/update";
+        Map<String,Object> params = new HashMap<>();
+        Map<String,Object> map = new HashMap<>();
+        map.put("id",weChatId);
+        map.put("name",name);
+        params.put("tag",map);
+        return JsonUtils.toObject(WechatUtils.postJson(url,params), UserTagUpdateResponse.class);
+    }
+
+    /**
+     *  获取公众号已创建的标签
+     * @return
+     */
     public static UserTagGetResponse tagGet(){
         String url="https://api.weixin.qq.com/cgi-bin/tags/get";
         return JsonUtils.toObject(WechatUtils.get(url,null), UserTagGetResponse.class);
