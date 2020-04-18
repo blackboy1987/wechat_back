@@ -4,8 +4,8 @@ package com.igomall.wechat.dao.impl;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.dao.impl.BaseDaoImpl;
-import com.igomall.wechat.dao.WeChatUserTagDao;
-import com.igomall.wechat.entity.WeChatUserTag;
+import com.igomall.wechat.dao.TagDao;
+import com.igomall.wechat.entity.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
@@ -22,13 +22,13 @@ import java.util.Date;
  * @version 1.0
  */
 @Repository
-public class WeChatUserTagDaoImpl extends BaseDaoImpl<WeChatUserTag, Long> implements WeChatUserTagDao {
+public class TagDaoImpl extends BaseDaoImpl<Tag, Long> implements TagDao {
 
     @Override
-    public Page<WeChatUserTag> findPage(Pageable pageable,String name, Date beginDate, Date endDate) {
+    public Page<Tag> findPage(Pageable pageable, String name, Date beginDate, Date endDate) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<WeChatUserTag> criteriaQuery = criteriaBuilder.createQuery(WeChatUserTag.class);
-        Root<WeChatUserTag> root = criteriaQuery.from(WeChatUserTag.class);
+        CriteriaQuery<Tag> criteriaQuery = criteriaBuilder.createQuery(Tag.class);
+        Root<Tag> root = criteriaQuery.from(Tag.class);
         criteriaQuery.select(root);
         Predicate restrictions = criteriaBuilder.conjunction();
         if (beginDate != null) {

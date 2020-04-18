@@ -1,4 +1,4 @@
-package com.igomall.wechat.util.response.user;
+package com.igomall.wechat.util.response.tag;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.igomall.wechat.util.response.BaseResponse;
@@ -6,7 +6,7 @@ import com.igomall.wechat.util.response.BaseResponse;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserTagCreateResponse extends BaseResponse {
+public class CreateResponse extends BaseResponse {
 
     private UserTag tag;
 

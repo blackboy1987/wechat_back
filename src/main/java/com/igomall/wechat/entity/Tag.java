@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "wechat_user_tag")
-public class WeChatUserTag extends BaseEntity<Long> {
+public class Tag extends BaseEntity<Long> {
 
     @NotEmpty
     @Column(nullable = false,unique = true)

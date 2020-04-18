@@ -6,11 +6,8 @@ import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.controller.admin.BaseController;
 import com.igomall.entity.BaseEntity;
-import com.igomall.wechat.entity.WeChatUserTag;
-import com.igomall.wechat.service.WeChatUserTagService;
-import com.igomall.wechat.util.UserManagementUtils;
-import com.igomall.wechat.util.response.user.UserTagCreateResponse;
-import com.igomall.wechat.util.response.user.UserTagUpdateResponse;
+import com.igomall.wechat.entity.Tag;
+import com.igomall.wechat.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,23 +17,23 @@ import java.util.Date;
 
 @RestController("adminWeChatTagController")
 @RequestMapping("/api/we_chat/tag")
-public class WeChatUserTagController extends BaseController {
+public class TagController extends BaseController {
 
     @Autowired
-    private WeChatUserTagService weChatUserTagService;
+    private TagService tagService;
 
     /**
      * 保存
      */
     @PostMapping("/save")
-    public Message save(WeChatUserTag weChatUserTag) {
-        if(weChatUserTag.getIsEnabled()==null){
-            weChatUserTag.setIsEnabled(false);
+    public Message save(Tag tag) {
+        if(tag.getIsEnabled()==null){
+            tag.setIsEnabled(false);
         }
-        if (!isValid(weChatUserTag,BaseEntity.Save.class)) {
+        if (!isValid(tag,BaseEntity.Save.class)) {
             return Message.error("参数错误");
         }
-        WeChatUserTag parent = weChatUserTagService.save(weChatUserTag);
+        Tag parent = tagService.save1(tag);
         if(parent==null){
             return Message.error("接口调用失败");
         }
@@ -48,23 +45,23 @@ public class WeChatUserTagController extends BaseController {
      */
     @PostMapping("/edit")
     @JsonView(BaseEntity.EditView.class)
-    public WeChatUserTag edit(Long id) {
-        return weChatUserTagService.find(id);
+    public Tag edit(Long id) {
+        return tagService.find(id);
     }
 
     /**
      * 更新
      */
     @PostMapping("/update")
-    public Message update(WeChatUserTag weChatUserTag) {
-        if(weChatUserTag.getIsEnabled()==null){
-            weChatUserTag.setIsEnabled(false);
+    public Message update(Tag tag) {
+        if(tag.getIsEnabled()==null){
+            tag.setIsEnabled(false);
         }
-        if (!isValid(weChatUserTag)) {
+        if (!isValid(tag)) {
             return Message.error("参数错误");
         }
 
-        WeChatUserTag parent = weChatUserTagService.update(weChatUserTag);
+        Tag parent = tagService.update1(tag);
         if(parent==null){
             return Message.error("接口调用失败");
         }
@@ -73,8 +70,8 @@ public class WeChatUserTagController extends BaseController {
 
     @PostMapping("/list")
     @JsonView(BaseEntity.ListView.class)
-    public Page<WeChatUserTag> list(Pageable pageable, String name, Date beginDate, Date endDate){
-        return weChatUserTagService.findPage(pageable,name,beginDate,endDate);
+    public Page<Tag> list(Pageable pageable, String name, Date beginDate, Date endDate){
+        return tagService.findPage(pageable,name,beginDate,endDate);
     }
 
     /**
@@ -83,13 +80,14 @@ public class WeChatUserTagController extends BaseController {
     @PostMapping("/delete")
     public Message delete(Long[] ids) {
         for (Long id:ids) {
-            WeChatUserTag weChatUserTag = weChatUserTagService.find(id);
-            if(weChatUserTag!=null){
-                weChatUserTag.setIsEnabled(false);
-                weChatUserTagService.update(weChatUserTag);
+            Tag tag = tagService.find(id);
+            if(tag !=null){
+                tag.setIsEnabled(false);
+                tagService.update(tag);
             }
         }
         return Message.success("操作成果");
     }
+
 
 }

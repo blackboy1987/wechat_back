@@ -4,7 +4,7 @@ package com.igomall.wechat.dao;
 import com.igomall.common.Page;
 import com.igomall.common.Pageable;
 import com.igomall.dao.BaseDao;
-import com.igomall.wechat.entity.WeChatUserTag;
+import com.igomall.wechat.entity.Tag;
 
 import java.util.Date;
 
@@ -14,8 +14,8 @@ import java.util.Date;
  * @author IGOMALL  Team
  * @version 1.0
  */
-public interface WeChatUserTagDao extends BaseDao<WeChatUserTag, Long> {
+public interface TagDao extends BaseDao<Tag, Long> {
 
-    Page<WeChatUserTag> findPage(Pageable pageable, String name, Date beginDate, Date endDate);
+    Page<Tag> findPage(Pageable pageable, String name, Date beginDate, Date endDate);
 
 }
