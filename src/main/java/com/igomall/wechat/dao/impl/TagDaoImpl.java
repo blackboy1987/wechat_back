@@ -25,7 +25,7 @@ import java.util.Date;
 public class TagDaoImpl extends BaseDaoImpl<Tag, Long> implements TagDao {
 
     @Override
-    public Page<Tag> findPage(Pageable pageable, String name, Date beginDate, Date endDate) {
+    public Page<Tag> findPage(Pageable pageable, String name, Boolean isEnabled, Date beginDate, Date endDate) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Tag> criteriaQuery = criteriaBuilder.createQuery(Tag.class);
         Root<Tag> root = criteriaQuery.from(Tag.class);
@@ -36,6 +36,9 @@ public class TagDaoImpl extends BaseDaoImpl<Tag, Long> implements TagDao {
         }
         if (endDate != null) {
             restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.lessThanOrEqualTo(root.<Date>get("createdDate"), endDate));
+        }
+        if (isEnabled!=null) {
+            restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.equal(root.get("isEnabled"), isEnabled));
         }
         if (StringUtils.isNotEmpty(name)) {
             restrictions = criteriaBuilder.and(restrictions, criteriaBuilder.like(root.get("name"), "%"+name+"%"));

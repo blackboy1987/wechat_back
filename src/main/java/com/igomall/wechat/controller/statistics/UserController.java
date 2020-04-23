@@ -1,9 +1,11 @@
-package com.igomall.wechat.controller;
+package com.igomall.wechat.controller.statistics;
 
 import com.igomall.controller.admin.BaseController;
 import com.igomall.wechat.entity.SubscribeSummaryLog;
 import com.igomall.wechat.service.SubscribeSummaryLogService;
 import com.igomall.util.Date8Utils;
+import com.igomall.wechat.util.DataCubeUtils;
+import com.igomall.wechat.util.response.datacube.DataCubeUserSummaryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +15,41 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController("wechatStatisticsController")
-@RequestMapping("/api/admin/statistics")
-public class StatisticsController extends BaseController {
+@RestController("weChatStatisticsUserController")
+@RequestMapping("/api/we_chat/statistics/user")
+public class UserController extends BaseController {
 
     @Autowired
     private SubscribeSummaryLogService subscribeSummaryLogService;
+
+
+    @GetMapping("/summary")
+    public DataCubeUserSummaryResponse summary(){
+        Date beginDate = Date8Utils.getNextDay(-5);
+        Date endDate = Date8Utils.getNextDay(-3);
+        DataCubeUserSummaryResponse dataCubeUserSummaryResponse = DataCubeUtils.userSummary(beginDate,endDate);
+
+        return dataCubeUserSummaryResponse;
+    }
+
+    @GetMapping("/cumulate")
+    public DataCubeUserSummaryResponse cumulate(){
+        Date beginDate = Date8Utils.getNextDay(-5);
+        Date endDate = Date8Utils.getNextDay(-3);
+        DataCubeUserSummaryResponse dataCubeUserSummaryResponse = DataCubeUtils.userCumulate(beginDate,endDate);
+        return dataCubeUserSummaryResponse;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     @GetMapping("/index")
     public Map<String,Object> index(){

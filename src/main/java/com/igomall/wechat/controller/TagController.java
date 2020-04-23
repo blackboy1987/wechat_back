@@ -70,8 +70,8 @@ public class TagController extends BaseController {
 
     @PostMapping("/list")
     @JsonView(BaseEntity.ListView.class)
-    public Page<Tag> list(Pageable pageable, String name, Date beginDate, Date endDate){
-        return tagService.findPage(pageable,name,beginDate,endDate);
+    public Page<Tag> list(Pageable pageable, String name, Boolean isEnabled, Date beginDate, Date endDate){
+        return tagService.findPage(pageable,name,isEnabled,beginDate,endDate);
     }
 
     /**

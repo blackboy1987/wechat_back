@@ -16,6 +16,6 @@ import java.util.Date;
  */
 public interface TagDao extends BaseDao<Tag, Long> {
 
-    Page<Tag> findPage(Pageable pageable, String name, Date beginDate, Date endDate);
+    Page<Tag> findPage(Pageable pageable, String name, Boolean isEnabled, Date beginDate, Date endDate);
 
 }

@@ -20,7 +20,7 @@ public interface TagService extends BaseService<Tag, Long> {
 
 	Tag findByWeChatId(Long weChatId);
 
-	Page<Tag> findPage(Pageable pageable, String name, Date beginDate, Date endDate);
+	Page<Tag> findPage(Pageable pageable, String name, Boolean isEnabled, Date beginDate, Date endDate);
 
 	Tag save1(Tag tag);
 

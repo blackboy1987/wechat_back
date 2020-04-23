@@ -38,8 +38,8 @@ public class TagServiceImpl extends BaseServiceImpl<Tag, Long> implements TagSer
     }
 
     @Override
-    public Page<Tag> findPage(Pageable pageable, String name, Date beginDate, Date endDate){
-        return tagDao.findPage(pageable,name,beginDate,endDate);
+    public Page<Tag> findPage(Pageable pageable, String name, Boolean isEnabled, Date beginDate, Date endDate){
+        return tagDao.findPage(pageable,name,isEnabled,beginDate,endDate);
     }
 
     @Override
